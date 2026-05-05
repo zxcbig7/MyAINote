@@ -1,0 +1,236 @@
+{
+  "main": {
+    "id": "ab58b650b2fa6b7b",
+    "type": "split",
+    "children": [
+      {
+        "id": "de363418a8863a1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1e848fbe5ff86bed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "raw/筆記/Obsidian 筆記方法.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Obsidian 筆記方法"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "65bfbdf11fd7ac98",
+    "type": "split",
+    "children": [
+      {
+        "id": "ea61c46b49e8fb5c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d254d765cf861cbc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "檔案瀏覽器"
+            }
+          },
+          {
+            "id": "0a44588397bdb0b3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜尋"
+            }
+          },
+          {
+            "id": "c68dfc5d59119cca",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "書籤"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4aca2441ab166a97",
+    "type": "split",
+    "children": [
+      {
+        "id": "144cca5fbdd14751",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dccaba95047d4363",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "raw/筆記/Obsidian 筆記方法.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Obsidian 筆記方法 的反向連結"
+            }
+          },
+          {
+            "id": "2900db9994d35a19",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "raw/筆記/Obsidian 筆記方法.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Obsidian 筆記方法 的對外連結"
+            }
+          },
+          {
+            "id": "fce1131febfc7bec",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "標籤"
+            }
+          },
+          {
+            "id": "13a05be1e8f88c3f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "所有屬性"
+            }
+          },
+          {
+            "id": "fb090697e9be34db",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "raw/筆記/Obsidian 筆記方法.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Obsidian 筆記方法 的大綱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:開啟快速切換": false,
+      "graph:查看關聯圖": false,
+      "canvas:建立新畫布": false,
+      "daily-notes:開啟今天的每日筆記": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false,
+      "bases:建立新的 base": false
+    }
+  },
+  "active": "1e848fbe5ff86bed",
+  "lastOpenFiles": [
+    "Pasted image 20260505001358.png",
+    "Pasted image 20260505001352.png",
+    "Pasted image 20260505001312.png",
+    "raw/筆記/Obsidian 筆記方法.md",
+    "raw/未命名.md",
+    "raw/筆記",
+    "raw/DevOps/Docker/📖.md",
+    "raw/tech/devops/Docker/命令查詢.md",
+    "raw/tech/devops/Docker/底層實作.md",
+    "raw/tech/devops/Docker/容器.md",
+    "raw/tech/devops/Docker/容器互連.md",
+    "raw/tech/devops/troubleshooting.md",
+    "raw/tech/devops/Vault.md",
+    "raw/tech/devops/vault-tutorial.md",
+    "raw/DevOps/Vault.md",
+    "raw/DevOps/Helm",
+    "raw/DevOps/Habor",
+    "raw/DevOps/Azure",
+    "raw/DevOps/Kubernetes (K8s)",
+    "raw/DevOps/Docker",
+    "raw/tech/git/Git 指令筆記/image.png",
+    "raw/DevOps",
+    "raw/tech/languages/C++.md",
+    "raw/tech/languages/csharp-debug-test.md",
+    "變數 2c98fda15f6f81eda604c87fd10eb1a7.md",
+    "raw/tech/languages/C#.md",
+    "raw/tech/languages/C.md",
+    "raw/tech/database/SQL Basic Functions.md",
+    "raw/tech/database/SQL 建立資料表.md",
+    "raw/tech/database/Procedure & Function.md",
+    "raw/tech/database/PL SQL.md",
+    "raw/tech/database/Oracle To C#.md",
+    "raw/tech/database/Oracle Server操作.md",
+    "raw/tech/database/Oracle CMD 指令筆記.md",
+    "raw/tech/database/PL SQL/Untitled.png",
+    "raw/tech/database/Oracle To C#/ODAC 安裝環境.md",
+    "raw/tech/database/Oracle To C#/C# 連線讀寫Oracle.md",
+    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 7.png",
+    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 6.png",
+    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 5.png",
+    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 4.png",
+    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 3.png",
+    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 2.png",
+    "raw/tech/devops/Docker/Dockerfile 基本結構",
+    "raw/tech/devops/kubectl 指令.md.tmp.14020.1777816542622",
+    "fix_ampl.py",
+    "未命名.canvas"
+  ]
+}
