@@ -8,6 +8,7 @@
 - [[argocd]] — GitOps 部署控制器，監控 git repo 並 sync 到 K8s 叢集
 - [[docker]] — 容器化平台，Image / Container / Repository 核心概念 + Compose
 - [[kubernetes]] — 容器編排平台，Pod/Node/Cluster 四元件 + YAML 架構
+- [[istio]] — Service mesh，Sidecar 注入、流量攔截、xDS、啟動 race condition 與偵錯
 - [[minikube]] — 本機單節點 K8s 開發環境
 - [[helm]] — K8s 應用部署打包工具，Chart / Release / values.yaml
 - [[kubectl]] — K8s CLI 工具，get/apply/describe/logs/exec 常用指令速查

@@ -32,6 +32,18 @@
 - Docker Compose yaml 架構.md + Docker Compose 重開.md → Docker Compose.md
 - Docker 部屬範例.md 保持獨立（.NET 部署流程完整）
 
+## [2026-05-07] ingest | Istio IPv6 Dual-Stack Troubleshooting
+
+- 來源：GitHub issues #45970、#41462、#48358、#34314
+- 產出：`wiki/tech/entities/istio.md` 新增 `Troubleshooting：IPv6 / Dual-Stack` 章節
+- 涵蓋：`[::]` port mismatch 根因、ISTIO_DUAL_STACK workaround、多副本 probe 失敗、四個參考 issue URL
+
+## [2026-05-07] ingest | Istio Sidecar 完整生命週期
+
+- 來源：對話整理（web 補充）
+- 產出：`wiki/tech/entities/istio.md`
+- 涵蓋：iptables 流量攔截、race condition、holdApplicationUntilProxyStarts、K8s 1.28 native sidecar、Job 終止問題、pilot-agent wait 失敗根因、NetworkPolicy 相容性、xDS、偵錯方法論
+
 ## [2026-05-03] ingest | Notion notes 批次整合
 
 - 來源：`Notion notes/Dev/` 下 27 個主題檔（4 批次）
