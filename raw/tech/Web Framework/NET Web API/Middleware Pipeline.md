@@ -27,9 +27,9 @@ tags: [web-dev, dotnet, csharp, web-api, backend]
 
 # 二、HTTP Pipeline 的視覺化概念
 
-![image.png](image.png)
+![image.png](Middleware%20Pipeline/image.png)
 
-![image.png](image%201.png)
+![image.png](Middleware%20Pipeline/image%201.png)
 
 每一個 **Middleware** 都像是一個「關卡」：
 

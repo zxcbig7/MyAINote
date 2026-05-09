@@ -20,7 +20,7 @@ tags: [system, linux]
 目的：結合目錄數的架構與磁碟內的資料
 
 概念：利用一個目錄當成進入點，將磁碟分割槽的資料放置在該目錄下； 也就是說，進入該目錄就可以讀取該分割槽。此動作稱為『掛載』，進入點的目錄稱作『掛載點』。
-![Untitled](raw/tech/system/Linux%20觀念/Untitled.png))
+![Untitled](Untitled.png)
 
 上圖中假設硬碟分為兩槽，partition 1是掛載到根目錄，至於partition 2則是掛載到/home這個目錄。 這也就是說，當我的資料放置在/home內的各次目錄時，資料是放置到partition 2的，如果不是放在/home底下的目錄， 那麼資料就會被放置到partition 1了！
 

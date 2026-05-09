@@ -22,7 +22,7 @@ tags: [devops, kubernetes, k8s]
 
 # **K8s基本四元件**
 
-![圖： Cluster 簡易版 (只有一個Master)](Kubernetes%20(K8s)/image.png)
+![圖： Cluster 簡易版 (只有一個Master)](image.png)
 
 圖： Cluster 簡易版 (只有一個Master)
 
@@ -437,11 +437,11 @@ kubectl rollout undo deploy my-deployment **--to-revision=2**
 
 Service 用來定義「一群 Pod 要如何被連線及存取」的元件。但在 Service 中，將每個 Service 元件對外的 port number 跟 Node 上的 port number 做 mapping，這樣在 Service 變多時，port number 以及分流規則的管理變得相當困難。
 
-![image.png](Kubernetes%20(K8s)/image%201.png)
+![image.png](image%201.png)
 
 而 Ingress 可以透過 HTTP/HTTPS，在眾多的 Service 前搭建一個 reverse-proxy。這樣 Ingress 可以幫助**統一對外的 port number**，並且根據 hostname 或是 pathname 決定封包要轉發到哪個 Service 上
 
-![image.png](Kubernetes%20(K8s)/image%202.png)
+![image.png](image%202.png)
 
 Ingress 這項服務是由 `Ingress Resources`、`Ingress Server`、`Ingress Controller` 構成。
 

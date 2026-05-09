@@ -6,7 +6,7 @@ tags: [csharp, linq, programming]
 
 # LINQPad
 
-![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled.png))
+![Untitled](語法應用/Untitled.png)
 
 - **伺服器連線瀏覽**: 跟SSMS的Object Explorer一樣，連線後可以看到各個Database的相關資訊
 - **片段瀏覽器**: 個人儲存的程式碼片段及LINQPad提供的範例程式片段(本章會用到Samples中的範例)
@@ -37,7 +37,7 @@ tags: [csharp, linq, programming]
     > DateTime.Now.ToString("yyyy/MM/dd")
     > ```
     > 
-    >![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled%201.png))
+    >![Untitled](語法應用/Untitled%201.png)
     > 
     
     > 以LINQ查詢一段句子的每個字的長度時
@@ -49,7 +49,7 @@ tags: [csharp, linq, programming]
     > select word
     > ```
     > 
-    >![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled%202.png))
+    >![Untitled](語法應用/Untitled%202.png)
     > 
 
 ### **Statement(s)**
@@ -77,7 +77,7 @@ tags: [csharp, linq, programming]
     > duplicates.Dump();
     > ```
     > 
-    >![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled%203.png))
+    >![Untitled](語法應用/Untitled%203.png)
     > 
 
 ### **Program**
@@ -108,7 +108,7 @@ tags: [csharp, linq, programming]
     > }
     > ```
     > 
-    >![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled%204.png))
+    >![Untitled](語法應用/Untitled%204.png)
     > 
     > 最外面是不需要再一層Class的，可以直接寫所需的程式碼。
     > 

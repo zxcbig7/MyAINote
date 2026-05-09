@@ -85,7 +85,7 @@ tags: [git, github]
 
 ### 常用git指令
 
-![Untitled](raw/tech/git/Github%20心得/Untitled.png))
+![Untitled](Untitled.png)
 
 | **Windows** | **說明** |
 | --- | --- |
@@ -105,7 +105,7 @@ tags: [git, github]
 
 新增有.git資料夾的專案至軟體中
 
-![Untitled](raw/tech/git/Github%20心得/Untitled%201.png))
+![Untitled](Untitled%201.png)
 
 ### 本地Git綁定GitHub
 
@@ -121,7 +121,7 @@ tags: [git, github]
 
 ### 看.git中的config有無連結
 
-![Untitled](raw/tech/git/Github%20心得/Untitled%202.png))
+![Untitled](Untitled%202.png)
 
 ### Git 縮寫指令設定
 
@@ -174,7 +174,7 @@ git push -u **git2** main
 - 回頭觀看版本內容：`git checkout 編號`
 - 返回最新的版本：`git checkout master(分支名稱)`
 
-![Untitled](raw/tech/git/Github%20心得/Untitled%203.png))
+![Untitled](Untitled%203.png)
 
 ### 新增檔案時，檔案還沒加追蹤時，清空工作目錄
 

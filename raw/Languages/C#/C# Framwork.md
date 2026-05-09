@@ -17,7 +17,7 @@ tags: [csharp, programming]
 > 游標移動至物件時的說明
 > 
 > 
->![Untitled](raw/Languages/C#/進階語法/Untitled.png))
+>![Untitled](進階語法/Untitled.png)
 > 
 
 ```csharp

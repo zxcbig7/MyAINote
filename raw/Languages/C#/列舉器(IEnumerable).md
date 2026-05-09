@@ -14,7 +14,7 @@ tags: [csharp, programming]
 
 事實上整個 .Net 集合 (Collection) 的界面，處在上層的就是 IEnumerable、IEnumerable<T> 與 IEnumerator、IEnumerator<T> 4 個界面。
 
-![Untitled](raw/Notion%20notes/Dev/C#/列舉器(IEnumerable)/Untitled.png)
+![Untitled](列舉器(IEnumerable)/Untitled.png)
 
 在 .Net 集合中常用的界面 (**ICollection**、**IList**、**IDictionary**)，都有繼承 IEnumerable 或是 IEnumerable<T>，也因此實作這些界面的集合，也才會都具備資料巡訪的能力。
 
@@ -54,7 +54,7 @@ public interface IEnumerator
 
 這兩個方法與一個屬性的作用，我們可以參照 C# Cornor 中的一張整理圖如下︰
 
-![Untitled](raw/Notion%20notes/Dev/C#/列舉器(IEnumerable)/Untitled%201.png)
+![Untitled](列舉器(IEnumerable)/Untitled%201.png)
 
 - 將列舉值的內部，視為有一個指標，指向其附屬的資料集合的元素。指標一開始的位置，是在第一個元素之前，也就是不指向任何資料元素。
 - Current 屬性，即是回傳目前指標指向的值的內容；
@@ -143,4 +143,4 @@ foreach (var item in fiveelements)
 2. 實作 IEnumerable 與 IEnumerable<T> 界面 , 需要實作 GetEnumerator() 用來回傳列舉器(Enumerator)物件 - 實作IEnumerator
 3. 列舉器(Enumerator)是實作走訪各個資料元素的類別的物件
 
-![Untitled](raw/Notion%20notes/Dev/C#/列舉器(IEnumerable)/Untitled%202.png)
+![Untitled](列舉器(IEnumerable)/Untitled%202.png)

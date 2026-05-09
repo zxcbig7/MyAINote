@@ -170,7 +170,7 @@ Linux文件系統里面不都是磁碟文件。
 
 Linux在啟動過程中，就會[根據配置](https://stackoverflow.com/questions/10412135/where-are-all-mount-points-stored-in-linux/10412169)，創建一個虛擬的文件系統目錄結構（可以想象成，Linux系統創建在內存中的一個目錄結構），比如，下圖藍色部分所示
 
-![Untitled](raw/tech/system/Ubuntu%20筆記/Untitled.png))
+![Untitled](Untitled.png)
 
 隨後的啟動過程，才會，將不同的分區 `掛接（mount）` 到文件系統不同的目錄中。
 
@@ -178,7 +178,7 @@ Linux在啟動過程中，就會[根據配置](https://stackoverflow.com/questio
 
 掛接後的文件系統目錄如下圖所示。
 
-![Untitled](raw/tech/system/Ubuntu%20筆記/Untitled%201.png))
+![Untitled](Untitled%201.png)
 
 具體掛接到那個點，在安裝Linux操作系統的時候，就選擇好的。
 

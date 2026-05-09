@@ -99,7 +99,7 @@ tags: [python, tkinter, gui]
         
         效果：
         
-      ![](raw/Languages/Python/GUI套件-tkinter/Untitled.png)))
+      ![](GUI套件-tkinter/Untitled.png)
         
     2. `grid(row, column)` ：類似格子
         - 將區域分割成最大的 row 列與最大的 column 行
@@ -122,7 +122,7 @@ tags: [python, tkinter, gui]
         
         效果：
         
-      ![](raw/Languages/Python/GUI套件-tkinter/Untitled%201.png)))
+      ![](GUI套件-tkinter/Untitled%201.png)
         
     3. `place(x, y)` ：絕對的像素位置
         

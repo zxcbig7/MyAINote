@@ -25,7 +25,7 @@ tags: [web-dev, dotnet, csharp, web-api, backend]
 
 Pipeline 圖：
 
-![middleware-pipeline](../assets/aspnet-web-api/middleware-pipeline.png)
+![middleware-pipeline](wiki/tech/entities/dotnet-web-api/middleware-pipeline.png)
 
 ### Use / Run / Map
 
@@ -206,11 +206,11 @@ UI → BLL (Business Logic Layer) → DAL (Data Access Layer)
 
 圖示：
 
-![clean-architecture-onion](../assets/aspnet-web-api/clean-architecture-onion.png)
+![clean-architecture-onion](wiki/tech/entities/dotnet-web-api/clean-architecture-onion.png)
 
 ASP.NET Core 對應圖：
 
-![clean-architecture-aspnetcore](../assets/aspnet-web-api/clean-architecture-aspnetcore.png)
+![clean-architecture-aspnetcore](wiki/tech/entities/dotnet-web-api/clean-architecture-aspnetcore.png)
 
 依賴方向：由外往內（Infrastructure → Application Core），核心不依賴外層。
 

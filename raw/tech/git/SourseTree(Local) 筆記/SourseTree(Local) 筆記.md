@@ -17,7 +17,7 @@ tags: [git, sourcetree]
 3. 輸入 Full Name 與 Email address
 4. 按下OK
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled.png)
+![Untitled](Untitled.png)
 
 **設定忽略檔案清單**
 
@@ -32,7 +32,7 @@ tags: [git, sourcetree]
 
 </aside>
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%201.png)
+![Untitled](Untitled%201.png)
 
 # 2. 基本功能介紹
 
@@ -43,19 +43,19 @@ Commit是Git系統最基本的單位，一個commit代表著一個專案的版�
 > 點選WORKSPACE下的File Status可以看下方的Unstaged Files有一些項目，包括了經過變動的檔案。
 > 
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%202.png)
+![Untitled](Untitled%202.png)
 
 在Unstaged Files 中選擇的檔案會移到Staged Files的欄位之中。然後點選下方的Commit message文字框，針對每一次的commit做描述，方便日後的管理，確認之後按下Commit。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%203.png)
+![Untitled](Untitled%203.png)
 
 可以看到Branches的欄位中多了一個master的項目，在右方的圖表會看到多出了一個節點，每一個節點代表一個commit。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%204.png)
+![Untitled](Untitled%204.png)
 
 每當SourceTree偵測到當前專案狀態與最後的最後提交的commit出現了差異，Branch會多了一行Uncommitted changes，可以照著先前流程操作再次建立一個commit，因此圖表多了一個節點，帶有白色漸層的節點表示目前專案的狀態歸屬（當前正在看的版本）。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%205.png)
+![Untitled](Untitled%205.png)
 
 > **可以在不同的commit之間切換，只要點擊兩下左鍵即可，這種在不同commit之間互相切換的動作稱為checkout。**
 > 
@@ -75,31 +75,31 @@ Commit是Git系統最基本的單位，一個commit代表著一個專案的版�
 
 確認專案版本處在master最後一個commit下，並且點選Branch按鈕。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%206.png)
+![Untitled](Untitled%206.png)
 
 在New Branch欄位上為新的branch命名，並且按下Create Branch。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%207.png)
+![Untitled](Untitled%207.png)
 
 可以看到Branches多了一個項目，此時兩個branch都處在同一個commit版本，這裡可以看到Branch2顯示為粗底，代表目前專案版本處在Branch2這個branch裡面。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%208.png)
+![Untitled](Untitled%208.png)
 
 我們希望開始在新的branch增加功能，首先確認目前專案處在新的branch（Branch2）路線上，接著更動任意檔案後，在SourceTree建立一個新的commit版本。可以從圖表中看到多出了一個新的節點，且這個節點附屬於Branch2這個branch。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%209.png)
+![Untitled](Untitled%209.png)
 
 接著切換到master branch，檔案架構則又回到了先前的狀態中。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2010.png)
+![Untitled](Untitled%2010.png)
 
 在master branch下，隨便新增一個文件檔案後，從圖表中可以看到master的狀態與Branch2的狀態已經開始產生分歧，新的狀態變化依附在master branch。。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2011.png)
+![Untitled](Untitled%2011.png)
 
 將當前的狀態建立一個commit版本。可以試著切換不同的branch來觀察專案版本之間的差異。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2012.png)
+![Untitled](Untitled%2012.png)
 
 <aside>
 💡 不只可以在master建立branch，也可以在其他的branch上分歧出新的branch。
@@ -120,13 +120,13 @@ Commit是Git系統最基本的單位，一個commit代表著一個專案的版�
 
 首先確認目前版本路線處在master branch，並且點擊Merge按鈕。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2013.png)
+![Untitled](Untitled%2013.png)
 
 選擇要合併的branch之後按下OK，從圖表可以看到，Branch2 的版本已經接回到master branch路線下了。通常在merge之後會因為檔案的變化而衍生新的狀態，這時候只要將修復後的狀態再次commit一個新的版本即可。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2014.png)
+![Untitled](Untitled%2014.png)
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2015.png)
+![Untitled](Untitled%2015.png)
 
 <aside>
 💡 可以依照這樣的特性將一個專案的多個功能個別獨立成不同的branch，等到某項功能完成後再merge回來，這樣的模式也很方便同時讓多位協同開發者獨立分工。
@@ -143,21 +143,21 @@ Commit是Git系統最基本的單位，一個commit代表著一個專案的版�
 
 下面直接用一個範例來做說明，此時repository共有兩個branch - master, Branch2 與 Branch3。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2016.png)
+![Untitled](Untitled%2016.png)
 
 隨著專案的開發，master branch的版本已經擁有了master5.txt的功能。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2017.png)
+![Untitled](Untitled%2017.png)
 
 而other branch（Branch3）是從Branch3-1這個commit開始分歧出去的，所以僅支援到還沒分支之前的功能。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2018.png)
+![Untitled](Untitled%2018.png)
 
 在other branch（Branch3）的開發線軸上，因為Branch3-2.txt 必須與 master5.txt結合才能繼續作用，因此我們將兩個branch做一次merge。
 
 在merge之後兩個branch再各別獨立開發新功。因為兩個branch已經merge過一次，因此在開發過程中產生了一條交錯的關聯線，加上Branch3-4的分歧線總共有兩條關聯線。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2019.png)
+![Untitled](Untitled%2019.png)
 
 如果我們將檢視模式改成Ancestor Order則會呈現更複雜的架構。
 
@@ -167,14 +167,14 @@ Commit是Git系統最基本的單位，一個commit代表著一個專案的版�
 
 </aside>
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2020.png)
+![Untitled](Untitled%2020.png)
 
 接著使用rebase的方式，看會有什麼差異，先把repository再次回到merge之前的狀態。
 
 <aside>
 💡 使用”Reset current branch to this commit”可以退回到Commit的儲存進度
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2021.png)
+![Untitled](Untitled%2021.png)
 
 - **補充：Reset 的模式**
     
@@ -207,23 +207,23 @@ Commit是Git系統最基本的單位，一個commit代表著一個專案的版�
 
 checkout到other branch（Branch3-4）。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2022.png)
+![Untitled](Untitled%2022.png)
 
 對著master branch點選右鍵，並且選擇Rebase current changes onto master。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2023.png)
+![Untitled](Untitled%2023.png)
 
 接著會出現一個詢問視窗，按下OK。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2024.png)
+![Untitled](Untitled%2024.png)
 
 可以觀察到使用rebase作法之後branch的關聯線與先前merge的做法有一些差異。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2025.png)
+![Untitled](Untitled%2025.png)
 
 接著兩個branch各自獨立開發出了新的功能，我們可以發現到兩個分歧的branch之間只有一條關聯線。切換到Ancestor Order模式來檢視一樣是非常簡潔的。兩個branch的commit版本內容與先前merge的做法結果也是一致的。
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2026.png)
+![Untitled](Untitled%2026.png)
 
 <aside>
 💡 **可以這麼理解rebase的功能：**
@@ -236,7 +236,7 @@ rebase 的好處是，你可以清楚看到本地每個 commit 會遇到 conflic
 
 # 3. Git flow **開發流程**
 
-![Untitled](SourseTree(Local)%20%E7%AD%86%E8%A8%98/Untitled%2027.png)
+![Untitled](Untitled%2027.png)
 
 最重要的只有兩個分支會永久存在：master 以及 develop，也就是圖上粗體字的那兩條。
 其餘的支援型分支在完成任務後應刪除，包括 feature，release，hotfix。

@@ -104,7 +104,7 @@ Console.Read();
 也可以使用 into 關鍵字，讓 join 或 group 子句的結果變成同一個查詢運算式中其他查詢子句的來源。
 > 
 > 
->![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled.png))
+>![Untitled](語法應用/Untitled.png)
 > 
 > ```csharp
 > IEnumerable<T> query-expression-identifier = 
@@ -150,7 +150,7 @@ intAry[2] = 97;
 //第二次執行查詢（並未異動查詢語法）
 query.Dump("第二次查詢-延後執行的效果");
 ```
-![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled%201.png))
+![Untitled](語法應用/Untitled%201.png)
 
 請注意，並不是 LINQ 語法就一定是延後執行，要看語法中所應用到的「標準查詢運算子」為何。
 辨識方法：只要是能以「查詢運算式」撰寫的運算子，都屬於延後執行的標準查詢運算子。
@@ -176,7 +176,7 @@ querySum.Dump("第二次查詢");
 querySum = (from n in list select n).Sum (c => c);
 querySum.Dump("第三次查詢");
 ```
-![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled%202.png))
+![Untitled](語法應用/Untitled%202.png)
 
 - 第二次沒變
 - 第三次因為重新定義而改變

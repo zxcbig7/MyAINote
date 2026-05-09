@@ -10,7 +10,7 @@ tags: [csharp, programming]
 
 # **物件導向程式設計(Object Oriented Programming)**
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled.png)
 
 **實例（instance）和物件（object）之間的區別**
 
@@ -24,7 +24,7 @@ tags: [csharp, programming]
 
 **實體化（instaniate）：指從抽象的類別，創造出具體的物件。**
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%201.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%201.png)
 
 ## 類別(Class)
 
@@ -392,7 +392,7 @@ namespace ClassDemo03
 - **繼承不同base class（父類別）的class也能實作相同interface**
     - interface 可以用在各種 class，並沒有受限
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%202.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%202.png)
 
 ```csharp
 abstract class Creature
@@ -438,7 +438,7 @@ class Moster: Creature
 }
 ```
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%203.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%203.png)
 
 ```csharp
 interface IAttackable
@@ -744,7 +744,7 @@ enum 表示各內容以0開始給予數值。
 
 多維陣列
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%204.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%204.png)
 
 先看垂直在看水平
 
@@ -850,19 +850,19 @@ class Bird : Animal{
 
 # List<T>
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%205.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%205.png)
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%206.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%206.png)
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%207.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%207.png)
 
 # 泛型
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%208.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%208.png)
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%209.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%209.png)
 
-![Untitled](raw/Notion%20notes/Dev/C#/物件導向(Object%20Oriented%20Programming)/Untitled%2010.png)
+![Untitled](物件導向(Object%20Oriented%20Programming)/Untitled%2010.png)
 
 > 泛型語法:宣告泛型
 >

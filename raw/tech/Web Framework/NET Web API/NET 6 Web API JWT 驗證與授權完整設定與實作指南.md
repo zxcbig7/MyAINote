@@ -211,7 +211,7 @@ headers: {
 
 ## JWT 驗證流程：客戶端與伺服器互動簡圖
 
-![image.png](image.png)
+![image.png](NET%206%20Web%20API%20JWT%20驗證與授權完整設定與實作指南/image.png)
 
 上述圖例展示了**使用 JWT 進行身份驗證的流程**：
 
