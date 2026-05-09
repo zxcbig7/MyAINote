@@ -11,10 +11,10 @@
             "id": "4f54cf5d90792079",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {},
-              "icon": "lucide-file",
-              "title": "新分頁"
+              "icon": "lucide-git-fork",
+              "title": "關聯圖檢視"
             }
           }
         ]
@@ -178,6 +178,8 @@
   },
   "active": "4f54cf5d90792079",
   "lastOpenFiles": [
+    "fix-dead-images.py",
+    "fix-notion-links.py",
     "raw/Languages/Python/第二堂(2020 3 10).md",
     "112年6月.csv.md",
     "React/React TypeScript Canvas 手冊 3168fda15f6f8082a2b3e8e789f26a5c.md",
@@ -199,7 +201,6 @@
     "wiki/tech/moc/devops/devops-moc.md",
     "wiki/tech/moc/web-frontend",
     "wiki/tech/moc/web-backend",
-    "wiki/tech/moc/tools-system",
     "wiki/tech/entities/python/python.md",
     "raw/tech/git/git-tutorial/git-tutorial.md",
     "raw/tech/database/SQL 資料庫基本指令/SQL 資料庫基本指令.md",
@@ -215,7 +216,6 @@
     "raw/Languages/Python/第一部分：數字、字串與變數/Python 運算子.md",
     "raw/tech/devops/Kubernetes (K8s)/kubectl-api-version/kubectl-api-version.md",
     "raw/tech/Web Framework/NET Web API/Chapter 4：DTO 與資料模型設計.md",
-    "資料管理 3158fda15f6f811ca9d1c884cde95b40.md",
     "raw/tech/devops/Docker/04-指令與範例/命令查詢/image.png",
     "raw/tech/devops/Docker/02-Dockerfile/Dockerfile 基本結構/image.png",
     "raw/tech/devops/Docker/02-Dockerfile/Dockerfile 基本結構/image 1.png",
