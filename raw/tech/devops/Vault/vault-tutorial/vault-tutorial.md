@@ -1,3 +1,9 @@
+---
+tags: [devops, vault, secrets]
+---
+
+> 關聯：[[vault]]
+
 # Vault 教學
 
 ## 一、什麼是 Vault

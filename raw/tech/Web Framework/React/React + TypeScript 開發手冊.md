@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]、[[typescript]]
+
 # React + TypeScript 開發手冊
 
 > 適用對象：有 JavaScript / React 基礎，正在轉型 TypeScript 的開發者。

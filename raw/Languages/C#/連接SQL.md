@@ -1,3 +1,9 @@
+---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
 # 連接SQL
 
 以下Code幾個步驟 :

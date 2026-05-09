@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # HTTP 協議
 
 - API 是應用程式之間的「溝通橋樑」，Web API 是一種 API，專門用於網路上的應用程式之間進行數據交換和操作。

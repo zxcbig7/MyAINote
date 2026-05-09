@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 8：Authentication 與 Authorization（JWT）
 
 ## 8.1 Authentication 與 Authorization 的角色區分

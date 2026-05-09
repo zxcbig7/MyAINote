@@ -1,3 +1,9 @@
+---
+tags: [devops, kubernetes, k8s]
+---
+
+> 關聯：[[kubernetes]]
+
 # Kubernetes (K8s)
 
 # 參考資料

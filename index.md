@@ -3,6 +3,15 @@
 > 本檔列出 `wiki/` 內所有頁面。回答問題時**先查此檔找線索**。
 > 每次 ingest / synthesis 後即時更新。
 
+## Tech / MOC（主題入口）
+
+- [[devops-moc]] — Docker / K8s / Helm / Argo / Vault / CI-CD
+- [[web-frontend-moc]] — React / TypeScript / CSS / UI/UX
+- [[web-backend-moc]] — .NET Web API / C# / Auth
+- [[database-moc]] — Oracle / SQL / PL-SQL
+- [[languages-moc]] — C# / TypeScript / Python / VBA
+- [[tools-system-moc]] — Git / Linux / Networking / 開發工具
+
 ## Tech / Entities
 
 - [[argocd]] — GitOps 部署控制器，監控 git repo 並 sync 到 K8s 叢集
@@ -21,6 +30,7 @@
 - [[oracle]] — Oracle SQL 基本指令、CMD 操作、C# 連接方式
 - [[linux]] — Linux 目錄結構、權限、常用指令、Ubuntu 設定
 - [[claude-code-skills]] — Claude Code 自訂 slash command，Skills 定義方式、檔案格式與適用時機
+- [[python]] — Python 基礎（stub，待整合 raw 內容）
 
 ## Tech / Concepts
 

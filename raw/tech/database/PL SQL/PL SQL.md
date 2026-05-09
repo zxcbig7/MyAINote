@@ -1,4 +1,10 @@
-﻿# PL SQL
+---
+tags: [database, oracle, plsql, sql]
+---
+
+> 關聯：[[oracle]]
+
+# PL SQL
 
 # **一、PL/SQL簡介**
 
@@ -257,7 +263,8 @@ declare
    select uname into v_name from user_book where user_book.userid=100000; -- 此時的userid是不存在的
  end;
 ```
-![Untitled](raw/tech/database/PL%20SQL/Untitled.png))
+
+![Untitled](raw/tech/database/PL%20SQL/Untitled.png))
 
 ## **5.使用者自定義異常**
 
@@ -275,4 +282,5 @@ declare
              dbms_output.put_line('原來是張三啊,拋個異常給你吧');
  end;
 ```
-![Untitled](raw/tech/database/PL%20SQL/Untitled%201.png))
+
+![Untitled](raw/tech/database/PL%20SQL/Untitled%201.png))

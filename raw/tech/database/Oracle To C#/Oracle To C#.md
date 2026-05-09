@@ -1,3 +1,9 @@
+---
+tags: [database, oracle, csharp, ado-net]
+---
+
+> 關聯：[[oracle]]
+
 # Oracle To C#
 
 [ODAC 安裝環境](Oracle%20To%20C#/ODAC%20%E5%AE%89%E8%A3%9D%E7%92%B0%E5%A2%83%202c98fda15f6f81f5b470c287cdd139b0.md)

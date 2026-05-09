@@ -1,3 +1,9 @@
+---
+tags: [devops, vault, secrets]
+---
+
+> 關聯：[[vault]]
+
 # Vault
 
 ```bash

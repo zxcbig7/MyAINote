@@ -1,3 +1,9 @@
+---
+tags: [devops, kubernetes, k8s]
+---
+
+> 關聯：[[kubernetes]]
+
 # K8s YAML 概念與架構
 
 <aside>

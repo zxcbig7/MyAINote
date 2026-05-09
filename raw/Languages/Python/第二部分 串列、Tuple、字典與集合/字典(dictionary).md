@@ -1,3 +1,9 @@
+---
+tags: [python, data-structures, programming]
+---
+
+> 關聯：[[python]]
+
 # 字典(dictionary)
 
 # 特色

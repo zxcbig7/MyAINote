@@ -1,3 +1,9 @@
+---
+tags: [devops, helm, kubernetes]
+---
+
+> 關聯：[[helm]]、[[kubernetes]]
+
 # Helm Chart
 
 - Helm = Chart + Release + Repository

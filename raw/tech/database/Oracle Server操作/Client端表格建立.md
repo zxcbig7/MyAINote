@@ -1,9 +1,16 @@
-﻿# Client端表格建立
+---
+tags: [database, oracle, sql, admin]
+---
+
+> 關聯：[[oracle]]
+
+# Client端表格建立
 
 參考：[https://cloud.tencent.com/developer/article/1337082](https://cloud.tencent.com/developer/article/1337082)
 
 1. **SQL Developerg連線設定**
-![Untitled](raw/tech/database/Oracle%20Server操作/Client端表格建立/Untitled.png))
+
+![Untitled](raw/tech/database/Oracle%20Server操作/Client端表格建立/Untitled.png))
 
 | **使用者名稱** | ESCP_GUI |
 | --- | --- |

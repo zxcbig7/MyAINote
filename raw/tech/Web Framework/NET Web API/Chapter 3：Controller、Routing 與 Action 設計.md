@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 3：Controller、Routing 與 Action 設計
 
 ## 3.1 Controller 的角色定位

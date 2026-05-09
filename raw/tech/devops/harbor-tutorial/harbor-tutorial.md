@@ -1,3 +1,9 @@
+---
+tags: [devops, harbor, container-registry]
+---
+
+> 關聯：[[cicd-pipeline]]、[[docker]]
+
 # Harbor 教學
 
 ## 一、什麼是 Harbor

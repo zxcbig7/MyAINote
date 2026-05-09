@@ -1,3 +1,9 @@
+---
+tags: [database, oracle, sql, admin]
+---
+
+> 關聯：[[oracle]]
+
 # Oracle Server操作
 
 [Client端表格建立](Client端表格建立%202c98fda15f6f812bb49fcf8a3a211b4b.md)

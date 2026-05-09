@@ -1,4 +1,10 @@
-﻿# Linux 觀念
+---
+tags: [system, linux]
+---
+
+> 關聯：[[linux]]
+
+# Linux 觀念
 
 # 目錄樹結構(Directory  tree)
 

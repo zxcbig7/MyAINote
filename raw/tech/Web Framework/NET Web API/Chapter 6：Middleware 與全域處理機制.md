@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 6：Middleware 與全域處理機制
 
 ## 6.1 Middleware 的核心概念

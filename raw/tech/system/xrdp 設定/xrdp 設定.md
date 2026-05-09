@@ -1,3 +1,9 @@
+---
+tags: [system, linux, xrdp]
+---
+
+> 關聯：[[linux]]
+
 # xrdp 設定
 
 # 網路連線資訊查詢

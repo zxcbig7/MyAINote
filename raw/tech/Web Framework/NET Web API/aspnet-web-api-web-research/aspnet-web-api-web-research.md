@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # ASP.NET Core Web API — Web Research
 
 來源 URL：

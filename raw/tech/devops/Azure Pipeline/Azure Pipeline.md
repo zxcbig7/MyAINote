@@ -1,3 +1,9 @@
+---
+tags: [devops, azure-pipelines, ci-cd]
+---
+
+> 關聯：[[cicd-pipeline]]
+
 # Azure Pipeline
 
 # 核心概念與 YAML 基礎

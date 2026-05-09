@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]
+
 # 前端傳輸概念 (axios + React Query+Promise)
 
 ## axios + React Query

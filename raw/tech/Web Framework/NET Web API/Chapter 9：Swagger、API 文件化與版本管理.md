@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 9：Swagger、API 文件化與版本管理
 
 ## 9.1 為什麼 API 文件是工程責任

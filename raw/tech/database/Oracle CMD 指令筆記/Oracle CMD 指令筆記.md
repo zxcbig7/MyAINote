@@ -1,3 +1,9 @@
+---
+tags: [database, oracle, sql]
+---
+
+> 關聯：[[oracle]]
+
 # Oracle CMD 指令筆記
 
 SQL教學：[http://faculty.stust.edu.tw/~jehuang/oracle/ch1/1-1.htm](http://faculty.stust.edu.tw/~jehuang/oracle/ch1/1-1.htm)

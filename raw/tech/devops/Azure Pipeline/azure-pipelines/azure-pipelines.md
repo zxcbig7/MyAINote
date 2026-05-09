@@ -1,3 +1,9 @@
+---
+tags: [devops, azure-pipelines, ci-cd]
+---
+
+> 關聯：[[cicd-pipeline]]
+
 # Azure Pipelines 完整教學
 
 > 資料來源：[Microsoft Learn — Azure Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops)

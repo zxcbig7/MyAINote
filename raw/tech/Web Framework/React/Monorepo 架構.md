@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]
+
 # Monorepo 架構
 
 概念

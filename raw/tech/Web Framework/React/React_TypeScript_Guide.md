@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]、[[typescript]]
+
 # React + TypeScript 開發語法指南
 
 ---

@@ -1,3 +1,9 @@
+---
+tags: [python, tkinter, gui]
+---
+
+> 關聯：[[python]]
+
 # 常見GUI介面
 
 ![](https://miro.medium.com/max/374/1*Ox5Z_Mkw55uZ5lQJvZJwWg.png)

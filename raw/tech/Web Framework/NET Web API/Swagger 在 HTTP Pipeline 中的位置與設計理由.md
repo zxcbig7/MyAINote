@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Swagger 在 HTTP Pipeline 中的位置與設計理由
 
 # 一、Swagger 在 HTTP Pipeline 中的位置與設計理由

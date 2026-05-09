@@ -1,3 +1,9 @@
+---
+tags: [devops, argocd, gitops, kubernetes]
+---
+
+> 關聯：[[argocd]]、[[cicd-pipeline]]
+
 # ArgoCD 教學 — 從安裝到自動部署
 
 ## 什麼是 ArgoCD？

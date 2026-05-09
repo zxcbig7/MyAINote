@@ -1,3 +1,9 @@
+---
+tags: [python, programming]
+---
+
+> 關聯：[[python]]
+
 # Python
 
 - 參考網站

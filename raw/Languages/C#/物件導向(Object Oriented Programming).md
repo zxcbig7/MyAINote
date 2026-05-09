@@ -1,3 +1,9 @@
+---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
 # 物件導向(Object Oriented Programming)
 
 ---

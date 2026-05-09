@@ -1,3 +1,9 @@
+---
+tags: [typescript, programming]
+---
+
+> 關聯：[[typescript]]
+
 # TypeScript 由淺至深語法教學 — Web Research
 
 來源 URL：

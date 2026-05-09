@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 2：ASP.NET Core Web API
 
 ## 2.1  [ASP.NET](http://asp.net/) Core Web API

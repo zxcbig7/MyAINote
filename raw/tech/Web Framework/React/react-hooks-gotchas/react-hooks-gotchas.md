@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]
+
 # React Hooks 常見陷阱
 
 ## useEffect 內呼叫函式的宣告順序

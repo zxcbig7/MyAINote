@@ -1,5 +1,12 @@
-﻿# LINQPad
-![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled.png))
+---
+tags: [csharp, linq, programming]
+---
+
+> 關聯：[[csharp]]
+
+# LINQPad
+
+![Untitled](raw/Languages/C#/LINQ%20筆記/語法應用/Untitled.png))
 
 - **伺服器連線瀏覽**: 跟SSMS的Object Explorer一樣，連線後可以看到各個Database的相關資訊
 - **片段瀏覽器**: 個人儲存的程式碼片段及LINQPad提供的範例程式片段(本章會用到Samples中的範例)

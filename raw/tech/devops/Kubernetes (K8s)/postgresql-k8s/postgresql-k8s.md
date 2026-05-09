@@ -1,3 +1,9 @@
+---
+tags: [devops, kubernetes, k8s]
+---
+
+> 關聯：[[kubernetes]]
+
 # PostgreSQL on Kubernetes
 
 ## 部署方式

@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 1：HTTP 與 Web API 的核心概念
 
 ## 1.1  Web API 與 HTTP

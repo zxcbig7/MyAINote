@@ -1,3 +1,9 @@
+---
+tags: [csharp, programming, debugging]
+---
+
+> 關聯：[[csharp]]
+
 # C# 偵錯與測試
 
 ## dotnet test 常用指令

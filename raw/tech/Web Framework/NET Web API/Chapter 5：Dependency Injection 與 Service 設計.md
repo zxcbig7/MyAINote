@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 5：Dependency Injection 與 Service 設計
 
 ## 5.1 為什麼 ASP.NET Core 強制你使用 DI

@@ -1,3 +1,9 @@
+---
+tags: [devops, kubernetes, k8s]
+---
+
+> 關聯：[[kubectl]]、[[kubernetes]]
+
 # kubectl apply — API 版本不符問題
 
 ## 問題描述

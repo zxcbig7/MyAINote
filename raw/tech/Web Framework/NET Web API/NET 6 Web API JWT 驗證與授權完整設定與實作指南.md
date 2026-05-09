@@ -1,4 +1,10 @@
-﻿# .NET 6 Web API JWT 驗證與授權完整設定與實作指南
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
+# .NET 6 Web API JWT 驗證與授權完整設定與實作指南
 
 ## Authentication 與 Authorization：理論差異與關係
 

@@ -1,3 +1,9 @@
+---
+tags: [database, sql]
+---
+
+> 關聯：[[oracle]]
+
 # SQL Basic Functions
 
 ### **一般常用字元的functons**

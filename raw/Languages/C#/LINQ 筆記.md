@@ -1,3 +1,9 @@
+---
+tags: [csharp, linq, programming]
+---
+
+> 關聯：[[csharp]]
+
 # LINQ 筆記
 
 LINQ （Language-Integrated Query）翻譯為中文可以叫做「整合式查詢語言」 ，是一系列的擴充方法，可以藉由統一的資料存取模型，以相同的模式存取各種不同型態的資料來源。

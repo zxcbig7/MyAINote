@@ -1,3 +1,9 @@
+---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
 # using 陳述式
 
 使用 [using](http://msdn.microsoft.com/zh-tw/library/yh598w02.aspx?WT.mc_id=DT-MVP-4015686) 最主要的目的是為了讓物件建立的同時能確保該物件所佔用的資源一定會被完整釋放，如果沒有釋放這些**無法自動釋放**的資源，就很有可能讓 .NET 應用程式發生 **資源耗盡** (Resource Exhausted) 的狀況。

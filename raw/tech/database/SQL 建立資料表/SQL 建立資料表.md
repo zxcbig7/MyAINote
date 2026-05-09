@@ -1,3 +1,9 @@
+---
+tags: [database, sql, ddl]
+---
+
+> 關聯：[[oracle]]
+
 # SQL 建立資料表
 
 # 基本概念

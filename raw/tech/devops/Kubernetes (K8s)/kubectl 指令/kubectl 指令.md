@@ -1,3 +1,9 @@
+---
+tags: [devops, kubernetes, k8s]
+---
+
+> 關聯：[[kubectl]]、[[kubernetes]]
+
 # kubectl 指令
 
 # 查看資源

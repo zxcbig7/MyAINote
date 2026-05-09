@@ -1,3 +1,9 @@
+---
+tags: [typescript, programming]
+---
+
+> 關聯：[[typescript]]
+
 # TypeScript
 
 ## 註解

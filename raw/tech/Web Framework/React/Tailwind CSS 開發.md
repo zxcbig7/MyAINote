@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]
+
 # Tailwind CSS 開發
 
 # 資源

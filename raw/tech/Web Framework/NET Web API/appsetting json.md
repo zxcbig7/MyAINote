@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # appsetting.json
 
 > 它的角色不是「寫程式邏輯」，而是集中管理所有「會變動、與環境相關、與部署相關」的設定值。

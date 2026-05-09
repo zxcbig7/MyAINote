@@ -1,3 +1,9 @@
+---
+tags: [devops, kubernetes, k8s]
+---
+
+> 關聯：[[kubernetes]]
+
 # K8s RBAC
 
 ## 概念

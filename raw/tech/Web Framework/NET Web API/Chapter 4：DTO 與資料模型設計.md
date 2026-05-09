@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 4：DTO 與資料模型設計
 
 ## 4.1 為什麼 Web API 一定需要 DTO

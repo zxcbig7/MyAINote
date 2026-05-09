@@ -1,3 +1,9 @@
+---
+tags: [web-dev, dotnet, csharp, web-api, backend]
+---
+
+> 關聯：[[dotnet-web-api]]、[[csharp]]
+
 # Chapter 10：測試、部署與正式上線準備
 
 ## 10.1 為什麼 Web API 一定要測試

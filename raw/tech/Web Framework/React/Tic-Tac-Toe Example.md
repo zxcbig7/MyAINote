@@ -1,4 +1,10 @@
-﻿# Tic-Tac-Toe Example
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]
+
+# Tic-Tac-Toe Example
 
 **`index.js`**
 
@@ -24,16 +30,11 @@ root.render(
 - 零件的 CSS Style
 - `App.js` 中創建的元件
 
-<aside>
-💡
-
-檔案的其餘部分會將所有碎片整合起來，並將最終成果注入 `public` 資料夾中的 `index.html`。
-
-</aside>
+> 💡 檔案的其餘部分會將所有碎片整合起來，並將最終成果注入 `public` 資料夾中的 `index.html`。
 
 **`App.js`**
 
-![image.png](image.png)
+![image.png](Tic-Tac-Toe%20Example/image.png)
 
 ```tsx
 export default function Board() {

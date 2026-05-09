@@ -1,3 +1,9 @@
+---
+tags: [devops, troubleshooting, kubernetes]
+---
+
+> 關聯：[[kubernetes]]、[[docker]]
+
 # K8s 常見問題與指令紀錄
 
 ## 1. Docker Image Build 失敗 — TypeScript 未使用變數

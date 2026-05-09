@@ -1,3 +1,9 @@
+---
+tags: [devops, minikube, kubernetes]
+---
+
+> 關聯：[[minikube]]、[[kubernetes]]
+
 # Minikube 介紹
 
 Minikube 是一個 **Kubernetes cluster** 的工具，能讓你在本機電腦上跑起一個**單Node** 

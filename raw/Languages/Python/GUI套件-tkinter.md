@@ -1,4 +1,10 @@
-﻿# GUI套件-tkinter
+---
+tags: [python, tkinter, gui]
+---
+
+> 關聯：[[python]]
+
+# GUI套件-tkinter
 
 - 基本
     - 導入套件

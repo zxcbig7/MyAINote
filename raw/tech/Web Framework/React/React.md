@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[react]]
+
 # React
 
 超神React問題：[https://github.com/sudheerj/reactjs-interview-questions?tab=readme-ov-file#what-is-react](https://github.com/sudheerj/reactjs-interview-questions?tab=readme-ov-file#what-is-react)

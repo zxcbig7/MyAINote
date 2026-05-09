@@ -1,3 +1,9 @@
+---
+tags: [devops, minikube, kubernetes]
+---
+
+> 關聯：[[minikube]]、[[kubernetes]]
+
 # Minikube 教學 — 本機 Kubernetes 環境
 
 ## 什麼是 Minikube？

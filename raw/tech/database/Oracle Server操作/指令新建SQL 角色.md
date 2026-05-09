@@ -1,3 +1,9 @@
+---
+tags: [database, oracle, sql, admin]
+---
+
+> 關聯：[[oracle]]
+
 # 指令新建SQL 角色
 
 ### User SQL

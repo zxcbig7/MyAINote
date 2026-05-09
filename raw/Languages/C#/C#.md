@@ -1,3 +1,9 @@
+---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
 # C#
 
 # 基礎語法

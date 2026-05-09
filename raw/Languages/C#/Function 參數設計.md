@@ -1,3 +1,9 @@
+---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
 # Function 參數設計
 
 # this

@@ -1,3 +1,9 @@
+---
+tags: [database, oracle, plsql, sql]
+---
+
+> 關聯：[[oracle]]
+
 # Procedure & Function
 
 # WITH

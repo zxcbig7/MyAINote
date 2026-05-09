@@ -1,4 +1,10 @@
-﻿# VS C# Code 筆記
+---
+tags: [csharp, linq, programming]
+---
+
+> 關聯：[[csharp]]
+
+# VS C# Code 筆記
 
 # LINQ to Entity
 

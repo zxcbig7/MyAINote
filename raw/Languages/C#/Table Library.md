@@ -1,26 +1,24 @@
-﻿# Table Library
-
-# 參考資料
-
-[https://www.dotblogs.com.tw/chjackiekimo/2014/04/03/144606#google_vignette](https://www.dotblogs.com.tw/chjackiekimo/2014/04/03/144606#google_vignette)
-
 ---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
+# Table Library
+
+## 參考資料
+
+<https://www.dotblogs.com.tw/chjackiekimo/2014/04/03/144606#google_vignette>
 
 [程式範例.rar](%E7%A8%8B%E5%BC%8F%E7%AF%84%E4%BE%8B.rar)
 
-# 程式範例
+## 程式範例
 
----
+DataSet 可以想像成由許多 Table 所組成的資料表集合，Table 在 C# 裡就叫 DataTable。
 
-DataSet可以想像成由許多Table所組成的資料表集合，Table在C#裡就叫DataTable
+DataTable 是由三個東西組成的：欄位 (DataColumn)、列 (DataRow) 以及存放的值。
 
-DataTable是由三個東西組成的，欄位(DataColumn)、列(DataRow)以及存放的值
-
-<aside>
-📅 DataTable的物件是在System.Data參考裡，如果沒有請記得加入System.Data並Using System.Data
-
-</aside>
-![Untitled](raw/Languages/C#/進階語法/Untitled.png))
+> 📅 DataTable 的物件是在 System.Data 參考裡，如果沒有請記得加入 System.Data 並 `using System.Data`
 
 ```csharp
 // 建立Table物件
@@ -44,7 +42,6 @@ dt.Columns["StudentName"].AllowDBNull = false;
 // 讓DataGridView的資料來源設定為dt
 dataGridView1.DataSource = dt;
 ```
-![Untitled](raw/Languages/C#/修飾詞範圍/Untitled%201.png))
 
 ```csharp
 //第一種新增列的方法
@@ -69,7 +66,6 @@ row["Eng"] = Double.Parse((rd.NextDouble() * 100.0).ToString("0.00"));
 // 最後一步將DataRow新增到Table裡
 dt.Rows.Add(row);
 ```
-![Untitled](raw/Languages/C#/修飾詞範圍/Untitled%202.png))
 
 ```csharp
 // 透過DataRow新增資料還有第二個方法，不過要確保欄位順序的問題。

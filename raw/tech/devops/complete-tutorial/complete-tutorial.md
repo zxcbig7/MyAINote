@@ -1,3 +1,9 @@
+---
+tags: [devops, kubernetes, tutorial]
+---
+
+> 關聯：[[cicd-pipeline]]
+
 # Kubernetes 完整教學
 ## 從本機部署到公開服務
 

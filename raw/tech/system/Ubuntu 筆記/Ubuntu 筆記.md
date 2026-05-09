@@ -1,4 +1,10 @@
-﻿# Ubuntu 筆記
+---
+tags: [system, ubuntu, linux]
+---
+
+> 關聯：[[linux]]
+
+# Ubuntu 筆記
 
 # **目錄**
 
@@ -163,14 +169,16 @@ Linux文件系統里面不都是磁碟文件。
 從Window過來學習Linux的人要糾正一個思維定式，就是看到路徑就一定要和磁碟上的存儲的目錄或文件對應起來。在Linux文件系統目錄里面除了磁碟文件，還有很多設備、甚至一些虛擬的對象，也在文件系統目錄里面訪問。
 
 Linux在啟動過程中，就會[根據配置](https://stackoverflow.com/questions/10412135/where-are-all-mount-points-stored-in-linux/10412169)，創建一個虛擬的文件系統目錄結構（可以想象成，Linux系統創建在內存中的一個目錄結構），比如，下圖藍色部分所示
-![Untitled](raw/tech/system/Ubuntu%20筆記/Untitled.png))
+
+![Untitled](raw/tech/system/Ubuntu%20筆記/Untitled.png))
 
 隨後的啟動過程，才會，將不同的分區 `掛接（mount）` 到文件系統不同的目錄中。
 
 上圖就是把一個磁碟分區掛接到 /opt 下面。 /opt 這個路徑在這個動作中被稱為掛接點。
 
 掛接後的文件系統目錄如下圖所示。
-![Untitled](raw/tech/system/Ubuntu%20筆記/Untitled%201.png))
+
+![Untitled](raw/tech/system/Ubuntu%20筆記/Untitled%201.png))
 
 具體掛接到那個點，在安裝Linux操作系統的時候，就選擇好的。
 

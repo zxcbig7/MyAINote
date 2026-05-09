@@ -1,3 +1,9 @@
+---
+tags: [database, sql]
+---
+
+> 關聯：[[oracle]]
+
 # SQL 資料庫基本指令
 
 ---

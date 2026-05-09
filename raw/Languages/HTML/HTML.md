@@ -1,3 +1,7 @@
+---
+tags: [html, web-dev, frontend]
+---
+
 # HTML
 
 # 基本架構

@@ -1,3 +1,9 @@
+---
+tags: [devops, helm, kubernetes]
+---
+
+> 關聯：[[helm]]、[[kubernetes]]
+
 # Helm 教學
 
 ## 一、什麼是 Helm

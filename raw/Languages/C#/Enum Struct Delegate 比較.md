@@ -1,3 +1,9 @@
+---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
 # Enum/Struct/Delegate 比較
 
 ### **Enum**

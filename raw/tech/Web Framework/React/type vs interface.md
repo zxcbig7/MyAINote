@@ -1,3 +1,9 @@
+---
+tags: [web-dev, react, frontend, typescript]
+---
+
+> 關聯：[[typescript]]、[[react]]
+
 # type vs. interface
 
 # `type` vs `interface` 在 TypeScript 中的判斷

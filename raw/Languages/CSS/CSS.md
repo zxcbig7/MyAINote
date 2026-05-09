@@ -1,3 +1,7 @@
+---
+tags: [css, web-dev, frontend]
+---
+
 # CSS
 
 需要在`<head>`裡面加入`<style>`

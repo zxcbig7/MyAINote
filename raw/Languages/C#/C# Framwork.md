@@ -1,4 +1,10 @@
-﻿# C# Framwork
+---
+tags: [csharp, programming]
+---
+
+> 關聯：[[csharp]]
+
+# C# Framwork
 
 ## ToolTip
 

@@ -1,3 +1,9 @@
+---
+tags: [database, sql, cheatsheet]
+---
+
+> 關聯：[[oracle]]
+
 # SQL 指令語法速查
 
 ## SQL 分類

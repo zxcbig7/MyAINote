@@ -1,3 +1,9 @@
+---
+tags: [python, data-structures, programming]
+---
+
+> 關聯：[[python]]
+
 # 第二部分 : 串列、Tuple、字典與集合
 
 ---
