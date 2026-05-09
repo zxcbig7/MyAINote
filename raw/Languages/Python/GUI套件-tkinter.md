@@ -136,4 +136,4 @@ tags: [python, tkinter, gui]
         ```
         
 
-[常見GUI介面](常見GUI介面%202c98fda15f6f81429d59f10b30fdb914.md)
+[[常見GUI介面]]

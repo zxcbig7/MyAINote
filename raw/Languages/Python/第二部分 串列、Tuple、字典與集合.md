@@ -10,11 +10,11 @@ tags: [python, data-structures, programming]
 
 # 串列(List)
 
-[串列(List)](串列(List)%202c98fda15f6f81db97d8c0365487fbc8.md)
+[[串列(List)]]
 
 # Tuple
 
-[Tuple](Tuple%202c98fda15f6f81538596f2d9a3ac998c.md)
+[[Tuple]]
 
 ### Tuple V.S. 串列
 
@@ -32,11 +32,11 @@ tags: [python, data-structures, programming]
 
 # 集合(Set)
 
-[集合(Set)](集合(Set)%202c98fda15f6f8113948fe9a47a30682d.md)
+[[集合(Set)]]
 
 # 字典(Dictionary)
 
-[字典(dictionary)](字典(dictionary)%202c98fda15f6f81298728e32f1860f76f.md)
+[[字典(dictionary)]]
 
 ---
 
