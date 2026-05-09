@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "de363418a8863a1b",
+        "id": "1ec0d983034189ca",
         "type": "tabs",
         "children": [
           {
-            "id": "1e848fbe5ff86bed",
+            "id": "f2882a6710193c3a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "raw/筆記/Obsidian 筆記方法.md",
-                "mode": "preview",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Obsidian 筆記方法"
+              "title": "新分頁"
             }
           }
         ]
@@ -41,7 +37,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "檔案瀏覽器"
@@ -94,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "raw/筆記/Obsidian 筆記方法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Obsidian 筆記方法 的反向連結"
+              "title": "反向連結"
             }
           },
           {
@@ -113,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "raw/筆記/Obsidian 筆記方法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Obsidian 筆記方法 的對外連結"
+              "title": "對外連結"
             }
           },
           {
@@ -156,13 +150,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "raw/筆記/Obsidian 筆記方法.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Obsidian 筆記方法 的大綱"
+              "title": "大綱"
             }
           }
         ]
@@ -183,54 +176,54 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "1e848fbe5ff86bed",
+  "active": "f2882a6710193c3a",
   "lastOpenFiles": [
+    "raw/tech/devops/Docker/Docker Compose 重開.md",
+    "raw/tech/devops/Docker/Docker Compose yaml 架構.md",
+    "raw/tech/devops/Docker/Dockerfile 基本結構.md",
+    "raw/Languages/VBA/VBA.md",
+    "raw/tech/tools/Visual Studio Code/Visual Studio Code.md",
+    "raw/Languages/TypeScript/typescript-web-research.md",
+    "raw/Languages/TypeScript/TypeScript.md",
+    "raw/tech/Web Framework/TypeScript.md",
+    "raw/tech/Web Framework/uiux-notes.md",
+    "raw/tech/Web Framework/react-hooks-gotchas.md",
+    "raw/tech/Web Framework/HTML.md",
+    "raw/Languages/CSS/CSS.md",
+    "raw/未命名.base",
+    "raw/tech/tools/markdown/Mermaid.md",
+    "LINQ 筆記/VS C.md",
+    "raw/tech/tools/markdown/markdown.md",
+    "raw/tech/tools/markdown/數學公式.md",
+    "raw/tech/Web Framework/uiux-notes/uiux-notes.md",
+    "raw/tech/Web Framework/uiux-notes",
+    "raw/tech/git/Git 每日開發 SOP/Git 每日開發 SOP.md",
+    "raw/tech/git/Git 每日開發 SOP",
+    "raw/tech/devops/troubleshooting/troubleshooting.md",
+    "raw/tech/devops/troubleshooting",
+    "raw/tech/devops/harbor-tutorial/harbor-tutorial.md",
+    "raw/tech/devops/harbor-tutorial",
+    "raw/tech/devops/complete-tutorial/complete-tutorial.md",
+    "raw/tech/devops/complete-tutorial",
+    "raw/tech/devops/argocd-tutorial/argocd-tutorial.md",
+    "raw/tech/devops/argocd-tutorial",
+    "wiki/tech/entities/typescript/typescript.md",
+    "wiki/tech/entities/typescript",
+    "wiki/tech/concepts/domain-networking/domain-networking.md",
+    "wiki/tech/concepts/domain-networking",
+    "wiki/tech/concepts/cicd-pipeline/cicd-pipeline.md",
+    "wiki/tech/concepts/cicd-pipeline",
+    "raw/tech/tools/markdown/markdown哲學.md",
+    "未命名.canvas",
     "Pasted image 20260505001358.png",
     "Pasted image 20260505001352.png",
     "Pasted image 20260505001312.png",
-    "raw/筆記/Obsidian 筆記方法.md",
-    "raw/未命名.md",
-    "raw/筆記",
-    "raw/DevOps/Docker/📖.md",
-    "raw/tech/devops/Docker/命令查詢.md",
-    "raw/tech/devops/Docker/底層實作.md",
-    "raw/tech/devops/Docker/容器.md",
-    "raw/tech/devops/Docker/容器互連.md",
-    "raw/tech/devops/troubleshooting.md",
-    "raw/tech/devops/Vault.md",
-    "raw/tech/devops/vault-tutorial.md",
-    "raw/DevOps/Vault.md",
-    "raw/DevOps/Helm",
-    "raw/DevOps/Habor",
-    "raw/DevOps/Azure",
-    "raw/DevOps/Kubernetes (K8s)",
-    "raw/DevOps/Docker",
-    "raw/tech/git/Git 指令筆記/image.png",
-    "raw/DevOps",
-    "raw/tech/languages/C++.md",
-    "raw/tech/languages/csharp-debug-test.md",
-    "變數 2c98fda15f6f81eda604c87fd10eb1a7.md",
-    "raw/tech/languages/C#.md",
-    "raw/tech/languages/C.md",
-    "raw/tech/database/SQL Basic Functions.md",
-    "raw/tech/database/SQL 建立資料表.md",
-    "raw/tech/database/Procedure & Function.md",
-    "raw/tech/database/PL SQL.md",
-    "raw/tech/database/Oracle To C#.md",
-    "raw/tech/database/Oracle Server操作.md",
-    "raw/tech/database/Oracle CMD 指令筆記.md",
-    "raw/tech/database/PL SQL/Untitled.png",
-    "raw/tech/database/Oracle To C#/ODAC 安裝環境.md",
-    "raw/tech/database/Oracle To C#/C# 連線讀寫Oracle.md",
-    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 7.png",
-    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 6.png",
-    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 5.png",
-    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 4.png",
-    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 3.png",
-    "raw/tech/database/Oracle To C#/ODAC 安裝環境/Untitled 2.png",
-    "raw/tech/devops/Docker/Dockerfile 基本結構",
-    "raw/tech/devops/kubectl 指令.md.tmp.14020.1777816542622",
-    "fix_ampl.py",
-    "未命名.canvas"
+    "raw/Languages/C#/進階語法/Untitled.png",
+    "raw/Languages/C#/功能性註解/Untitled.png",
+    "raw/Languages/C#/功能性註解/Untitled 1.png",
+    "raw/tech/devops/Docker/部署筆記/image.png",
+    "raw/tech/devops/Docker/底層實作/Untitled.png",
+    "raw/tech/devops/Docker/命令查詢/image.png",
+    "raw/tech/devops/部署筆記/image.png"
   ]
 }

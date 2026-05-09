@@ -1,1 +1,0 @@
-參考資料: [Markdown 設計哲學繁體中文](https://markdown.tw/)

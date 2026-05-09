@@ -28,21 +28,79 @@ Notes/
 ├── index.md               # 內容目錄
 ├── log.md                 # 時序日誌
 ├── raw/
-│   ├── tech/              # 技術類來源
-│   │   └── legacy-notes/  # 既有 17 篇筆記（已視為 ingested source）
-│   ├── personal/          # 個人成長類來源
-│   └── assets/            # 圖片、附件
+│   ├── tech/              # 技術類來源（依主題資料夾）
+│   │   ├── devops/
+│   │   │   ├── argocd-tutorial/
+│   │   │   │   └── argocd-tutorial.md
+│   │   │   └── Docker/
+│   │   │       ├── Docker/
+│   │   │       │   └── Docker.md
+│   │   │       └── Docker 部屬範例/
+│   │   │           ├── Docker 部屬範例.md
+│   │   │           └── (images)
+│   │   └── ...（各主題皆為同名資料夾，文章與圖片同層）
+│   ├── Languages/         # 程式語言
+│   ├── ASP Web API/
+│   └── 筆記/
 └── wiki/
     ├── tech/
-    │   ├── entities/      # 工具、框架、服務（kubernetes、argocd、react）
-    │   ├── concepts/      # 抽象概念與模式（gitops、rbac、ssr）
-    │   └── summaries/     # 每篇 source 對應的摘要頁
+    │   ├── entities/      # 每個 entity 為同名資料夾
+    │   │   ├── argocd/
+    │   │   │   └── argocd.md
+    │   │   ├── typescript/
+    │   │   │   └── typescript.md
+    │   │   └── dotnet-web-api/
+    │   │       ├── dotnet-web-api.md
+    │   │       └── (images)
+    │   ├── concepts/      # 每個 concept 為同名資料夾
+    │   └── summaries/     # 每個 summary 為同名資料夾
     ├── personal/
-    │   ├── entities/      # 人物、專案、習慣
-    │   ├── concepts/      # 思維框架、原則
-    │   └── summaries/
-    └── synthesis/         # 跨領域分析、比較、思考
+    └── synthesis/
 ```
+
+## 資料夾結構規範
+
+### 核心原則
+
+每篇文章 = **同名資料夾**，`.md` 與 `assets/` 資料夾**同層**。圖片統一放入 `assets/`。
+
+```text
+Article/
+├── Article.md      ← 文章本體
+└── assets/         ← 圖片資料夾（與 .md 同層）
+    ├── image.png
+    └── diagram.svg
+```
+
+移動整個 `Article/` 資料夾不會破壞任何圖片的相對路徑。
+
+### 適用範圍
+
+- `raw/` 所有來源文章（含無圖片者，統一建資料夾）
+- `wiki/` 所有 entity / concept / summary / synthesis 頁面
+
+### 圖片引用格式
+
+使用標準 Markdown 相對路徑，**不使用** Obsidian wikilink：
+
+```markdown
+✓  ![alt text](assets/image.png)
+✗  ![[image.png]]
+✗  ![](image.png)   （圖片不在 .md 同層，必須加 assets/ 前綴）
+```
+
+### 新增檔案 SOP
+
+1. 建立同名資料夾：`mkdir "ArticleName"`
+2. 在資料夾內建立 `ArticleName.md`
+3. 若有圖片，建立 `ArticleName/assets/` 並放入圖片
+4. 圖片引用寫 `![alt](assets/filename.png)`
+
+### 禁止事項
+
+- 文章 `.md` 放在資料夾外（舊格式，已廢棄）
+- 圖片直接放在與 `.md` 同層（不進 `assets/`）
+- 在 wiki 頁面用 `![[image.png]]` wikilink 引用圖片
 
 不要動 `.obsidian/`（Obsidian vault 設定）。
 

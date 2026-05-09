@@ -1,3 +1,8 @@
 {
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "showLineNumber": false,
+  "promptDelete": false,
+  "newFileLocation": "root",
+  "attachmentFolderPath": "raw/un-classfy",
+  "useMarkdownLinks": false
 }

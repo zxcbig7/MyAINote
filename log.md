@@ -3,6 +3,23 @@
 > Append-only。每筆格式：`## [YYYY-MM-DD] <action> | <subject>`
 > action 類型：`bootstrap`、`ingest`、`query`、`synthesis`、`lint`、`refactor`
 
+## [2026-05-09] refactor | raw/ 相關資源整合至同主題資料夾
+
+- 刪除孤立頂層資料夾：`ASP Web API/`（→ `tech/web-dev/NET Web API/`）、`DevOps/`（空）、`assets/`（空）
+- devops 同主題整合：`K8s YAML`、`k8s-rbac`、`kubectl`、`postgresql-k8s` → `Kubernetes (K8s)/`；`helm-tutorial` → `Helm Chart/`；`vault-tutorial` → `Vault/`；`minikube-tutorial` → `Minikube/`；`azure-pipelines` → `Azure Pipeline/`
+- web-dev 整合：`react-hooks-gotchas` → `React/`
+- Languages 整合：`Typescript/typescript-web-research.md` → `tech/web-dev/TypeScript/`；`csharp-debug-test/` → `Languages/C#/`
+- 更新 CLAUDE.md 圖片規範：改為 `assets/` 子資料夾 + 相對路徑
+
+## [2026-05-09] refactor | 統一資料夾結構（文章 + 圖片同層）
+
+- 動機：raw/ 文章與圖片分離（`Article.md` 在外層，`Article/images` 在同名子資料夾），搬移文章後圖片路徑失效
+- 結果：raw/ 和 wiki/ 所有文章改為「同名資料夾 + .md 與圖片同層」格式
+- 移動 raw/ 約 90+ 篇文章、wiki/ 19 個頁面
+- 更新 25 個有圖片文章的 `![alt](FolderName/img)` → `![alt](img)` 相對路徑
+- dotnet-web-api 圖片從 `raw/assets/aspnet-web-api/` 移至 `wiki/tech/entities/dotnet-web-api/`
+- 更新 CLAUDE.md 資料夾結構圖、index.md 全部 raw source 路徑
+
 ## [2026-05-03] bootstrap | 第二大腦初始化
 
 - 建立三層架構：`raw/`、`wiki/`、`CLAUDE.md`
@@ -52,3 +69,28 @@
   - concepts（2）：cicd-pipeline、domain-networking
 - 涵蓋：Docker、K8s、Minikube、Helm、kubectl、Vault、TypeScript、React、.NET Web API、C#、Git、Oracle、Linux、CI/CD Pipeline、Domain/Networking
 - 同步建立 `wiki/tech/concepts/` 目錄
+
+## [2026-05-09] ingest | Claude Code Skills 系統
+
+- 來源：對話整理（/write-tutorial 觸發，主題：Skills 是哪裡來的）
+- 產出：`wiki/tech/entities/claude-code-skills.md`
+- 涵蓋：Skills 存放路徑、Markdown 格式、呼叫方式、與 Memory/Hooks 的差異、適用時機
+
+## [2026-05-09] ingest | TypeScript 由淺至深語法教學（web research）
+
+- 來源：typescriptlang.org handbook、freecodecamp、TypeScript 官方文件（generics、utility-types、conditional-types）
+- 產出：
+  - `raw/Languages/languages/Typescript/typescript-web-research.md`（新建）
+  - `wiki/tech/entities/typescript.md`（大幅擴充：Class、Enum、Narrowing 進階、Generic Constraint、Utility Types 完整、Conditional Types、Mapped Types、Template Literal Types、keyof/typeof/Indexed Access、Satisfies、tsconfig）
+- 下載圖片：0 張（官方文件以文字為主）
+
+## [2026-05-09] ingest | ASP.NET Core Web API（web research）
+
+- 來源：Microsoft Learn（middleware、routing、filters、architecture 各頁）
+- 產出：
+  - `raw/ASP Web API/aspnet-web-api-web-research.md`（新建）
+  - `wiki/tech/entities/dotnet-web-api.md`（補充 Routing、Filters、Architecture、Middleware 圖示）
+- 下載圖片（3 張）：`raw/assets/aspnet-web-api/`
+  - `middleware-pipeline.png`
+  - `clean-architecture-onion.png`
+  - `clean-architecture-aspnetcore.png`
