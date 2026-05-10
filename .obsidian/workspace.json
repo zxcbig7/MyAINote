@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "3a28ab621763ea71",
+        "id": "3752e1ab7714ab25",
         "type": "tabs",
         "children": [
           {
-            "id": "4f54cf5d90792079",
+            "id": "7ea76733a5fb134e",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "關聯圖檢視"
+              "type": "markdown",
+              "state": {
+                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Obsidian 筆記方法"
             }
           }
         ]
@@ -37,7 +51,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "檔案瀏覽器"
@@ -49,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "path:\"raw/\" ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 211.5
+    "width": 388.5
   },
   "right": {
     "id": "4aca2441ab166a97",
@@ -90,6 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向連結"
+              "title": "Obsidian 筆記方法 的反向連結"
             }
           },
           {
@@ -108,11 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "對外連結"
+              "title": "Obsidian 筆記方法 的對外連結"
             }
           },
           {
@@ -150,20 +166,32 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大綱"
+              "title": "Obsidian 筆記方法 的大綱"
+            }
+          },
+          {
+            "id": "eb5266488a19be6f",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md"
+              },
+              "icon": "lucide-info",
+              "title": "Obsidian 筆記方法 的檔案屬性"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -176,54 +204,54 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "4f54cf5d90792079",
+  "active": "7ea76733a5fb134e",
   "lastOpenFiles": [
+    "raw/tools/Obsidian 筆記方法/Zettelkasten 卡片盒筆記.md",
+    "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
+    "wiki/tech/moc/tools-system/tools-system-moc.md",
+    "raw/tools/Obsidian 筆記方法/image/Zettelkasten 筆記關係圖.webp",
+    "raw/tools/Obsidian 筆記方法/image/1_FOQLqYHVSOXYqVDZSiJ5cA.webp",
+    "raw/tools/Obsidian 筆記方法/image/卡片筆記.png",
+    "().md",
+    "raw/tools/Obsidian 筆記方法/image/tag.png",
+    "raw/tools/markdown/數學公式.md",
+    "raw/tools/Obsidian 筆記方法/image2.png",
+    "raw/tools/Obsidian 筆記方法/image.png",
+    "raw/tools/Obsidian 筆記方法/image",
+    "raw/tools/markdown/Mermaid.md",
+    "raw/tools/markdown/markdown.md",
+    "index.md",
+    "log.md",
+    "CLAUDE.md",
+    "gitops.md",
+    "`type` vs. `interface`.md",
+    "raw/React/React TypeScript Canvas 手冊 3168fda15f6f8082a2b3e8e789f26a5c.md",
+    "112年6月.csv.md",
+    "C.md",
+    "raw/Web Framework/NET Web API/HTTP 協議.md",
+    "raw/Web Framework/NET Web API/Chapter 10：測試、部署與正式上線準備.md",
+    "raw/Web Framework/React/react-hooks-gotchas/react-hooks-gotchas.md",
+    "raw/Web Framework/React/Tic-Tac-Toe Example/image.png",
+    "raw/Web Framework/React/type vs interface.md",
+    "raw/Web Framework/React/Tic-Tac-Toe Example.md",
+    "raw/Web Framework/React/React.md",
+    "raw/Web Framework/React/React + TypeScript 開發手冊.md",
+    "raw/Web Framework/React/React_TypeScript_Guide.md",
+    "raw/Web Framework/react-hooks-gotchas.md",
+    "raw/Web Framework/TypeScript.md",
+    "raw/Web Framework/uiux-notes.md",
+    "未命名 1",
+    "未命名",
+    "未命名.canvas",
     "fix-dead-images.py",
     "fix-notion-links.py",
-    "raw/Languages/Python/第二堂(2020 3 10).md",
-    "112年6月.csv.md",
-    "React/React TypeScript Canvas 手冊 3168fda15f6f8082a2b3e8e789f26a5c.md",
-    "React",
-    "raw/tech/devops/Docker/03-Docker Compose/Docker Compose 重開/Docker Compose 重開.md",
-    "raw/tech/devops/Docker/03-Docker Compose/Docker Compose yaml 架構/Docker Compose yaml 架構.md",
-    "raw/tech/devops/Docker/03-Docker Compose/Docker Compose/Docker Compose.md",
-    "raw/tech/devops/Docker/03-Docker Compose/Docker Compose 重開",
-    "raw/tech/devops/Docker/03-Docker Compose/Docker Compose yaml 架構",
-    "raw/tech/devops/Docker/03-Docker Compose/Docker Compose",
-    "raw/tech/devops/Docker/03-Docker Compose",
-    "index.md.tmp.49460.996bfdeb0106",
-    "wiki/tech/moc/tools-system/tools-system-moc.md",
-    "wiki/tech/moc/languages/languages-moc.md",
-    "wiki/tech/moc/database/database-moc.md",
-    "wiki/tech/moc/web-backend/web-backend-moc.md",
-    "wiki/tech/moc/web-backend/web-backend-moc.md.tmp.49460.2bfa8110fd59",
-    "wiki/tech/moc/web-frontend/web-frontend-moc.md",
-    "wiki/tech/moc/devops/devops-moc.md",
-    "wiki/tech/moc/web-frontend",
-    "wiki/tech/moc/web-backend",
-    "wiki/tech/entities/python/python.md",
-    "raw/tech/git/git-tutorial/git-tutorial.md",
-    "raw/tech/database/SQL 資料庫基本指令/SQL 資料庫基本指令.md",
-    "raw/tech/database/SQL 指令語法速查/SQL 指令語法速查.md",
-    "raw/tech/database/SQL 建立資料表/SQL 建立資料表.md",
-    "raw/tech/database/SQL Basic Functions/SQL Basic Functions.md",
-    "raw/tech/database/Oracle Server操作/刪除某角色.md",
-    "未命名.canvas",
-    "raw/tech/devops/Docker/05-部署實作/部署筆記/部署筆記.md",
-    "raw/tech/devops/Docker/05-部署實作/部署筆記/image.png",
-    "raw/tech/devops/Docker/05-部署實作/部屬後端/部屬後端.md",
-    "raw/tech/devops/Docker/05-部署實作/Docker 部屬範例/Docker 部屬範例.md",
-    "raw/Languages/Python/第一部分：數字、字串與變數/Python 運算子.md",
-    "raw/tech/devops/Kubernetes (K8s)/kubectl-api-version/kubectl-api-version.md",
-    "raw/tech/Web Framework/NET Web API/Chapter 4：DTO 與資料模型設計.md",
-    "raw/tech/devops/Docker/04-指令與範例/命令查詢/image.png",
-    "raw/tech/devops/Docker/02-Dockerfile/Dockerfile 基本結構/image.png",
-    "raw/tech/devops/Docker/02-Dockerfile/Dockerfile 基本結構/image 1.png",
-    "raw/tech/devops/Docker/01-基礎概念/底層實作/Untitled.png",
-    "Pasted image 20260505001358.png",
-    "Pasted image 20260505001352.png",
-    "Pasted image 20260505001312.png",
-    "raw/Languages/C#/進階語法/Untitled.png",
-    "raw/Languages/C#/功能性註解/Untitled.png"
+    "raw/React",
+    "raw/devops/Docker/03-Docker Compose/Docker Compose 重開",
+    "raw/devops/Docker/03-Docker Compose/Docker Compose yaml 架構",
+    "raw/devops/Docker/03-Docker Compose/Docker Compose",
+    "raw/devops/Docker/03-Docker Compose",
+    "raw/devops/Docker/05-部署實作/部署筆記/image.png",
+    "raw/devops/Docker/04-指令與範例/命令查詢/image.png",
+    "raw/devops/Docker/02-Dockerfile/Dockerfile 基本結構/image.png"
   ]
 }

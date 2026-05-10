@@ -15,14 +15,14 @@
 ## Tech / Entities
 
 - [[argocd]] — GitOps 部署控制器，監控 git repo 並 sync 到 K8s 叢集
-- [[docker]] — 容器化平台，Image / Container / Repository 核心概念 + Compose
+- [[raw/devops/Docker/Docker]] — 容器化平台，Image / Container / Repository 核心概念 + Compose
 - [[kubernetes]] — 容器編排平台，Pod/Node/Cluster 四元件 + YAML 架構
 - [[istio]] — Service mesh，Sidecar 注入、流量攔截、xDS、啟動 race condition 與偵錯
 - [[minikube]] — 本機單節點 K8s 開發環境
 - [[helm]] — K8s 應用部署打包工具，Chart / Release / values.yaml
 - [[kubectl]] — K8s CLI 工具，get/apply/describe/logs/exec 常用指令速查
-- [[raw/tech/devops/Vault]] — HashiCorp Secret 管理，K8s 整合、Unseal 流程
-- [[raw/tech/Web Framework/TypeScript]] — 型別系統、Interface vs Type、泛型、Utility Types
+- [[raw/devops/Vault]] — HashiCorp Secret 管理，K8s 整合、Unseal 流程
+- [[raw/Web Framework/TypeScript]] — 型別系統、Interface vs Type、泛型、Utility Types
 - [[wiki/tech/entities/react]] — React Hooks 完整說明（useState/useEffect/useCallback/useRef/useContext）+ Zustand
 - [[dotnet-web-api]] — ASP.NET Core Web API 架構、Controller、DI、Middleware、JWT
 - [[csharp]] — C# 語法重點、OOP、LINQ、async/await
@@ -65,9 +65,9 @@
 
 ### Tech / DevOps
 
-- `raw/tech/devops/Docker/Docker/Docker.md` ✓ → [[docker]]
-- `raw/tech/devops/Docker/Docker Compose/Docker Compose.md` ✓ → [[docker]]
-- `raw/tech/devops/Docker/Docker 部屬範例/Docker 部屬範例.md` ✓ → [[docker]]
+- `raw/tech/devops/Docker/Docker/Docker.md` ✓ → [[raw/devops/Docker/Docker]]
+- `raw/tech/devops/Docker/Docker Compose/Docker Compose.md` ✓ → [[raw/devops/Docker/Docker]]
+- `raw/tech/devops/Docker/Docker 部屬範例/Docker 部屬範例.md` ✓ → [[raw/devops/Docker/Docker]]
 - ~~`raw/tech/devops/Docker/Docker Compose yaml 架構.md`~~ → 已整合
 - ~~`raw/tech/devops/Docker/Docker Compose 重開.md`~~ → 已整合
 - `raw/tech/devops/Kubernetes (K8s)/Kubernetes (K8s).md` ✓ → [[kubernetes]]
@@ -75,7 +75,7 @@
 - `raw/tech/devops/Minikube 介紹/Minikube 介紹.md` ✓ → [[minikube]]
 - `raw/tech/devops/Helm Chart/Helm Chart.md` ✓ → [[helm]]
 - `raw/tech/devops/kubectl 指令/kubectl 指令.md` ✓ → [[kubectl]]
-- `raw/tech/devops/Vault/Vault.md` ✓ → [[vault]]
+- `raw/tech/devops/Vault/Vault.md` ✓ → [[raw/devops/Vault]]
 - `raw/tech/devops/Azure Pipeline/Azure Pipeline.md` ✓ → [[cicd-pipeline]]
 - `raw/tech/devops/部署筆記/部署筆記.md` ✓ → [[cicd-pipeline]]
 - `raw/tech/devops/部屬後端/部屬後端.md` ✓ → [[cicd-pipeline]]
@@ -93,9 +93,9 @@
 
 ### Tech / Web Dev
 
-- `raw/tech/web-dev/TypeScript/TypeScript.md` ✓ → [[raw/tech/Web Framework/TypeScript]]
+- `raw/tech/web-dev/TypeScript/TypeScript.md` ✓ → [[raw/Web Framework/TypeScript]]
 - `raw/tech/web-dev/React/React.md` ✓ → [[wiki/tech/entities/react]]
-- `raw/tech/web-dev/React/React + TypeScript 開發手冊.md` ✓ → [[wiki/tech/entities/react]], [[raw/tech/Web Framework/TypeScript]]
+- `raw/tech/web-dev/React/React + TypeScript 開發手冊.md` ✓ → [[wiki/tech/entities/react]], [[raw/Web Framework/TypeScript]]
 - `raw/tech/web-dev/NET Web API/NET Web API.md` ✓ → [[dotnet-web-api]]
 - `raw/tech/web-dev/HTML/HTML.md`
 - `raw/tech/web-dev/CSS/CSS.md`
@@ -104,7 +104,7 @@
 
 ### Tech / Languages
 
-- `raw/Languages/languages/Typescript/typescript-web-research.md` ✓ → [[raw/tech/Web Framework/TypeScript]]（由淺至深完整語法，含進階型別操作）
+- `raw/Languages/languages/Typescript/typescript-web-research.md` ✓ → [[raw/Web Framework/TypeScript]]（由淺至深完整語法，含進階型別操作）
 - `raw/Languages/languages/C#/C#.md` ✓ → [[csharp]]
 - `raw/Languages/languages/csharp-debug-test/csharp-debug-test.md`
 

@@ -18,10 +18,10 @@ updated: 2026-05-10
 
 ### SQL 基礎
 
-- [[SQL 資料庫基本指令]]
-- [[SQL 建立資料表]]
-- [[SQL 指令語法速查]]
-- [[SQL Basic Functions]]
+- [[raw/database/SQL 資料庫基本指令]]
+- [[raw/database/SQL 建立資料表]]
+- [[raw/database/SQL 指令語法速查]]
+- [[raw/database/SQL Basic Functions]]
 
 ### Oracle 操作
 
@@ -38,4 +38,4 @@ updated: 2026-05-10
 ### PL/SQL & Procedure
 
 - [[PL SQL]]
-- [[Procedure & Function]]
+- [[raw/database/Procedure & Function]]

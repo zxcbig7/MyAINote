@@ -26,10 +26,10 @@ updated: 2026-05-10
 ### Git
 
 - [[Git 指令筆記]]
-- [[Git 每日開發 SOP]]
+- [[raw/git/Git 每日開發 SOP]]
 - [[Github 心得]]
 - [[SourseTree(Local) 筆記]]
-- [[git-tutorial]]
+- [[raw/git/git-tutorial]]
 
 ### Linux / System
 

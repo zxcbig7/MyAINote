@@ -20,7 +20,7 @@ tags: [system, linux]
 目的：結合目錄數的架構與磁碟內的資料
 
 概念：利用一個目錄當成進入點，將磁碟分割槽的資料放置在該目錄下； 也就是說，進入該目錄就可以讀取該分割槽。此動作稱為『掛載』，進入點的目錄稱作『掛載點』。
-![Untitled](Untitled.png)
+![Untitled](raw/tech/system/Linux%20觀念/Untitled.png)
 
 上圖中假設硬碟分為兩槽，partition 1是掛載到根目錄，至於partition 2則是掛載到/home這個目錄。 這也就是說，當我的資料放置在/home內的各次目錄時，資料是放置到partition 2的，如果不是放在/home底下的目錄， 那麼資料就會被放置到partition 1了！
 
@@ -59,7 +59,7 @@ tags: [system, linux]
 - 一種是該指令會直接顯示結果然後回到命令提示字元等待下一個指令的輸入；
 - 一種是進入到該指令的環境，直到結束該指令才回到命令提示字元的環境。
 
-![image.png](image.png)
+![image.png](raw/tech/system/Linux%20觀念/image.png)
 
 上方指令下達後立即顯示訊息且立刻回到命令提示字元的環境。 如果有進入軟體功能的環境(例如上面的bc軟體)，那麼就得要使用該軟體的結束指令 (例如在bc環境中輸入quit)才能夠回到命令提示字元中！
 
@@ -271,11 +271,11 @@ drwx------.  3    root     root      24  May  4 17:59 .dbus
 
 ls是『list』的意思，重點在顯示檔案的檔名與相關屬性。而選項『-al』則表示列出所有的檔案詳細的權限與屬性 (包含隱藏檔，就是檔名第一個字元為『 . 』的檔案)。如上所示，在你第一次以root身份登入Linux時， 如果你輸入上述指令後，應該有上列的幾個東西，先解釋一下上面七個欄位個別的意思：
 
-![image.png](image%201.png)
+![image.png](raw/tech/system/Linux%20觀念/image%201.png)
 
 • **第一欄代表這個檔案的類型與權限(permission)：**
 
-![image.png](image%202.png)
+![image.png](raw/tech/system/Linux%20觀念/image%202.png)
 
 - 第一個字元代表這個檔案是『目錄、檔案或連結檔等等』：
     - 當為[ **d** ]則是目錄，例如[上表](https://linux.vbird.org/linux_basic/centos7/0210filepermission.php#table2.1.1)檔名為『.config』的那一行；
@@ -491,4 +491,4 @@ FHS依據檔案系統使用的頻繁與否與是否允許使用者隨意更動�
 
 # **根目錄 (/) 的意義與內容：**
 
-![image.png](image%203.png)
+![image.png](raw/tech/system/Linux%20觀念/image%203.png)

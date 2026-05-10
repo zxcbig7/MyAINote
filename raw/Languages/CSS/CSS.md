@@ -197,9 +197,9 @@ tags: [css, web-dev, frontend]
 }
 ```
 
-![](Untitled.png)
+![](raw/Languages/CSS/Untitled.png)
 
-![](Untitled%201.png)
+![](raw/Languages/CSS/Untitled%201.png)
 
 **虛擬類別(在選擇器的地方使用)**
 
