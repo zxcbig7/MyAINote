@@ -25,6 +25,7 @@
 - [[raw/Web Framework/TypeScript]] — 型別系統、Interface vs Type、泛型、Utility Types
 - [[wiki/tech/entities/react]] — React Hooks 完整說明（useState/useEffect/useCallback/useRef/useContext）+ Zustand
 - [[dotnet-web-api]] — ASP.NET Core Web API 架構、Controller、DI、Middleware、JWT
+- [[aspnetcore-webapi-complete]] — ASP.NET Core Minimal API 完整教學：路由、參數綁定、Middleware、DI、Health Check、快取等 18 章
 - [[csharp]] — C# 語法重點、OOP、LINQ、async/await
 - [[git]] — Git 四種物件、常用指令、日常開發 SOP、Branch 策略
 - [[oracle]] — Oracle SQL 基本指令、CMD 操作、C# 連接方式

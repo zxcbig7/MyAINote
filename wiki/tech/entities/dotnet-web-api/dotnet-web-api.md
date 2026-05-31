@@ -114,12 +114,71 @@ app.MapControllers();
 
 ## DI（依賴注入）
 
+### 核心概念
+
+DI 容器負責「建立物件」和「管理物件的生命週期」。你只需要：
+
+1. **登記**：`builder.Services.AddXxx<Interface, Impl>()` — 告訴容器「有人要 Interface，給他 Impl」
+2. **宣告需求**：在建構子加參數 — 容器收到 request 要建物件時，自動把依賴塞進來
+
 ```csharp
-// 三種 Lifetime
-builder.Services.AddSingleton<IMyService, MyService>();   // 整個應用共用一個實例
-builder.Services.AddScoped<IUserService, UserService>();   // 每個 HTTP Request 一個實例
+// ❌ 傳統做法：自己 new，緊耦合
+public class OrderService
+{
+    private readonly EmailService _email = new EmailService(); // 無法替換、無法測試
+}
+
+// ✅ DI：只依賴介面，容器負責給實作
+public class OrderService
+{
+    private readonly IEmailService _email;
+    public OrderService(IEmailService email) { _email = email; }
+}
+```
+
+### 何時注入（建構子注入時機）
+
+| 物件類型 | 建立時機 | 注入時機 |
+| --- | --- | --- |
+| Controller | 收到 request，routing 決定用哪個 controller | 同時建立，建構子參數自動注入 |
+| Scoped Service | 同上，每個 request 一個 | 同上 |
+| Singleton Service | app 啟動時第一次被要求時 | 一次建立，之後共用 |
+
+### 三種 Lifetime
+
+```csharp
+builder.Services.AddSingleton<IMyService, MyService>();      // 整個應用共用一個實例
+builder.Services.AddScoped<IUserService, UserService>();      // 每個 HTTP Request 一個實例
 builder.Services.AddTransient<IEmailService, EmailService>(); // 每次注入一個新實例
 ```
+
+| Lifetime | 存活範圍 | 適用場景 |
+| --- | --- | --- |
+| Singleton | app 整個生命週期 | 無狀態工具、快取、設定 |
+| Scoped | 一個 HTTP request | DB context、業務邏輯 Service |
+| Transient | 每次被注入就新建 | 輕量、無狀態的小工具 |
+
+### ASP.NET Core 內建自動註冊（不需手動加）
+
+| 服務 | 說明 |
+| --- | --- |
+| `IConfiguration` | 設定系統，`CreateBuilder` 時自動建立 |
+| `ILogger<T>` | Logging，自動注入 |
+| `IWebHostEnvironment` | 環境資訊（Development / Production） |
+| `IHttpContextAccessor` | 需手動加 `AddHttpContextAccessor()` |
+
+### IHttpClientFactory
+
+```csharp
+// 登記（避免直接 new HttpClient 造成 socket 耗盡）
+builder.Services.AddHttpClient();
+
+// 使用：建構子注入 IHttpClientFactory，之後 CreateClient() 拿一個乾淨的 HttpClient
+var httpClient = _httpClientFactory.CreateClient();
+```
+
+`CreateClient()` 回傳全新實例，沒有 BaseAddress / Header 等預設值。
+`CreateClient("name")` 回傳預先用 `AddHttpClient("name", c => {...})` 設好的版本。
 
 ## DTO 設計
 
@@ -179,7 +238,31 @@ builder.Services.AddCors(options =>
 | `[Authorize]` | 需要認證 |
 | `[AllowAnonymous]` | 允許匿名存取 |
 
-## appsettings.json
+## IConfiguration 設定系統
+
+### 資料來源與合併順序
+
+`WebApplication.CreateBuilder(args)` 執行時自動建立，**不需要手動 `AddXxx`**，依序載入以下來源（後面蓋前面）：
+
+| 順序 | 來源 | 說明 |
+| --- | --- | --- |
+| 1 | `appsettings.json` | 基礎設定 |
+| 2 | `appsettings.{Environment}.json` | 環境覆蓋（如 `appsettings.Production.json`） |
+| 3 | 環境變數 | K8s Secret、Docker env 等 |
+| 4 | 命令列參數 `args` | 最高優先權 |
+
+### 讀取方式
+
+```csharp
+// 直接讀 key（冒號分隔巢狀結構）
+var key = _configuration["Jwt:Key"];
+
+// Options Pattern（強型別，推薦用於複雜設定）
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
+// 之後注入 IOptions<JwtOptions>
+```
+
+### appsettings.json 結構
 
 ```json
 {
@@ -189,7 +272,8 @@ builder.Services.AddCors(options =>
   "Jwt": {
     "Key": "your-secret-key",
     "Issuer": "your-api",
-    "Audience": "your-frontend"
+    "Audience": "your-frontend",
+    "ExpiresInMinutes": "60"
   },
   "Logging": {
     "LogLevel": {
@@ -198,6 +282,18 @@ builder.Services.AddCors(options =>
   }
 }
 ```
+
+### 何時注入
+
+`IConfiguration` 在 `WebApplication.CreateBuilder(args)` 時就建好並自動進 DI，**不需要手動 `builder.Services.AddXxx`**。當 DI 容器要建立有 `IConfiguration` 建構子參數的物件時，自動塞進去。
+
+### 不同環境的設定來源
+
+| 環境 | 建議做法 |
+| --- | --- |
+| 本機開發 | `appsettings.Development.json` 或 User Secrets |
+| K8s / Docker | 環境變數（覆蓋 appsettings.json 的同名 key） |
+| 生產敏感資料 | K8s Secret → 環境變數 / Vault，**不進版控** |
 
 ## Routing
 

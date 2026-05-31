@@ -14,6 +14,8 @@ React 教學: [https://github.com/kdchang/reactjs101](https://github.com/kdchang
 
 [React_TypeScript_Guide.md](React/React_TypeScript_Guide.md)
 
+[[React Visualized — 一本書學 React]]
+
 [[React_TypeScript_Guide]]
 
 [[React + TypeScript 開發手冊]]

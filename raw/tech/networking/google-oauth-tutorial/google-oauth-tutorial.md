@@ -368,17 +368,36 @@ var tokenResponse = await httpClient.PostAsync(
         ["grant_type"] = "authorization_code"
     }));
 
-// 2. 解析 ID Token（JWT）
+// 2. 驗證 ID Token（必須驗簽，不能只用 ReadJwtToken 解碼）
 var tokenJson = await tokenResponse.Content.ReadFromJsonAsync<JsonElement>();
 var idToken = tokenJson.GetProperty("id_token").GetString()!;
-var jwtToken = new JwtSecurityTokenHandler().ReadJwtToken(idToken);
+
+GoogleJsonWebSignature.Payload payload;
+try
+{
+    payload = await GoogleJsonWebSignature.ValidateAsync(idToken, new GoogleJsonWebSignature.ValidationSettings
+    {
+        Audience = new[] { _configuration["Google:ClientId"] }
+    });
+}
+catch (InvalidJwtException)
+{
+    return Unauthorized("Invalid Google token");
+}
 
 // 3. 取使用者資訊
-var sub   = jwtToken.Claims.First(c => c.Type == "sub").Value;
-var email = jwtToken.Claims.First(c => c.Type == "email").Value;
+var sub   = payload.Subject;
+var email = payload.Email;
+var name  = payload.Name;
+var avatar = payload.Picture;
 
 // 4. 簽發自己的 JWT
 ```
+
+> 套件：`Google.Apis.Auth`（`dotnet add package Google.Apis.Auth`）
+>
+> `ValidateAsync` 會去 Google 拿公鑰驗簽名、確認 audience 是你的 ClientId、確認未過期。
+> 用 `ReadJwtToken` 只解碼不驗簽，攻擊者可竄改 payload 拿到任意帳號的 JWT。
 
 ### 簽發 JWT 的 function
 
@@ -608,7 +627,124 @@ builder.Services.AddDataProtection()
 
 - Authorization Code 只能使用一次，換完即失效
 - `redirect_uri` 必須與發起授權時完全一致（包含 trailing slash）
-- ID Token 只需 `ReadJwtToken` 解析，不需驗簽（已是 HTTPS 換回來的）；若要嚴格驗證可用 Google Public Keys
+- **`ReadJwtToken` 只解碼不驗簽，不能用來驗證 Google id_token**，必須用 `GoogleJsonWebSignature.ValidateAsync`（套件 `Google.Apis.Auth`）
 - JWT Key 長度建議 256 bits（32 bytes）以上，可用 `[Convert]::ToBase64String((1..32 | ForEach-Object { [byte](Get-Random -Max 256) }))` 產生
 - Production 不要把 Client Secret 放 appsettings.json，改用 K8s Secret 或 Vault 注入
 - `appsettings.Development.json` 設定 dev 用的 JWT Key，讓本機開發與 Production 金鑰隔離
+
+---
+
+## JWT Token 儲存安全性
+
+| 儲存方式 | XSS 防護 | CSRF 風險 | 說明 |
+|---|---|---|---|
+| localStorage | ❌ JS 可讀 | 無 | 最常見但最不安全 |
+| 前端 cookie（JS 設） | ❌ JS 可讀 | ⚠️ | 比 localStorage 差不多 |
+| **HttpOnly cookie（後端設）** | ✅ JS 無法讀 | ⚠️ 低 | 推薦做法 |
+
+### HttpOnly cookie 後端設定（ASP.NET Core）
+
+```csharp
+Response.Cookies.Append("access_token", token, new CookieOptions
+{
+    HttpOnly = true,
+    Secure = true,               // 只走 HTTPS
+    SameSite = SameSiteMode.None, // 跨域需要 None（搭配 Secure）
+    Expires = DateTimeOffset.UtcNow.AddMinutes(60),
+    Path = "/"
+});
+```
+
+本機開發用 `SameSite=Lax`、`Secure=false`（因為 http）。
+
+### 前端配合 withCredentials
+
+HttpOnly cookie 跨域需要前端 Axios 加 `withCredentials: true`，後端 CORS 也要 `AllowCredentials()`：
+
+```typescript
+const client = axios.create({
+  baseURL: API_BASE,
+  withCredentials: true,  // 讓瀏覽器帶 cookie
+});
+```
+
+### HttpOnly 後前端無法讀 token
+
+token 在 HttpOnly cookie，JS 完全讀不到，所以：
+- 不能 decode token 取 user 資料
+- 改成呼叫 `/me` endpoint 確認登入狀態和取得 user 資料
+- 登出要呼叫後端 `POST /logout`，由後端清除 cookie
+
+```csharp
+// 後端 logout endpoint
+Response.Cookies.Delete("access_token", new CookieOptions
+{
+    Secure = true,
+    SameSite = SameSiteMode.None,
+    Path = "/"
+});
+```
+
+### CSRF 風險
+
+HttpOnly cookie 瀏覽器自動帶，攻擊者可誘導你的瀏覽器發請求（cookie 跟著去），但看不到 response。  
+讀取操作影響不大；**若有寫入操作（新增/刪除）才需要加 CSRF token 防護**。
+
+---
+
+## 後端授權控制（Authorization）
+
+### 三種方式
+
+**1. Role-based（最簡單）**
+
+GenerateJwt 時加 role claim，Controller 上指定：
+
+```csharp
+// 產生 JWT 時
+new Claim(ClaimTypes.Role, "Admin")
+
+// Controller
+[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin,Editor")]  // Admin 或 Editor
+```
+
+**2. Policy-based（彈性）**
+
+```csharp
+// Middleware.cs
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("OwnerOnly", policy =>
+        policy.RequireClaim(ClaimTypes.Email, "zxcbig7@gmail.com"));
+
+    options.AddPolicy("InternalOnly", policy =>
+        policy.RequireRole("Admin", "Editor"));
+});
+
+// Controller
+[Authorize(Policy = "OwnerOnly")]
+```
+
+**3. Claims 手動檢查（最細粒度）**
+
+```csharp
+[Authorize]
+public IActionResult MyData()
+{
+    var email = User.FindFirst(ClaimTypes.Email)?.Value;
+    if (email != "zxcbig7@gmail.com") return Forbid();
+    return Ok(...);
+}
+```
+
+### 三種比較
+
+| | Role | Policy | Claims 手動 |
+|---|---|---|---|
+| 設定位置 | Token + Attribute | `AddAuthorization` | Action 內 |
+| 彈性 | 低 | 中 | 高 |
+| 失敗回應 | 自動 403 | 自動 403 | `return Forbid()` |
+| 適用場景 | 簡單角色 | 組合條件 | 動態邏輯 |
+
+> 以上三種都是 hardcode 在程式碼。多用戶動態權限需要搭配 DB：JWT 帶 userId → 查 DB 取權限 → 決定能否存取。

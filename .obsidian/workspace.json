@@ -4,31 +4,41 @@
     "type": "split",
     "children": [
       {
-        "id": "3752e1ab7714ab25",
+        "id": "7529ba5c1b95376c",
         "type": "tabs",
         "children": [
           {
-            "id": "7ea76733a5fb134e",
+            "id": "a988751b66de19e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
+                "file": "raw/tools/markdown/markdown.md",
                 "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "Obsidian 筆記方法"
+              "title": "markdown"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e30940fdea460df3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9c8d5b01d2a82fcb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "raw/tools/markdown/markdown.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "markdown"
             }
           }
         ]
@@ -88,7 +98,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 388.5
+    "width": 296.5
   },
   "right": {
     "id": "4aca2441ab166a97",
@@ -104,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
+                "file": "raw/tools/markdown/markdown.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +124,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Obsidian 筆記方法 的反向連結"
+              "title": "markdown 的反向連結"
             }
           },
           {
@@ -123,12 +133,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
+                "file": "raw/tools/markdown/markdown.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Obsidian 筆記方法 的對外連結"
+              "title": "markdown 的對外連結"
             }
           },
           {
@@ -166,13 +176,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
+                "file": "raw/tools/markdown/markdown.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Obsidian 筆記方法 的大綱"
+              "title": "markdown 的大綱"
             }
           },
           {
@@ -181,17 +191,19 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md"
+                "file": "raw/tools/markdown/markdown.md"
               },
               "icon": "lucide-info",
-              "title": "Obsidian 筆記方法 的檔案屬性"
+              "title": "markdown 的檔案屬性"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -204,54 +216,53 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "7ea76733a5fb134e",
+  "active": "9c8d5b01d2a82fcb",
   "lastOpenFiles": [
+    "raw/tools/markdown/Markdown Preview Enhanced - For VS Code.md",
+    "raw/tools/markdown/markdown.md",
+    "raw/tools/markdown/Mermaid.md",
+    "raw/un-classfy/Pasted image 20260531142532.png",
+    "raw/un-classfy",
+    "wiki/tech/entities/csharp/csharp.md",
+    "wiki/tech/entities/oracle/oracle.md",
+    "raw/Web Framework/React/React Visualized/React Visualized.md",
+    "raw/Web Framework/React/React Visualized/images/sticker-reactgg.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-mix-cd.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-brain-juice.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-props.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-useState.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-components.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-bug-spray.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-functions.svg",
+    "raw/Web Framework/React/React Visualized/images/sticker-will-it-render.svg",
+    "raw/Web Framework/React/React Visualized/images",
+    "raw/Web Framework/React/React Visualized",
+    "raw/Web Framework/React/DOM 節點觀念.md",
+    "raw/Languages/TypeScript/javascript-info-ts.md",
+    "CLAUDE.md.tmp.8828.70fbf9c2250d",
+    "wiki/tech/entities/docker/docker.md",
+    "index.md",
+    "raw/devops/OIDC/keycloak/00-overview.md",
+    "CLAUDE.md",
+    "log.md",
+    "raw/devops/Docker/01-基礎概念/Docker/Docker.md",
+    "().md",
+    "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
+    "raw/tools/Obsidian 筆記方法/Zettelkasten 卡片盒筆記.md",
     "raw/devops/OIDC/keycloak/05-multi-provider-switch.md",
     "raw/devops/OIDC/keycloak/04-template-keycloak-js.md",
     "raw/devops/OIDC/keycloak/03-template-bff.md",
     "raw/devops/OIDC/keycloak/02-template-pkce.md",
     "raw/devops/OIDC/keycloak/01-prerequisites.md",
-    "raw/devops/OIDC/keycloak/00-overview.md",
     "raw/devops/OIDC/keycloak",
     "raw/devops/OIDC/oidc-flow.md",
     "raw/devops/OIDC",
-    "raw/tools/Obsidian 筆記方法/Zettelkasten 卡片盒筆記.md",
-    "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
     "wiki/tech/moc/tools-system/tools-system-moc.md",
-    "raw/tools/Obsidian 筆記方法/image/Zettelkasten 筆記關係圖.webp",
-    "raw/tools/Obsidian 筆記方法/image/1_FOQLqYHVSOXYqVDZSiJ5cA.webp",
-    "raw/tools/Obsidian 筆記方法/image/卡片筆記.png",
-    "().md",
-    "raw/tools/Obsidian 筆記方法/image/tag.png",
     "raw/tools/markdown/數學公式.md",
-    "raw/tools/Obsidian 筆記方法/image2.png",
-    "raw/tools/Obsidian 筆記方法/image.png",
     "raw/tools/Obsidian 筆記方法/image",
-    "raw/tools/markdown/Mermaid.md",
-    "raw/tools/markdown/markdown.md",
-    "index.md",
-    "log.md",
-    "CLAUDE.md",
-    "gitops.md",
-    "`type` vs. `interface`.md",
-    "raw/React/React TypeScript Canvas 手冊 3168fda15f6f8082a2b3e8e789f26a5c.md",
-    "112年6月.csv.md",
-    "C.md",
-    "raw/Web Framework/NET Web API/HTTP 協議.md",
-    "raw/Web Framework/NET Web API/Chapter 10：測試、部署與正式上線準備.md",
-    "raw/Web Framework/React/react-hooks-gotchas/react-hooks-gotchas.md",
-    "raw/Web Framework/React/Tic-Tac-Toe Example/image.png",
-    "raw/Web Framework/React/type vs interface.md",
     "未命名 1",
     "未命名",
     "未命名.canvas",
-    "fix-dead-images.py",
-    "fix-notion-links.py",
-    "raw/React",
-    "raw/devops/Docker/03-Docker Compose/Docker Compose 重開",
-    "raw/devops/Docker/03-Docker Compose/Docker Compose yaml 架構",
-    "raw/devops/Docker/05-部署實作/部署筆記/image.png",
-    "raw/devops/Docker/04-指令與範例/命令查詢/image.png",
-    "raw/devops/Docker/02-Dockerfile/Dockerfile 基本結構/image.png"
+    "fix-dead-images.py"
   ]
 }
