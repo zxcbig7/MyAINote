@@ -10,7 +10,7 @@ tags: [database, oracle, sql, admin]
 
 1. **SQL Developerg連線設定**
 
-![Untitled](raw/database/Oracle%20Server操作/Client端表格建立/Untitled.png)
+![Untitled](Client端表格建立/Untitled.png)
 
 | **使用者名稱** | ESCP_GUI |
 | --- | --- |
@@ -48,4 +48,4 @@ tags: [database, oracle, sql, admin]
 
 1. **執行DDL的SQL指令**
     
-    [STATIC_CAPACITY_DDL_20230825.sql](STATIC_CAPACITY_DDL_20230825.sql)
+    [STATIC_CAPACITY_DDL_20230825.sql](Client端表格建立/STATIC_CAPACITY_DDL_20230825.sql)

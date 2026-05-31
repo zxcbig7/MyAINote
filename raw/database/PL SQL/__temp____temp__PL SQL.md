@@ -264,7 +264,7 @@ declare
  end;
 ```
 
-![Untitled](raw/database/PL%20SQL/Untitled.png)
+![Untitled](Untitled.png)
 
 ## **5.使用者自定義異常**
 
@@ -283,4 +283,4 @@ declare
  end;
 ```
 
-![Untitled](raw/database/PL%20SQL/Untitled%201.png)
+![Untitled](Untitled%201.png)
