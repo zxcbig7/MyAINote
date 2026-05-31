@@ -4,5 +4,6 @@
   "promptDelete": false,
   "newFileLocation": "root",
   "attachmentFolderPath": "raw/un-classfy",
-  "useMarkdownLinks": false
+  "useMarkdownLinks": false,
+  "newLinkFormat": "relative"
 }

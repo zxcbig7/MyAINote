@@ -13,32 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/tools/markdown/markdown.md",
+                "file": "raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md",
                 "mode": "source",
-                "source": true
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "markdown"
+              "title": "Chapter 1：HTTP 與 Web API 的核心概念"
             }
-          }
-        ]
-      },
-      {
-        "id": "e30940fdea460df3",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "9c8d5b01d2a82fcb",
+            "id": "731452846e691716",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/tools/markdown/markdown.md",
-                "mode": "preview",
-                "source": true
+                "file": "raw/Web Framework/NET Web API/HTTP Server.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "markdown"
+              "title": "HTTP Server"
             }
           }
         ]
@@ -73,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "path:\"raw/\" ",
+                "query": "\"HTTP Server \"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 296.5
+    "width": 620.5
   },
   "right": {
     "id": "4aca2441ab166a97",
@@ -114,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "raw/tools/markdown/markdown.md",
+                "file": "raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +120,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "markdown 的反向連結"
+              "title": "Chapter 1：HTTP 與 Web API 的核心概念 的反向連結"
             }
           },
           {
@@ -133,12 +129,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "raw/tools/markdown/markdown.md",
+                "file": "raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "markdown 的對外連結"
+              "title": "Chapter 1：HTTP 與 Web API 的核心概念 的對外連結"
             }
           },
           {
@@ -176,13 +172,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "raw/tools/markdown/markdown.md",
+                "file": "raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "markdown 的大綱"
+              "title": "Chapter 1：HTTP 與 Web API 的核心概念 的大綱"
             }
           },
           {
@@ -191,10 +187,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "raw/tools/markdown/markdown.md"
+                "file": "raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md"
               },
               "icon": "lucide-info",
-              "title": "markdown 的檔案屬性"
+              "title": "Chapter 1：HTTP 與 Web API 的核心概念 的檔案屬性"
             }
           }
         ],
@@ -216,53 +212,54 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "9c8d5b01d2a82fcb",
+  "active": "a988751b66de19e8",
   "lastOpenFiles": [
-    "raw/tools/markdown/Markdown Preview Enhanced - For VS Code.md",
-    "raw/tools/markdown/markdown.md",
-    "raw/tools/markdown/Mermaid.md",
+    "raw/Web Framework/NET Web API/Chapter 2：ASP NET Core Web API.md",
+    "raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md",
+    "aspnetcore-webapi-complete.md",
+    "CLAUDE.md",
+    "log.md",
+    "index.md",
+    "raw/Web Framework/NET Web API/appsetting json.md",
+    "raw/Web Framework/NET Web API/HTTP Server.md",
+    "raw/Web Framework/NET Web API/DTO.md",
+    "raw/Web Framework/NET Web API/Chapter 4：DTO 與資料模型設計.md",
+    "raw/Web Framework/NET Web API/Chapter 3：Controller、Routing 與 Action 設計.md",
+    "raw/Web Framework/NET Web API/Middleware Pipeline.md",
+    "raw/Web Framework/NET Web API/Chapter 6：Middleware 與全域處理機制.md",
+    "raw/Web Framework/NET Web API/Chapter 5：Dependency Injection 與 Service 設計.md",
+    "raw/Web Framework/NET Web API/Chapter 7：EF Core 與資料存取設計.md",
+    "raw/Web Framework/NET Web API/Chapter 9：Swagger、API 文件化與版本管理.md",
+    "raw/Web Framework/NET Web API/Chapter 8：Authentication 與 Authorization（JWT）.md",
+    "raw/Web Framework/NET Web API/chapter 7.3 後端各種權限管理的寫法，搭配前端操作的實務範例.md",
+    "raw/Web Framework/NET Web API/ASP NET Core Web API 常用 Attribute 整理.md",
+    "raw/Web Framework/NET Web API/Chapter 7.2 Authentication & Authorization.md",
+    "raw/Web Framework/NET Web API/Chapter 7.1 Authentication Authorization Pipeline.md",
+    "raw/Web Framework/NET Web API/NET 6 Web API JWT 驗證與授權完整設定與實作指南/image.png",
+    "raw/Web Framework/NET Web API/Middleware Pipeline/image 1.png",
+    "raw/Web Framework/NET Web API/Middleware Pipeline/image.png",
+    "raw/Web Framework/NET Web API/Microsoft/Microsoft.md",
+    "raw/Web Framework/NET Web API/aspnet-web-api-web-research/aspnet-web-api-web-research.md",
+    "wiki/tech/entities/claude-code-skills/claude-code-skills.md",
+    "raw/Web Framework/NET Web API/NET Web API.md",
+    "raw/Languages/C#/Dependency Injection (DI).md",
     "raw/un-classfy/Pasted image 20260531142532.png",
+    "assets/aspnetcore-webapi-complete/file-20260531150723303.png",
+    "assets/aspnetcore-webapi-complete",
+    "assets",
     "raw/un-classfy",
-    "wiki/tech/entities/csharp/csharp.md",
-    "wiki/tech/entities/oracle/oracle.md",
-    "raw/Web Framework/React/React Visualized/React Visualized.md",
     "raw/Web Framework/React/React Visualized/images/sticker-reactgg.svg",
     "raw/Web Framework/React/React Visualized/images/sticker-mix-cd.svg",
     "raw/Web Framework/React/React Visualized/images/sticker-brain-juice.svg",
     "raw/Web Framework/React/React Visualized/images/sticker-props.svg",
     "raw/Web Framework/React/React Visualized/images/sticker-useState.svg",
-    "raw/Web Framework/React/React Visualized/images/sticker-components.svg",
-    "raw/Web Framework/React/React Visualized/images/sticker-bug-spray.svg",
-    "raw/Web Framework/React/React Visualized/images/sticker-functions.svg",
-    "raw/Web Framework/React/React Visualized/images/sticker-will-it-render.svg",
     "raw/Web Framework/React/React Visualized/images",
     "raw/Web Framework/React/React Visualized",
-    "raw/Web Framework/React/DOM 節點觀念.md",
-    "raw/Languages/TypeScript/javascript-info-ts.md",
     "CLAUDE.md.tmp.8828.70fbf9c2250d",
-    "wiki/tech/entities/docker/docker.md",
-    "index.md",
-    "raw/devops/OIDC/keycloak/00-overview.md",
-    "CLAUDE.md",
-    "log.md",
-    "raw/devops/Docker/01-基礎概念/Docker/Docker.md",
-    "().md",
-    "raw/tools/Obsidian 筆記方法/Obsidian 筆記方法.md",
-    "raw/tools/Obsidian 筆記方法/Zettelkasten 卡片盒筆記.md",
-    "raw/devops/OIDC/keycloak/05-multi-provider-switch.md",
-    "raw/devops/OIDC/keycloak/04-template-keycloak-js.md",
-    "raw/devops/OIDC/keycloak/03-template-bff.md",
-    "raw/devops/OIDC/keycloak/02-template-pkce.md",
-    "raw/devops/OIDC/keycloak/01-prerequisites.md",
     "raw/devops/OIDC/keycloak",
-    "raw/devops/OIDC/oidc-flow.md",
     "raw/devops/OIDC",
-    "wiki/tech/moc/tools-system/tools-system-moc.md",
-    "raw/tools/markdown/數學公式.md",
     "raw/tools/Obsidian 筆記方法/image",
     "未命名 1",
-    "未命名",
-    "未命名.canvas",
-    "fix-dead-images.py"
+    "未命名.canvas"
   ]
 }

@@ -23,7 +23,7 @@ tags: [web-dev, dotnet, csharp, web-api, backend]
 **結論**
 
 > 寫 API 卻不寫文件，等同交付不完整的系統。
-> 
+>
 
 ---
 

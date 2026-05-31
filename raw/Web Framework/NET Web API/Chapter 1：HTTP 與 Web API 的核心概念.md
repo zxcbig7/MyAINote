@@ -8,7 +8,7 @@ tags: [web-dev, dotnet, csharp, web-api, backend]
 
 ## 1.1  Web API 與 HTTP
 
-- Web API 的本質是 **HTTP Server 的實作**
+- Web API 的本質是 **[[HTTP Server]]的實作**
 - ASP.NET Core 負責處理：
     - HTTP Request 解析
     - Routing

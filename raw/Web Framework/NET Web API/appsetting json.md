@@ -4,20 +4,15 @@ tags: [web-dev, dotnet, csharp, web-api, backend]
 
 > 關聯：[[dotnet-web-api]]、[[csharp]]
 
-# appsetting.json
-
-> 它的角色不是「寫程式邏輯」，而是集中管理所有「會變動、與環境相關、與部署相關」的設定值。
-> 
 
 ## 一、`appsettings.json` 的本質定位
 
 一句話定義：
 
-> appsettings.json 是用來存放「不應該硬寫在程式碼中的設定值」
-> 
+> appsettings.json 不是用來「寫程式邏輯」，而是集中管理所有「與環境、部署相關」的設定值，是用來存放「不應該硬寫在程式碼中的設定值」
+
 
 這些設定值通常具備以下特性之一：
-
 - 會因 **環境不同（Dev / Test / Prod）而改變**
 - 屬於 **部署設定、連線資訊、行為參數**
 - **不希望重新編譯程式**就能調整

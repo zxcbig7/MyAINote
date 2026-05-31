@@ -224,4 +224,3 @@ function Can({ permission, children }) {
 - 權限一定是「三層一起設計」
 - Authentication、Authorization、UI 缺一不可
 - 前後端權限語意必須 1:1 對齊
-- RuleViewer 類系統非常適合這種模型

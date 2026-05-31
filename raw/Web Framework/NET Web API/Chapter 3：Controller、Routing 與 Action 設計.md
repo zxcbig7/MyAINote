@@ -100,8 +100,8 @@ publicclassUsersController :ControllerBase
 ### 搭配 Route 參數
 
 ```csharp
-[HttpGet("{id}")]
-public IActionResultGetUser(int id)
+[HttpGet("{id}")] // 用 {} 讓 url 的值當作 function 參數
+public IActionResultGetUser(int id) // 對應url的 id
 {
 		return Ok();
 }
@@ -109,7 +109,7 @@ public IActionResultGetUser(int id)
 
 ## 3.5 Model Binding（資料來源對應）
 
-ASP.NET Core 會依照 **Model Binding 規則與優先順序**，自動將 HTTP Request 中的資料對應到 Action 參數或 DTO 屬性。
+ASP.NET Core 會依照 **Model Binding 規則與優先順序**，自動將 HTTP Request 中的資料對應到 Action 參數或 DTO 屬性 (DTO)。
 
 [ASP.NET](http://asp.net/) Core 在呼叫你的 Controller Action 之前，先把 HTTP Request 拆解，然後一格一格把值塞進你宣告的參數或 DTO 屬性裡。
 
