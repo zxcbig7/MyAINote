@@ -4,50 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "943a009bf58be15a",
+        "id": "aa0f9905a9588fdb",
         "type": "tabs",
         "children": [
           {
-            "id": "8f8b253574c22729",
+            "id": "ad16de5ff0d197db",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/devops/ELK/Kibana.md",
+                "file": "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/入門 Kubernetes (以及 Helm).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Kibana"
-            }
-          },
-          {
-            "id": "48d343320ffce230",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "raw/devops/ELK/Kibana Query Language (KQL).md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Kibana Query Language (KQL)"
+              "title": "入門 Kubernetes (以及 Helm)"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -66,11 +41,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "alphabeticalReverse",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "檔案瀏覽器"
+              "title": "Files"
             }
           },
           {
@@ -87,7 +62,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "搜尋"
+              "title": "Search"
             }
           },
           {
@@ -97,14 +72,14 @@
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "書籤"
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 597.5
+    "width": 380.5
   },
   "right": {
     "id": "4aca2441ab166a97",
@@ -120,7 +95,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "raw/devops/ELK/Kibana Query Language (KQL).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Kibana Query Language (KQL) 的反向連結"
+              "title": "Backlinks"
             }
           },
           {
@@ -139,12 +113,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "raw/devops/ELK/Kibana Query Language (KQL).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Kibana Query Language (KQL) 的對外連結"
+              "title": "Outgoing links"
             }
           },
           {
@@ -159,7 +132,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
-              "title": "標籤"
+              "title": "Tags"
             }
           },
           {
@@ -203,44 +176,59 @@
               "title": "Kibana Query Language (KQL) 的檔案屬性"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 392.5,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:開啟快速切換": false,
-      "graph:查看關聯圖": false,
-      "canvas:建立新畫布": false,
-      "daily-notes:開啟今天的每日筆記": false,
-      "templates:插入模板": false,
-      "command-palette:開啟命令面板": false,
-      "bases:建立新的 base": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
     }
   },
-  "active": "48d343320ffce230",
+  "active": "ad16de5ff0d197db",
   "lastOpenFiles": [
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621173525350.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621173216518.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621173033745.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621173016999.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621172658685.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621171624100.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621171505110.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621171423606.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621171139914.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621170932823.png",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)/file-20260621170741068.png",
+    "Untitled.md",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/入門 Kubernetes (以及 Helm).md",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets/二十一分鐘略懂 Kubernetes (以及 Helm)",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)/assets",
+    "raw/devops/Kubernetes (K8s)/K8s YAML 概念與架構/K8s YAML 概念與架構.md",
+    "aspnetcore-webapi-complete.md",
+    "raw/devops/Kubernetes (K8s)/二十一分鐘略懂 Kubernetes (以及 Helm)",
+    "raw/devops/Kubernetes (K8s)/Untitled.md",
+    "CLAUDE.md",
+    "Untitled 2.base",
+    "Untitled.base",
+    "Untitled 1.base",
+    "raw/devops/Kubernetes (K8s)/Kubernetes (K8s).md",
+    "wiki/tech/entities/kubernetes/kubernetes.md",
+    "Obsidian 筆記操作練習.md",
     "raw/devops/ELK/Kibana.md",
     "raw/devops/ELK/Kibana Query Language (KQL).md",
     "raw/devops/ELK/Date Math.md",
     "KQL.md",
     "raw/devops/ELK/RDMS.md",
-    "raw/devops/ELK/assets/Kibana/file-20260531224805890.webp",
     "raw/devops/ELK/Elastic Stack (ELK).md",
-    "raw/devops/ELK/assets/Elastic Stack (ELK)/file-20260531224510612.webp",
     "raw/devops/ELK/assets/Elastic Stack (ELK)",
-    "raw/devops/ELK/assets/Kibana/file-20260531221157704.png",
-    "raw/devops/ELK/assets/Kibana/file-20260531221022008.png",
-    "raw/devops/ELK/assets/Kibana/file-20260531221011928.png",
-    "raw/devops/ELK/assets/Kibana/file-20260531221001663.png",
-    "raw/devops/ELK/assets/Kibana/file-20260531220955366.png",
-    "raw/devops/ELK/assets/Kibana/file-20260531220939688.png",
-    "raw/devops/ELK/assets/Kibana/file-20260531220848598.png",
-    "raw/devops/ELK/assets/Kibana/file-20260531220749803.png",
     "raw/devops/ELK/Logstash.md",
     "index.md",
     "raw/devops/ELK/assets/Kibana",
@@ -254,22 +242,6 @@
     "raw/database/Oracle Server操作/Client 端表格建立.md",
     "raw/database/Oracle Server操作/Oracle Server操作.md",
     "raw/database/Oracle Server操作/刪除某角色.md",
-    "wiki/tech/entities/hangfire/hangfire.md",
-    "wiki/tech/entities/helm/helm.md",
-    "wiki/tech/entities/kubectl/kubectl.md",
-    "raw/Web Framework/NET Web API/ASP.NET Core 開發人員指南.md",
-    "raw/Web Framework/NET Web API/ASP NET Core Web API 常用 Attribute 整理.md",
-    "raw/Web Framework/NET Web API/aspnet-web-api-web-research/aspnet-web-api-web-research.md",
-    "raw/tech/networking/網域小知識/網域小知識.md",
-    "raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md",
-    "raw/Web Framework/NET Web API/appsetting json.md",
-    "raw/Web Framework/NET Web API/HTTP Server.md",
-    "raw/Web Framework/NET Web API/assets/ASP.NET Core 開發人員指南",
-    "raw/Web Framework/NET Web API/assets",
-    "assets/aspnetcore-webapi-complete",
-    "assets",
-    "raw/un-classfy",
-    "raw/Web Framework/React/React Visualized/images",
     "未命名.canvas"
   ]
 }
