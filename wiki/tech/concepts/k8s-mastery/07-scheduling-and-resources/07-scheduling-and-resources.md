@@ -457,7 +457,11 @@ spec:
 
 ## 連結
 
+- [[70-node-lifecycle-and-ha]] — 附錄 AV：節點失聯的驅逐時間線，為何要靠多副本而非調短參數
 - [[k8s-mastery]]
 - [[02-cluster-internals]]
 - [[13-troubleshooting]]
 - [[kubernetes]]
+- [[41-advanced-scheduling]] — 附錄 S：優先級分層、gang scheduling、GPU 與 spot 批次
+- [[33-cost-optimization]] — 附錄 K：requests 調校方法論與 CPU limit 該不該設
+- [[39-performance-troubleshooting]] — 附錄 Q：CPU throttle 造成「變慢但一切正常」的完整定位

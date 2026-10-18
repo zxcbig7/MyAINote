@@ -5,7 +5,7 @@ tags: [csharp, dotnet, backend, oop, linq]
 sources:
   - raw/tech/languages/C#.md
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-10-18
 ---
 
 # C#
@@ -231,3 +231,4 @@ await connection.OpenAsync();
 
 - [[dotnet-web-api]] — C# 在 Web API 中的應用
 - [[oracle]] — C# 連接 Oracle 資料庫
+- [[csharp-syntactic-sugar]] — 本頁用到的 `=>`、`?.`、`using`、`async` 等簡寫，編譯器實際改寫成什麼

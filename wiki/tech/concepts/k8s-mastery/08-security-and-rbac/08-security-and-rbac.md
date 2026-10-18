@@ -748,6 +748,7 @@ kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.roleRef.name
 
 ## 連結
 
+- [[63-ci-in-cluster]] — 附錄 AO：CI runner 執行任意程式碼，是叢集裡風險最高的東西
 - [[k8s-mastery]]
 - [[02-cluster-internals]]
 - [[06-config-and-storage]]
@@ -755,3 +756,5 @@ kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.roleRef.name
 - [[11-argocd]]
 - [[13-troubleshooting]]
 - [[kubernetes]]
+- [[38-security-incident-response]] — 附錄 P：已經出事了怎麼辦——供應鏈、機密外洩、入侵應變
+- [[61-compliance-and-audit]] — 附錄 AM：RBAC 的可稽核性——`auth can-i --list` 產生存取清單、權限綁群組讓離職自動失效

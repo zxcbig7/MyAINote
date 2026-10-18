@@ -291,3 +291,5 @@ graph TD
 - [[12-cluster-operations]]
 - [[minikube]]
 - [[kubernetes]]
+- [[43-migration-to-k8s]] — 附錄 U：既有系統要不要搬、怎麼分波搬
+- [[45-microservices-and-communication]] — 附錄 W：該不該拆微服務

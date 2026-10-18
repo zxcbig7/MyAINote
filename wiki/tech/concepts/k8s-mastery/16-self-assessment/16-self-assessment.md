@@ -1544,8 +1544,11 @@ query context 會計算每份文件跟查詢條件的相關性分數，結果依
 | text 與 keyword 欄位 | 都能直接做精確比對 | text 會被 analyzer 拆詞，精確比對與排序需要用 keyword | [[15-elk-elastic]] |
 | kubectl logs 的能力邊界 | 是持久化的日誌系統 | 只存當前容器 stdout／stderr、有大小限制，Pod 刪除後即消失，需搭配 --previous 或集中式日誌系統 | [[13-troubleshooting]] |
 
+> **這份題庫涵蓋的是正文 16 章。** 實戰篇與附錄 E–W（容器化、GitOps、資料庫、監控、升級、成本、DR、安全事故、效能、平台工程等）另有 75 題，見 [[46-advanced-self-assessment]]。
+
 ## 連結
 
+- [[69-third-self-assessment]] — 附錄 AU：第三份，考附錄 Y–AT（介面演進、訊息、快取、SLO、合規、規模、接手）
 - [[k8s-mastery]]
 - [[00-docker-foundations]]
 - [[01-why-kubernetes]]
@@ -1563,3 +1566,4 @@ query context 會計算每份文件跟查詢條件的相關性分數，結果依
 - [[13-troubleshooting]]
 - [[14-prometheus-grafana]]
 - [[15-elk-elastic]]
+- [[34-multicluster-and-dr]] — 附錄 L：Velero 與三種還原演練

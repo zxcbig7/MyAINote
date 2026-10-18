@@ -600,6 +600,8 @@ Ingress 回應 5xx 錯誤時，三種狀態碼各自指向完全不同的環節�
 
 ## 連結
 
+- [[73-long-lived-connections]] — 附錄 AY：L4 分配對 HTTP/2 為何失效，headless Service 與客戶端負載平衡
+- [[66-ingress-to-gateway-api]] — 附錄 AR：Ingress 的三個結構性問題，與 Gateway API 的三層角色分離
 - [[k8s-mastery]]
 - [[04-workloads]]
 - [[09-extending-kubernetes]]
@@ -608,3 +610,6 @@ Ingress 回應 5xx 錯誤時，三種狀態碼各自指向完全不同的環節�
 - [[07-scheduling-and-resources]]
 - [[kubernetes]]
 - [[domain-networking]]
+- [[36-ebpf-and-cilium]] — 附錄 N：kube-proxy 的規模極限與 Cilium/eBPF 的替代方案
+- [[35-cloud-networking]] — 附錄 M：雲端 VPC、Pod IP 模型與 LoadBalancer 背後
+- [[45-microservices-and-communication]] — 附錄 W：服務間該怎麼溝通、gRPC 長連線的負載平衡坑

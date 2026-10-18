@@ -558,6 +558,7 @@ flowchart TD
 
 ## 連結
 
+- [[74-distributed-tracing]] — 附錄 AZ：用 trace ID 把跨服務的日誌串成一個請求
 - [[k8s-mastery]]
 - [[14-prometheus-grafana]]
 - [[04-workloads]]

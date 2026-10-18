@@ -527,3 +527,4 @@ helm install my-release oci://harbor.internal/library/my-chart --version 0.1.0
 - [[13-troubleshooting]]
 - [[helm]]
 - [[kubernetes]]
+- [[42-helm-chart-design]] — 附錄 T：設計一份給別人用的 chart

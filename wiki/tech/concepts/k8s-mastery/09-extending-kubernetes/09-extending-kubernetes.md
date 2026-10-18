@@ -376,6 +376,8 @@ CRD 不是讓 K8s API 長出新資源的唯一方式。**API Aggregation Layer**
 
 ## 連結
 
+- [[67-scaling-limits]] — 附錄 AS：不用 informer 的 controller 如何打垮 API Server
+- [[65-inheriting-a-cluster]] — 附錄 AQ：失效的 webhook 是接手時最容易被埋伏的一項
 - [[k8s-mastery]]
 - [[02-cluster-internals]]
 - [[11-argocd]]
@@ -383,3 +385,5 @@ CRD 不是讓 K8s API 長出新資源的唯一方式。**API Aggregation Layer**
 - [[argocd]]
 - [[kubernetes]]
 - [[istio]]
+- [[40-operators-and-stateful]] — 附錄 R：什麼時候該寫 Operator、reconcile 六原則
+- [[62-stateful-workloads-decision]] — 附錄 AN：operator 在資料庫場景補上的正是 StatefulSet 的五個空缺

@@ -94,6 +94,14 @@ ETCDCTL_API=3 etcdctl snapshot save /backup/etcd-snapshot-$(date +%Y%m%d%H%M).db
 ETCDCTL_API=3 etcdctl snapshot status /backup/etcd-snapshot-*.db --write-out=table
 ```
 
+> **只備份 etcd 是不夠的——`/etc/kubernetes/pki` 必須一起備。**
+>
+> ```bash
+> tar -czf /backup/pki-$(date +%F).tar.gz /etc/kubernetes/pki
+> ```
+>
+> 還原 etcd 之後，如果憑證不是原本那一組（尤其是 CA），所有元件無法互相驗證、叢集起不來。而**錯誤訊息全是一堆 x509 相關的內容，完全不會指向「你忘了備份憑證」**——這是還原演練最常卡住的地方，也是「備份存在但還不回來」的頭號成因。完整的演練程序見 [[34-multicluster-and-dr]]。
+
 還原是這一節真正的重點，因為它跟大多數人直覺想像的「用備份檔蓋掉現在的資料」完全不是同一件事。**etcd 的還原本質上是「用快照重建一個全新的資料目錄」，不是「就地覆蓋既有資料目錄」**。實際流程是先把 kube-apiserver 停下來——做法是把 `/etc/kubernetes/manifests/kube-apiserver.yaml`（以及通常也一併處理的 etcd static pod manifest）暫時移出這個目錄，kubelet 偵測到 manifest 消失就會把對應的 static pod 停掉。接著對每一個 etcd 成員執行 `etcdctl snapshot restore`，指定一個全新的 `--data-dir`：
 
 ```bash
@@ -412,6 +420,9 @@ minikube 最根本的限制是**單一節點**——它沒有真正的高可用�
 
 ## 連結
 
+- [[70-node-lifecycle-and-ha]] — 附錄 AV：節點**壞掉**（非計畫性）時的時間線、etcd quorum 與汰換 SOP
+- [[67-scaling-limits]] — 附錄 AS：etcd 容量、壓縮與「叢集唯讀」這個最硬的故障
+- [[65-inheriting-a-cluster]] — 附錄 AQ：剛接手一座別人建的叢集時，這些維運能力該用什麼順序建立
 - [[k8s-mastery]]
 - [[02-cluster-internals]]
 - [[07-scheduling-and-resources]]
@@ -420,3 +431,5 @@ minikube 最根本的限制是**單一節點**——它沒有真正的高可用�
 - [[14-prometheus-grafana]]
 - [[minikube]]
 - [[kubernetes]]
+- [[34-multicluster-and-dr]] — 附錄 L：三種還原演練腳本與多叢集拓撲選型
+- [[27-upgrades-and-deprecations]] — 附錄 E：升級前的 API 棄用掃描與檢查清單

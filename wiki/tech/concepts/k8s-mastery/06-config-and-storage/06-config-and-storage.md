@@ -191,6 +191,12 @@ kubectl get secret my-secret -o jsonpath="{.data.password}" | base64 -d
 
 > **常見誤解：**「Secret 存起來是加密的，比 ConfigMap 安全」——如果只看 K8s 物件本身，Secret 跟 ConfigMap 一樣是明文（base64 只是編碼），真正的安全性差異來自兩個地方：etcd 有沒有開啟靜態加密（下一節會講），以及 RBAC 有沒有正確限制誰能讀取這個 Secret 物件。
 
+> **萬一真的外洩了，處置順序是「先輪替，再清理」——而多數人的直覺是反的。**
+>
+> 發現密碼進了 git 或 log，第一反應通常是「趕快把它清掉」。但清理需要時間（改 git 歷史要協調所有人重新 clone、重建映像要跑一次 CI），而**在這段期間那份憑證仍然有效**；更重要的是你無法確定沒有人已經看過——repo 可能被 fork、被 CI 快取、被搜尋引擎索引。
+>
+> 正確的心智模型不是「清乾淨就沒事」，而是**「外洩即已失效」**：先讓那份憑證失效（輪替），事故的嚴重性就大幅下降，之後再從容清理來源、補上偵測、修正流程。完整的處置流程與各類憑證的輪替方式見 [[38-security-incident-response]]。
+
 除了拿來裝一般的帳號密碼（`Opaque` 類型，也是預設值），Secret 還有幾種帶著特殊用途、K8s 會用不同方式處理的內建類型。`kubernetes.io/dockerconfigjson` 是 `imagePullSecrets` 專用的類型，儲存的是 image registry 的登入憑證，在使用 Harbor 這類私有 registry 時，Pod 要能成功拉取 image，就需要參照這種類型的 Secret：
 
 ```bash

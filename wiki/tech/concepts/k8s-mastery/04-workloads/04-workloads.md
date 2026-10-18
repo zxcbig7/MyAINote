@@ -648,9 +648,15 @@ classDef muted fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px,color:#64748b;
 
 ## 連結
 
+- [[73-long-lived-connections]] — 附錄 AY：終止流程對長連線為何不夠，要主動送 GOAWAY／close frame
+- [[72-cascading-failure]] — 附錄 AX：為何 readinessProbe **不該**檢查下游依賴
+- [[71-schema-migration]] — 附錄 AW：滾動更新期間舊程式碼碰上新 schema 的危險區間
 - [[k8s-mastery]]
 - [[05-networking]]
 - [[06-config-and-storage]]
 - [[07-scheduling-and-resources]]
 - [[13-troubleshooting]]
 - [[kubernetes]]
+- [[40-operators-and-stateful]] — 附錄 R：StatefulSet 的日常運維手冊
+- [[41-advanced-scheduling]] — 附錄 S：批次與 GPU 工作負載的排程
+- [[62-stateful-workloads-decision]] — 附錄 AN：StatefulSet **沒有**給的五件事，以及該不該把資料庫搬進來

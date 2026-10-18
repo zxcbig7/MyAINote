@@ -6,7 +6,7 @@ sources:
   - raw/tech/devops/Kubernetes (K8s).md
   - raw/tech/devops/K8s YAML 概念與架構.md
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-08-14
 ---
 
 # Kubernetes (K8s)
@@ -233,6 +233,11 @@ Ingress → 依 host/path 把流量導向 Service
 
 ## 連結
 
+- [[k8s-mastery]] — 完整教材總目錄（16 章 + 6 附錄）；本頁只是速查摘要
+- [[18-yaml-fields-pod]] — Pod/Container 逐欄位百科，本頁 YAML 骨架的完整版
+- [[19-yaml-fields-workloads]] — Deployment/StatefulSet/Job/HPA 全欄位
+- [[20-yaml-fields-network-storage]] — Service/Ingress/PVC 全欄位
+- [[21-yaml-fields-cluster-security]] — RBAC/CRD/Webhook 全欄位
 - [[docker]] — K8s 管理的 Container 技術
 - [[minikube]] — 本機單節點 K8s 環境
 - [[helm]] — K8s 應用打包工具

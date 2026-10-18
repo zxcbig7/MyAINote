@@ -1,0 +1,4 @@
+C:\Users\zxcbi\Desktop\Projects\Notes\obj\Debug\net8.0\MyDevWebBackend.csproj.AssemblyReference.cache
+C:\Users\zxcbi\Desktop\Projects\Notes\obj\Debug\net8.0\MyDevWebBackend.dll
+C:\Users\zxcbi\Desktop\Projects\Notes\obj\Debug\net8.0\refint\MyDevWebBackend.dll
+C:\Users\zxcbi\Desktop\Projects\Notes\obj\Debug\net8.0\MyDevWebBackend.pdb

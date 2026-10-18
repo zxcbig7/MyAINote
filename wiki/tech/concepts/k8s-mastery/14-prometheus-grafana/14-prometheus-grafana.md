@@ -470,9 +470,14 @@ Prometheus 不是日誌系統——它存的是數值型時間序列，不是拿
 
 ## 連結
 
+- [[74-distributed-tracing]] — 附錄 AZ：第三支柱，以及用 exemplar 從延遲圖直接跳到一條慢請求
+- [[64-slo-and-alerting]] — 附錄 AP：這些 Alerting Rules 該對什麼寫——多視窗燃燒率與 SLO
 - [[k8s-mastery]]
 - [[15-elk-elastic]]
 - [[07-scheduling-and-resources]]
 - [[09-extending-kubernetes]]
 - [[13-troubleshooting]]
 - [[kubernetes]]
+- [[39-performance-troubleshooting]] — 附錄 Q：把這些指標用在「服務變慢了」的定位
+- [[practice-6-observability]] — 實戰 6：從零把監控與告警接上一個服務
+- [[22-yaml-fields-ecosystem]] — 附錄 C-5：ServiceMonitor／PrometheusRule 全欄位

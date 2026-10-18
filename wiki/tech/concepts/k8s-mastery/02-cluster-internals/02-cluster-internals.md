@@ -277,6 +277,8 @@ graph LR
 
 ## 連結
 
+- [[70-node-lifecycle-and-ha]] — 附錄 AV：這些元件各自的 HA 模式——只有 etcd 有過半數限制
+- [[67-scaling-limits]] — 附錄 AS：這些元件在叢集長大之後會先在哪裡撐不住
 - [[k8s-mastery]]
 - [[03-api-and-yaml]]
 - [[13-troubleshooting]]

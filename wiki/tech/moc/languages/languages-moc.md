@@ -3,7 +3,7 @@ type: moc
 domain: tech
 tags: [programming-languages]
 created: 2026-05-10
-updated: 2026-05-10
+updated: 2026-10-18
 ---
 
 # Programming Languages MOC
@@ -15,6 +15,10 @@ updated: 2026-05-10
 - [[csharp]] — C# 語法、OOP、LINQ
 - [[typescript]] — 型別系統、Generics、Utility Types
 - [[python]] — Python 基礎（stub）
+
+## 核心 Concepts
+
+- [[csharp-syntactic-sugar]] — C# 語法糖：編譯器如何把 `=>`、`?.`、`foreach`、`async` 等改寫成基本寫法
 
 ## Raw 來源（依主題）
 

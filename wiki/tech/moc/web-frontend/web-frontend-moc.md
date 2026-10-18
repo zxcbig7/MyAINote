@@ -12,6 +12,7 @@ updated: 2026-05-10
 
 ## 核心 Entities
 
+- [[dom]] — 瀏覽器的節點物件樹：渲染流程、原生操作、事件、Virtual DOM（React 的前置知識）
 - [[react]] — Hooks、生命週期、Zustand
 - [[typescript]] — 型別系統、Generics、Utility Types
 
@@ -41,3 +42,8 @@ updated: 2026-05-10
 - [[CSS]]
 - [[HTML]]
 - [[uiux-notes]]
+
+## Learning Roadmap
+
+- [[react-frontend-development-roadmap]] — 從 TypeScript 基礎走到可維護 React SPA 的學習順序與專題里程碑
+- [[javascript-typescript-react-foundations]] — 以 Task Tracker 串起 JavaScript、TypeScript 與 React 的單一入門教材

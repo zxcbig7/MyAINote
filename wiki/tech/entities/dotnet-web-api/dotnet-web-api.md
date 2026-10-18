@@ -1,55 +1,93 @@
 ---
 type: entity
 domain: tech
-tags: [dotnet, aspnet, csharp, web-api, backend, middleware, routing, filters, clean-architecture]
+tags: [dotnet, aspnet, csharp, web-api, backend, middleware, routing, filters, clean-architecture, efcore, oracle, jwt, oauth, mastery, curriculum]
 sources:
   - raw/tech/web-dev/NET Web API.md
   - raw/ASP Web API/aspnet-web-api-web-research.md
 created: 2026-05-03
-updated: 2026-05-09
+updated: 2026-08-14
 ---
 
 # .NET Web API
 
 ASP.NET Core Web API 是建立 RESTful API 的框架，使用 C# 開發，支援 DI、Middleware Pipeline、JWT 等企業級功能。
 
-## 技術堆疊選擇
+這一頁有兩個身分。上半部是**教材總目錄**——一套從框架內部機制寫到生產維運的深度教材，回答「為什麼」；下半部是**速查**，回答「怎麼寫」。趕時間查語法就直接跳到速查區，想搞懂機制就從教材第 00 章開始。
+
+---
+
+## 教材：從會寫到問不倒
+
+會寫 ASP.NET Core Web API 的人很多。能說清楚一個 request 從 Kestrel 收到 socket 之後、到 `IActionResult` 被序列化寫回去之前，中間經過哪幾層、每層改了什麼、哪一層攔得住例外的人很少。前者遇到「本機好好的、上 K8s 就 500」只能加 log 亂試，後者能從症狀反推到 scope 被誰提早釋放。
+
+這套教材的目標是把讀者送到後者那一側。
+
+### 誰該讀
+
+預設讀者已經寫過 Controller、設過 DI、串過 JWT，也許已經把服務部署到容器裡跑過，但心裡清楚很多地方是照抄範例——不確定 `AddScoped` 和 `AddTransient` 在什麼情況下真的會差出 bug，不確定 `SaveChanges` 到底送了幾條 SQL，不確定 `[Authorize]` 失敗時回 401 還是 403 是誰決定的。
+
+讀完之後，應該能夠獨立判斷一段設定會不會在高併發下出事、審查別人的 PR 並指出生命週期用錯的地方、從「偶發逾時」推理到 ThreadPool 飢餓或 connection pool 耗盡，以及在被同事追問「為什麼」的時候答得出機制。
+
+### 進度總覽
+
+**全書 22 章 + 2 附錄完成。** 每章以一個真實會出事的場景開篇，收尾固定「常見誤解」與「同事會來問你的問題」兩段自我檢測。
+
+| 篇 | 章節 | 核心問題 | 狀態 |
+| --- | --- | --- | --- |
+| **執行模型篇** | [[00-hosting-and-startup]] | `WebApplication.CreateBuilder` 到 `app.Run()` 之間到底發生什麼事？ | ✅ |
+| | [[01-request-pipeline]] | Middleware 為什麼是洋蔥？順序寫錯會怎樣？ | ✅ |
+| | [[02-dependency-injection]] | scope 什麼時候建、什麼時候放？captive dependency 怎麼咬人？ | ✅ |
+| | [[03-routing-and-endpoints]] | Endpoint routing 的兩階段、Minimal API 和 Controller 的底層差異 | ✅ |
+| | [[04-model-binding-and-validation]] | 參數是怎麼被填進去的？驗證失敗的 400 是誰產生的？ | ✅ |
+| | [[05-filters-and-mvc-internals]] | Filter 和 Middleware 差在哪？五種 Filter 的執行順序 | ✅ |
+| | [[06-async-and-threading]] | async 到底省了什麼？ThreadPool 飢餓怎麼發生的？ | ✅ |
+| **資料層篇** | [[07-efcore-internals]] | DbContext 為什麼一定要 Scoped？change tracker 在追蹤什麼？ | ✅ |
+| | [[08-efcore-query]] | LINQ 怎麼變成 SQL？N+1 怎麼看出來？ | ✅ |
+| | [[09-transactions-and-concurrency]] | 交易邊界該畫在哪？兩個人同時改一筆資料怎麼辦？ | ✅ |
+| | [[10-oracle-specifics]] | Oracle + EF Core 的坑：大小寫、序列、CLOB、分頁 | ✅ |
+| **認證授權篇** | [[11-authentication]] | Scheme 是什麼？Challenge 和 Forbid 差在哪？ | ✅ |
+| | [[12-jwt-deep-dive]] | JWT 驗了哪些東西？登出為什麼沒用？ | ✅ |
+| | [[13-oauth-oidc]] | Google 登入的完整流程、前後端分離的取捨 | ✅ |
+| | [[14-authorization]] | Role、Claim、Policy、Requirement 該用哪個？ | ✅ |
+| **工程實務篇** | [[15-error-handling]] | 例外該在哪一層接？什麼錯回什麼 status code？ | ✅ |
+| | [[16-logging-and-observability]] | 結構化 log、correlation id、對接 ELK 與 Prometheus | ✅ |
+| | [[17-configuration-and-secrets]] | Provider 鏈、Options 三介面、K8s Secret 注入 | ✅ |
+| | [[18-resilience-and-performance]] | HttpClientFactory、Polly、快取、rate limiting | ✅ |
+| | [[19-background-work]] | BackgroundService 與 Hangfire、多副本重複執行問題 | ✅ |
+| | [[20-testing]] | 單元測試該測到哪？WebApplicationFactory 整合測試 | ✅ |
+| | [[21-deployment]] | 容器化、probe 對接、graceful shutdown、API 版本 | ✅ |
+| **附錄** | [[22-self-assessment]] | 自我檢測題，蓋住答案自己講一遍才算會 | ✅ |
+| | [[23-cheatsheet]] | 速查：pipeline 骨架、生命週期決策表、常見錯誤對照 | ✅ |
+
+### 怎麼用
+
+**第一遍求通不求精。** 卡住的段落標記起來繼續往下，很多概念要看過後面才回頭理解得了——例如為什麼 middleware 裡不能直接注入 Scoped 服務，要先知道 scope 是誰建立的。
+
+**第二遍動手拆。** 回到標記處，開一個空專案把每個機制實際跑一次。特別是「反例」那些段落，親手把它弄壞一次比讀十遍有效。
+
+**第三遍反過來考自己。** 每章末尾的「同事會來問你的問題」蓋住答案先自己講一遍，講得出來才算會。
+
+教材以 **.NET 8（LTS）** 為基準撰寫，涉及 .NET 9/10 新增特性的地方會明確標注版本門檻。
+
+### 這套教材的取向
+
+它假設的部署環境是 **K8s + Oracle + JWT/Google OAuth + 前後端分離**，所以很多章節會走到框架邊界之外——graceful shutdown 一節直接推導到 K8s 滾動更新掉請求的 `preStop` 解法、設定一章區分 ConfigMap 用 env 與 volume 注入的差別、資料層有一整章專講 Oracle provider 的坑（大小寫、空字串即 NULL、`IN` 上限 1000、DDL 隱含提交）。
+
+這些是「照著 SQL Server 教學寫，上線才發現不一樣」的地方，也是一般教材不會寫的部分。
+
+---
+
+## 速查
+
+### 技術堆疊選擇
 
 - **.NET SDK**：8（LTS）
 - **API 類型**：Controller-based（學習曲線清楚）
 - **文件**：Swagger（Swashbuckle）
 - **資料庫**：EF Core + Oracle（或其他）
 
-## 學習路徑
-
-### 1. 基礎知識
-
-- HTTP / REST：GET/POST/PUT/PATCH/DELETE、Status Code、Headers、Body
-- Controller、Routing、Model Binding、Validation
-- Middleware Pipeline（`UseRouting` → `UseAuthentication` → `UseAuthorization` → `UseCors`）
-- DI（依賴注入）、Service Lifetime（Singleton/Scoped/Transient）
-- 設定：appsettings.json、Options pattern、Secret 管理
-
-### 2. 資料層
-
-- EF Core：DbContext、Entity、Migration、CRUD
-- DTO 與 AutoMapper
-- 交易與並發（Transaction、RowVersion）
-
-### 3. 品質與安全
-
-- 全域例外處理（Exception Handling Middleware）
-- Logging（Serilog）與 Health Checks
-- Authentication / Authorization（JWT、Policy、Role）
-- CORS、Rate limiting、API Versioning
-
-### 4. 交付
-
-- Swagger 文件化
-- 測試（Unit + Integration）
-- Docker / 部署（IIS、Linux + Nginx 反代）
-
-## Controller 架構
+### Controller 架構
 
 ```csharp
 [ApiController]
@@ -87,7 +125,7 @@ public class UsersController : ControllerBase
 }
 ```
 
-## Middleware Pipeline
+### Middleware Pipeline
 
 ![Middleware Pipeline](middleware-pipeline.png)
 
@@ -102,49 +140,18 @@ public class UsersController : ControllerBase
 
 ```csharp
 // Program.cs 的 Pipeline 順序（非常重要）
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
-app.UseCors("ReactApp");           // CORS 要在 Auth 前
-app.UseAuthentication();           // 先驗證身份
-app.UseAuthorization();            // 再驗證權限
 app.UseRouting();
+app.UseCors("ReactApp");
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 ```
 
-注意：response 開始後不能修改 header；Exception middleware 要放最前面。
+注意：response 開始後不能修改 header；Exception middleware 要放最前面。順序的完整推導見 [[01-request-pipeline]]。
 
-## DI（依賴注入）
-
-### 核心概念
-
-DI 容器負責「建立物件」和「管理物件的生命週期」。你只需要：
-
-1. **登記**：`builder.Services.AddXxx<Interface, Impl>()` — 告訴容器「有人要 Interface，給他 Impl」
-2. **宣告需求**：在建構子加參數 — 容器收到 request 要建物件時，自動把依賴塞進來
-
-```csharp
-// ❌ 傳統做法：自己 new，緊耦合
-public class OrderService
-{
-    private readonly EmailService _email = new EmailService(); // 無法替換、無法測試
-}
-
-// ✅ DI：只依賴介面，容器負責給實作
-public class OrderService
-{
-    private readonly IEmailService _email;
-    public OrderService(IEmailService email) { _email = email; }
-}
-```
-
-### 何時注入（建構子注入時機）
-
-| 物件類型 | 建立時機 | 注入時機 |
-| --- | --- | --- |
-| Controller | 收到 request，routing 決定用哪個 controller | 同時建立，建構子參數自動注入 |
-| Scoped Service | 同上，每個 request 一個 | 同上 |
-| Singleton Service | app 啟動時第一次被要求時 | 一次建立，之後共用 |
-
-### 三種 Lifetime
+### DI 三種 Lifetime
 
 ```csharp
 builder.Services.AddSingleton<IMyService, MyService>();      // 整個應用共用一個實例
@@ -158,7 +165,9 @@ builder.Services.AddTransient<IEmailService, EmailService>(); // 每次注入一
 | Scoped | 一個 HTTP request | DB context、業務邏輯 Service |
 | Transient | 每次被注入就新建 | 輕量、無狀態的小工具 |
 
-### ASP.NET Core 內建自動註冊（不需手動加）
+詳細機制與踩坑見 [[02-dependency-injection]]。
+
+### 內建自動註冊（不需手動加）
 
 | 服務 | 說明 |
 | --- | --- |
@@ -167,20 +176,7 @@ builder.Services.AddTransient<IEmailService, EmailService>(); // 每次注入一
 | `IWebHostEnvironment` | 環境資訊（Development / Production） |
 | `IHttpContextAccessor` | 需手動加 `AddHttpContextAccessor()` |
 
-### IHttpClientFactory
-
-```csharp
-// 登記（避免直接 new HttpClient 造成 socket 耗盡）
-builder.Services.AddHttpClient();
-
-// 使用：建構子注入 IHttpClientFactory，之後 CreateClient() 拿一個乾淨的 HttpClient
-var httpClient = _httpClientFactory.CreateClient();
-```
-
-`CreateClient()` 回傳全新實例，沒有 BaseAddress / Header 等預設值。
-`CreateClient("name")` 回傳預先用 `AddHttpClient("name", c => {...})` 設好的版本。
-
-## DTO 設計
+### DTO 設計
 
 ```csharp
 // 避免直接暴露 Entity，使用 DTO 作為 API 的資料契約
@@ -189,10 +185,9 @@ public record UpdateUserDto(string? Name, string? Email);
 public record UserDto(int Id, string Name, string Email);  // 不含 Password
 ```
 
-## JWT 驗證設定
+### JWT 驗證設定
 
 ```csharp
-// Program.cs
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -210,7 +205,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 ```
 
-## CORS 設定（開發環境）
+### CORS 設定（開發環境）
 
 ```csharp
 builder.Services.AddCors(options =>
@@ -225,7 +220,7 @@ builder.Services.AddCors(options =>
 });
 ```
 
-## 常用 Attribute
+### 常用 Attribute
 
 | Attribute | 說明 |
 | --- | --- |
@@ -238,56 +233,23 @@ builder.Services.AddCors(options =>
 | `[Authorize]` | 需要認證 |
 | `[AllowAnonymous]` | 允許匿名存取 |
 
-## IConfiguration 設定系統
+### IConfiguration 合併順序
 
-### 資料來源與合併順序
-
-`WebApplication.CreateBuilder(args)` 執行時自動建立，**不需要手動 `AddXxx`**，依序載入以下來源（後面蓋前面）：
+`WebApplication.CreateBuilder(args)` 執行時自動建立，依序載入（後面蓋前面）：
 
 | 順序 | 來源 | 說明 |
 | --- | --- | --- |
 | 1 | `appsettings.json` | 基礎設定 |
-| 2 | `appsettings.{Environment}.json` | 環境覆蓋（如 `appsettings.Production.json`） |
+| 2 | `appsettings.{Environment}.json` | 環境覆蓋 |
 | 3 | 環境變數 | K8s Secret、Docker env 等 |
 | 4 | 命令列參數 `args` | 最高優先權 |
 
-### 讀取方式
-
 ```csharp
-// 直接讀 key（冒號分隔巢狀結構）
-var key = _configuration["Jwt:Key"];
+var key = _configuration["Jwt:Key"];   // 冒號分隔巢狀結構
 
 // Options Pattern（強型別，推薦用於複雜設定）
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
-// 之後注入 IOptions<JwtOptions>
 ```
-
-### appsettings.json 結構
-
-```json
-{
-  "ConnectionStrings": {
-    "Default": "Data Source=..."
-  },
-  "Jwt": {
-    "Key": "your-secret-key",
-    "Issuer": "your-api",
-    "Audience": "your-frontend",
-    "ExpiresInMinutes": "60"
-  },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information"
-    }
-  }
-}
-```
-
-### 何時注入
-
-`IConfiguration` 在 `WebApplication.CreateBuilder(args)` 時就建好並自動進 DI，**不需要手動 `builder.Services.AddXxx`**。當 DI 容器要建立有 `IConfiguration` 建構子參數的物件時，自動塞進去。
-
-### 不同環境的設定來源
 
 | 環境 | 建議做法 |
 | --- | --- |
@@ -295,11 +257,7 @@ builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 | K8s / Docker | 環境變數（覆蓋 appsettings.json 的同名 key） |
 | 生產敏感資料 | K8s Secret → 環境變數 / Vault，**不進版控** |
 
-## Routing
-
-Routing 比對 incoming request 並 dispatch 到對應的 endpoint。
-
-### Route Template 語法
+### Routing 速查
 
 | Template | 說明 |
 | --- | --- |
@@ -308,49 +266,20 @@ Routing 比對 incoming request 並 dispatch 到對應的 endpoint。
 | `{id=1}` | 有預設值的參數 |
 | `{**slug}` | Catch-all，匹配所有剩餘路徑 |
 
-### Route Constraints
-
-```csharp
-// Minimal API
-app.MapGet("/hello/{name:alpha}", (string name) => $"Hello {name}!");
-
-// Controller
-[Route("users/{id:int:min(1)}")]
-public User GetUserById(int id) { }
-```
-
 常用 constraint：`:int`、`:bool`、`:guid`、`:alpha`、`:minlength(N)`、`:maxlength(N)`、`:regex(pattern)`
 
-### Route Groups（Minimal API）
-
 ```csharp
-app.MapGroup("/api/todos")
-    .MapTodosApi()
-    .RequireAuthorization();
+[Route("users/{id:int:min(1)}")]
+public User GetUserById(int id) { }
+
+app.MapGroup("/api/todos").MapTodosApi().RequireAuthorization();
 ```
-
-### URL Matching 優先順序
-
-具體路由 > 參數路由；Literal segment > 參數 segment；有 constraint > 無 constraint
-
-### Short-circuit
-
-```csharp
-app.MapGet("/fast", () => "Fast!").ShortCircuit();
-app.MapShortCircuit(404, "robots.txt", "favicon.ico");
-```
-
-## Filters
-
-Filter 讓程式碼在 request pipeline 的特定階段前後執行，處理 cross-cutting concerns。
 
 ### Filter Pipeline
 
 ```text
 Authorization → Resource → Model Binding → Action → Exception → Result → Response
 ```
-
-### Filter 類型
 
 | 類型 | 時機 | 用途 |
 | --- | --- | --- |
@@ -360,27 +289,9 @@ Authorization → Resource → Model Binding → Action → Exception → Result
 | Exception | 未處理例外 | 全域錯誤處理 |
 | Result | Action result 執行前後 | 包裝 view/formatter |
 
-### 範例
+有 DI 需求時用 `ServiceFilterAttribute` 或 `TypeFilterAttribute`；實作 `IOrderedFilter` 可覆蓋執行順序。完整推導見 [[05-filters-and-mvc-internals]]。
 
-```csharp
-public class SampleActionFilter : IActionFilter
-{
-    public void OnActionExecuting(ActionExecutingContext context) { }
-    public void OnActionExecuted(ActionExecutedContext context) { }
-}
-
-// 全域注冊
-builder.Services.AddControllersWithViews(options =>
-{
-    options.Filters.Add<SampleActionFilter>();
-});
-```
-
-有 DI 需求時用 `ServiceFilterAttribute` 或 `TypeFilterAttribute`；實作 `IOrderedFilter` 可覆蓋執行順序。
-
-## 架構模式
-
-### Clean Architecture
+### 架構模式
 
 ![Clean Architecture Onion](clean-architecture-onion.png)
 
@@ -394,15 +305,7 @@ builder.Services.AddControllersWithViews(options =>
 
 ASP.NET Core 完整架構：![Clean Architecture ASP.NET Core](clean-architecture-aspnetcore.png)
 
-### 傳統 N-Layer
-
-```text
-UI → BLL → DAL
-```
-
-缺點：BLL 依賴 DAL 實作細節，難以單元測試；Clean Architecture 透過 DI + Interface 解決。
-
-### Monolith vs Microservices
+傳統 N-Layer（`UI → BLL → DAL`）的缺點是 BLL 依賴 DAL 實作細節，難以單元測試；Clean Architecture 透過 DI + Interface 解決。
 
 | | Monolith | Microservices |
 | --- | --- | --- |
@@ -417,3 +320,7 @@ UI → BLL → DAL
 - [[react]] — 前端框架，需設定 CORS 對接
 - [[docker]] — 部署 Web API 到容器
 - [[kubernetes]] — 容器編排，部署後端服務
+- [[oracle]] — 資料庫，EF Core provider 對接
+- [[hangfire]] — 背景排程工具
+- [[k8s-mastery]] — 部署端的對應教材
+- [[python-fast-api]] — 同一場景的 Python 版教材；跨框架翻譯表見 [[13-aspnet-mapping]]

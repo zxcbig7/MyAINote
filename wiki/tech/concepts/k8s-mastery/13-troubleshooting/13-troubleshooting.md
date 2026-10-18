@@ -584,9 +584,14 @@ wsl -d docker-desktop -- nsenter --target <dockerd-pid> --mount --uts -- sh -c \
 
 ## 連結
 
+- [[68-registry-operations]] — 附錄 AT：速率限制造成的 `ImagePullBackOff`，症狀是間歇性且訊息會誤導
+- [[65-inheriting-a-cluster]] — 附錄 AQ：接手時的盤點指令——先知道有什麼，才排得了查
 - [[k8s-mastery]]
 - [[02-cluster-internals]]
 - [[07-scheduling-and-resources]]
 - [[09-extending-kubernetes]]
 - [[11-argocd]]
 - [[kubectl]]
+- [[39-performance-troubleshooting]] — 附錄 Q：「服務變慢了」的分層定位
+- [[29-status-and-conditions]] — 附錄 G：status 與 condition 的完整判讀
+- [[38-security-incident-response]] — 附錄 P：懷疑是入侵時的隔離與蒐證順序

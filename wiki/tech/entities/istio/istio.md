@@ -469,6 +469,8 @@ readinessProbe:
 
 ## 連結
 
+- [[24-yaml-fields-istio]] — Istio CRD 逐欄位參考：流量管理（Gateway/VirtualService/DestinationRule）與安全（mTLS/JWT/AuthorizationPolicy）。本頁講注入與偵錯，那頁講怎麼指揮 Envoy
+- [[32-istio-ingress-gateway]] — Ingress Gateway（IGW）專章：與 ingress-nginx 的選型取捨、三個物件的綁定規則、15021/15090 等 port、503 的 NR/UH/UF/NC 旗標判讀、TLS 憑證放錯 namespace 的坑
 - [[kubernetes]]
 - [[argocd]]
 - [[vault]]

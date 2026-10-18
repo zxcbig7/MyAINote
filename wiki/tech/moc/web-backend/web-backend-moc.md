@@ -1,19 +1,23 @@
 ---
 type: moc
 domain: tech
-tags: [web-backend, dotnet, csharp, api]
+tags: [web-backend, dotnet, csharp, python, fastapi, api]
 created: 2026-05-10
-updated: 2026-05-10
+updated: 2026-08-16
 ---
 
 # Web Backend MOC
 
-> Map of Content：.NET Web API、C#、Auth 相關筆記入口。
+> Map of Content：.NET Web API、FastAPI、C#、Auth 相關筆記入口。
 
 ## 核心 Entities
 
-- [[dotnet-web-api]] — ASP.NET Core Web API、Controller、DI、Middleware、JWT
+- [[dotnet-web-api]] — ASP.NET Core Web API、Controller、DI、Middleware、JWT（含 22 章 + 2 附錄教材）
+- [[python-fast-api]] — FastAPI：ASGI、型別驅動驗證、`Depends`、Pydantic v2（含 12 章 + 3 附錄教材）
 - [[csharp]] — C# 語法、OOP、LINQ、async/await
+- [[python]] — Python 語言基礎
+
+兩套後端教材假設同一個部署場景（K8s + Oracle + JWT/Google OAuth + 前後端分離），可互相對照；跨框架的翻譯表見 [[13-aspnet-mapping]]。
 
 ## Raw 來源（依主題）
 

@@ -575,3 +575,4 @@ containers:
 - [[13-troubleshooting]]
 - [[kubectl]]
 - [[kubernetes]]
+- [[27-upgrades-and-deprecations]] — 附錄 E：已移除 API 對照表與四種掃描手段

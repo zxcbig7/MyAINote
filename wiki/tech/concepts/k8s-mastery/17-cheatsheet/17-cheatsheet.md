@@ -11,6 +11,8 @@ updated: 2026-08-01
 
 本頁是 16 章教材的速查配套，只給「怎麼做」，不重複解釋原理。平常放第二螢幕，出事故時直接用瀏覽器搜尋關鍵字定位到對應區塊；寫 YAML 時直接複製骨架，把 `<角括號>` 換成實際值即可用。
 
+> **這份速查表寫於教材只有 16 章時**，涵蓋 kubectl／Docker／Helm／ArgoCD／PromQL／KQL。後來附錄 E–AK 引入的工具（`trivy`／`cosign`／`istioctl`／`hubble`／`velero`／`kubeconform`／`pluto`／KEDA／Kueue 等）收在 [[60-advanced-cheatsheet]]。
+
 ## 目錄
 
 - [緊急排錯十連發](#緊急排錯十連發)
@@ -1345,3 +1347,5 @@ flowchart TD
 - [[11-argocd]]
 - [[14-prometheus-grafana]]
 - [[15-elk-elastic]]
+- [[34-multicluster-and-dr]] — 附錄 L：備份還原的完整演練程序
+- [[27-upgrades-and-deprecations]] — 附錄 E：pluto／kubent 與升級檢查清單

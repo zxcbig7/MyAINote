@@ -444,6 +444,8 @@ Git 與叢集同時被改動時的衝突，行為也不直覺。如果同一時�
 
 ## 連結
 
+- [[71-schema-migration]] — 附錄 AW：`PreSync` hook 拿來跑 migration 的完整實務——為何要 `backoffLimit: 0`
+- [[68-registry-operations]] — 附錄 AT：`latest` 為何讓期望狀態失去意義，改用 digest 釘死
 - [[k8s-mastery]]
 - [[10-helm]]
 - [[09-extending-kubernetes]]

@@ -529,6 +529,7 @@ Kubernetes 早期版本裡，kubelet 的程式碼直接寫死了呼叫 Docker En
 
 ## 連結
 
+- [[68-registry-operations]] — 附錄 AT：映像建好之後——registry 作為你要維運的系統
 - [[k8s-mastery]]
 - [[02-cluster-internals]]
 - [[07-scheduling-and-resources]]
