@@ -17,7 +17,7 @@ HashiCorp Vault 是一個 Secret 管理工具，用於安全儲存、存取和�
 - **Secret Engine**：儲存不同類型 secret 的後端（KV、Database、PKI 等）
 - **Auth Method**：驗證存取者身份（K8s SA、GitHub、LDAP 等）
 - **Policy**：控制哪些 path 可以讀寫
-- **Seal / Unseal**：Vault 啟動後處於 Sealed 狀態，需用 Unseal Key 解封才能存取資料
+- **Seal / Unseal**：Vault 啟動後處於狀態，需用 Unseal Key 解封才能存取資料
 
 ## Vault 啟動流程（K8s 環境）
 
@@ -80,9 +80,9 @@ spec:
 
 ## Seal / Unseal 說明
 
-| 狀態 | 說明 |
-| --- | --- |
-| **Sealed** | 啟動初始狀態，無法存取任何 secret |
+| 狀態         | 說明                                       |
+| ------------ | ------------------------------------------ |
+| **Sealed**   | 啟動初始狀態，無法存取任何 secret          |
 | **Unsealed** | 輸入足夠數量的 unseal key 後解封，正常運作 |
 
 - `-key-shares=3`：產生 3 把 unseal key

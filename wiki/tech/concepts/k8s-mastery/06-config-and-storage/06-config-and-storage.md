@@ -262,7 +262,7 @@ resources:
 kubectl exec -n infra vault-0 -- vault operator init -key-shares=3 -key-threshold=2
 ```
 
-這行指令的意思是：把 master key 拆成 3 份碎片，其中任意 2 份湊在一起就能重建出完整金鑰。之後每次 Vault 這個 Pod 重啟（版本升級、Node 重排、單純的 crash），它都會重新回到 sealed 狀態，需要有人拿出其中 2 把 key 執行兩次解封：
+這行指令的意思是：把 master key 拆成 3 份碎片，其中任意 2 份湊在一起就能重建出完整金鑰。之後每次 Vault 這個 Pod 重啟（版本升級、Node 重排、單純的 crash），它都會重新回到狀態，需要有人拿出其中 2 把 key 執行兩次解封：
 
 ```bash
 kubectl exec -n infra vault-0 -- vault operator unseal <key-1>
@@ -353,12 +353,12 @@ classDef muted fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px,color:#64748b;
 
 三者的選型判準可以歸納成一張表：
 
-| 情境 | 建議選擇 |
-| --- | --- |
-| 已經有 Vault 這類集中式機密管理系統，多個系統（不只 K8s）都要共用同一份密碼 | Vault + ESO |
-| 需要動態產生短期憑證、自動輪替，降低長期固定密碼外洩的風險 | Vault（搭配 ESO 消費） |
-| 只是想單純把 Secret 以加密形式放進 Git，不想額外維運一套外部系統 | Sealed Secrets |
-| 小團隊、沒有額外 infra 預算維護 Vault 這種有狀態服務 | Sealed Secrets 較輕量 |
+| 情境                                                                        | 建議選擇               |
+| --------------------------------------------------------------------------- | ---------------------- |
+| 已經有 Vault 這類集中式機密管理系統，多個系統（不只 K8s）都要共用同一份密碼 | Vault + ESO            |
+| 需要動態產生短期憑證、自動輪替，降低長期固定密碼外洩的風險                  | Vault（搭配 ESO 消費） |
+| 只是想單純把 Secret 以加密形式放進 Git，不想額外維運一套外部系統            | Secrets                |
+| 小團隊、沒有額外 infra 預算維護 Vault 這種有狀態服務                        | Secrets 較輕量         |
 
 你目前的環境用 Vault + ESO，換來的是機密資料完全不落地在 Git 裡、也不需要每個應用自己實作 Vault API 呼叫邏輯，代價是多了一套需要手動解封、需要維運的有狀態服務——這個取捨在有專職維運人力的團隊裡通常划算，這也是為什麼它是目前業界最主流的組合。
 
@@ -459,12 +459,12 @@ classDef decision fill:#fefce8,stroke:#eab308,stroke-width:2px,color:#854d0e;
 
 `accessModes` 是 PVC 常常寫錯、也常常被誤解的欄位，最容易搞混的就是 `ReadWriteOnce`（RWO）。幾乎每個人第一次看到都會直覺理解成「這個 volume 只能被一個 Pod 掛」，但這個理解**不精確**——RWO 精確的定義是：**這個 volume 一次只能被掛載到一個 Node 上進行讀寫**，而不是一次只能被一個 Pod 掛。如果同一個 Node 上同時跑著兩個都需要掛這個 volume 的 Pod，RWO 完全允許這兩個 Pod 同時掛載讀寫，只要它們待在同一個 Node 上就沒問題；真正會出事的情境，是這個 volume 已經被 Node A 上的某個 Pod 掛著，這時候另一個 Pod 被排程到 Node B、也想掛同一個 volume，這才會觸發衝突（下一節排錯會講到的 `Multi-Attach error` 正是這個情境的產物）。
 
-| accessMode | 精確定義 |
-| --- | --- |
-| `ReadWriteOnce`（RWO） | 同一時間只能有**一個 Node** 掛載讀寫，該 Node 上的多個 Pod 可以共用 |
-| `ReadOnlyMany`（ROX） | 多個 Node 可以同時掛載，但只能唯讀 |
-| `ReadWriteMany`（RWX） | 多個 Node 可以同時掛載讀寫，需要底層儲存後端原生支援（例如 NFS、CephFS），大多數雲端 block storage（EBS、Azure Disk）都不支援 |
-| `ReadWriteOncePod`（RWOP） | 比 RWO 更嚴格，限制整個叢集裡**只能有單一個 Pod** 掛載，即使同一個 Node 上的另一個 Pod 也不行 |
+| accessMode                 | 精確定義                                                                                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `ReadWriteOnce`（RWO）     | 同一時間只能有**一個 Node** 掛載讀寫，該 Node 上的多個 Pod 可以共用                                                           |
+| `ReadOnlyMany`（ROX）      | 多個 Node 可以同時掛載，但只能唯讀                                                                                            |
+| `ReadWriteMany`（RWX）     | 多個 Node 可以同時掛載讀寫，需要底層儲存後端原生支援（例如 NFS、CephFS），大多數雲端 block storage（EBS、Azure Disk）都不支援 |
+| `ReadWriteOncePod`（RWOP） | 比 RWO 更嚴格，限制整個叢集裡**只能有單一個 Pod** 掛載，即使同一個 Node 上的另一個 Pod 也不行                                 |
 
 > **常見誤解：**「RWO 就是只能一個 Pod 用」——精確地說是「只能一個 Node」。如果你真的需要「整個叢集絕對只能有一個 Pod 碰這個 volume」這種更嚴格的保證（例如避免誤設定造成兩個資料庫實例同時寫入同一份資料），該用的是 `ReadWriteOncePod`，而不是誤以為 RWO 已經提供了這個保證。
 
@@ -472,11 +472,11 @@ classDef decision fill:#fefce8,stroke:#eab308,stroke-width:2px,color:#854d0e;
 
 PVC 被刪除之後，底下綁定的那塊實際儲存空間該何去何從，由 PV 的 `persistentVolumeReclaimPolicy` 決定，這是資料保護策略上很關鍵的一個開關。
 
-| Policy | 行為 |
-| --- | --- |
-| `Retain` | PVC 刪除後，PV 進入 `Released` 狀態，底層資料完整保留，需要管理員手動確認、清理後才能重新變回可用 |
-| `Delete` | PVC 刪除時，底層儲存空間與 PV 物件一併刪除，動態供給的預設值 |
-| `Recycle` | 已淘汰，原本行為是簡單清空內容後讓 PV 重新變回 `Available`，現在建議一律改用動態供給取代 |
+| Policy    | 行為                                                                                              |
+| --------- | ------------------------------------------------------------------------------------------------- |
+| `Retain`  | PVC 刪除後，PV 進入 `Released` 狀態，底層資料完整保留，需要管理員手動確認、清理後才能重新變回可用 |
+| `Delete`  | PVC 刪除時，底層儲存空間與 PV 物件一併刪除，動態供給的預設值                                      |
+| `Recycle` | 已淘汰，原本行為是簡單清空內容後讓 PV 重新變回 `Available`，現在建議一律改用動態供給取代          |
 
 `Delete` 圖方便但風險也最直接——一旦有人手滑刪錯 PVC，資料真的就沒了；`Retain` 則多留了一道防線，代價是需要有人記得回頭清理那些不再需要、卻一直佔著空間的舊 PV。正式環境裡承載重要資料的 StorageClass，通常會刻意把 `reclaimPolicy` 設成 `Retain`，用「多一道手動確認」換取「不會因為一次誤刪就徹底遺失資料」。
 

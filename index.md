@@ -88,6 +88,15 @@
 - [[22-self-assessment]] — 附錄 A：65 題三級難度自我檢測（含 L3 症狀反推根因）＋ 25 條紅色警戒清單
 - [[23-cheatsheet]] — 附錄 B：緊急排錯十連發、`Program.cs` 骨架、middleware 順序、DI 決策表、EF Core/Oracle 速查、Dockerfile 與 Deployment 骨架
 
+### React + TypeScript 教材（詳見 [[wiki/tech/entities/react/React|react]]）
+
+把 `raw/Web Framework/React/` 的 17 份筆記重寫成一本書，以 React 19.3、TS 7、Vite 8 為基準，用 Task Tracker 專案貫穿，範例都實際編譯測試過。**撰寫中**，完整目錄與進度見 hub 頁。
+
+- [[react-06-components-and-jsx]] — JSX 是函式呼叫不是模板：`class`、`if`、大小寫規則都能從編譯結果推出來、React element 只是便條、`&&` 為什麼會畫出一個 0、與 Razor 的方向差異、Task Tracker 第一個靜態畫面
+- [[react-09-rendering]] — render、commit、paint 分別做什麼、子 component 為何連帶 render、state 綁在樹的位置上、`key` 的真正角色與 index 當 key 的 bug、StrictMode 雙重 render 的目的、component 為什麼必須是 pure
+- [[react-11-effects]] — Effect 是同步不是生命週期、四條判斷規則、依賴陣列與 exhaustive-deps、cleanup、競態與 AbortController、你可能不需要 Effect 的情境、`useEffectEvent`、`useLayoutEffect`、StrictMode 下的雙跑
+- [[react-08-state]] — setter 之後為什麼讀到舊值：state 是這次 render 的 `const` 快照（`await` 也救不了）、updater 與 queue 手算、batching 的真正邊界、stale closure 造成的資料蓋回、`Object.is` 是不可變更新的根本理由、受控 input 的迴圈、哪些東西不該是 state
+
 ## Tech / Concepts
 
 - [[cicd-pipeline]] — GitLab/Azure DevOps + Harbor + Helm + ArgoCD 完整 CI/CD 流程
@@ -288,7 +297,7 @@
 
 ## Synthesis
 
-（尚無頁面）
+- [[uiux-design-cheat-book]] — 28 章、284 條「當…就應該…」UI/UX 情境規則，28 張章節對照圖，含元件選擇矩陣、6 種頁型配方與來源邊界
 
 ---
 

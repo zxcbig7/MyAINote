@@ -241,7 +241,7 @@ $env:OPENSSL_CONF="NUL"; openssl req -x509 -nodes -days 365 -newkey rsa:2048 -ke
 ```
 
 > K8s Secret 是 base64 編碼，不是加密，有 kubectl 權限的人都能看到原始內容。
-> 正式環境需搭配 Sealed Secrets 或 Vault。
+> 正式環境需搭配Secrets 或 Vault。
 
 ## 部署
 

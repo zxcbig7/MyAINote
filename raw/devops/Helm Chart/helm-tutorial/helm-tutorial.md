@@ -341,7 +341,7 @@ Pod 內讀取 `/etc/secrets/password`，Secret 更新後約 1 分鐘自動生效
 | **安全性**   | 較低（可能被 log 洩漏） | 較高       |
 | **適合場景** | 一般設定                | 密碼、憑證 |
 
-> ⚠️ **注意：** 把密碼寫在 `values.yaml` 等於明文存進 Git，正式環境應搭配 Vault 或 Sealed Secrets。
+> ⚠️ **注意：** 把密碼寫在 `values.yaml` 等於明文存進 Git，正式環境應搭配 Vault 或Secrets。
 
 ---
 

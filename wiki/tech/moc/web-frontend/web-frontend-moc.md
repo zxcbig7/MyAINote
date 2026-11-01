@@ -3,7 +3,7 @@ type: moc
 domain: tech
 tags: [web-frontend, react, typescript]
 created: 2026-05-10
-updated: 2026-05-10
+updated: 2026-10-31
 ---
 
 # Web Frontend MOC
@@ -45,5 +45,10 @@ updated: 2026-05-10
 
 ## Learning Roadmap
 
+- [[wiki/tech/entities/react/React|React + TypeScript 教材]] — 從會抄範例到說得出機制，把這些 raw 筆記重寫成一本書（撰寫中）
 - [[react-frontend-development-roadmap]] — 從 TypeScript 基礎走到可維護 React SPA 的學習順序與專題里程碑
 - [[javascript-typescript-react-foundations]] — 以 Task Tracker 串起 JavaScript、TypeScript 與 React 的單一入門教材
+
+## UIUX Design
+
+- [[uiux-design-cheat-book]] — 28 章、284 條「當…就應該…」UI/UX 情境規則，含元件選擇矩陣、6 種頁型配方與來源邊界

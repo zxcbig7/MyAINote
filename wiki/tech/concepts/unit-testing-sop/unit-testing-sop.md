@@ -33,11 +33,11 @@ public void Add_TwoPositiveNumbers_ReturnsSum()
 
 用空行把三段隔開，你的測試就永遠可讀。三段各自的規矩：
 
-| 段落 | 做什麼 | 規矩 |
-|---|---|---|
-| Arrange | 準備輸入資料、建立受測物件 | 值一律寫死，不要算出來 |
-| Act | 呼叫受測方法 | **只有一行**，只呼叫一次 |
-| Assert | 驗證結果 | 只驗**一個行為** |
+| 段落    | 做什麼                     | 規矩                     |
+| ------- | -------------------------- | ------------------------ |
+| Arrange | 準備輸入資料、建立受測物件 | 值一律寫死，不要算出來   |
+| Act     | 呼叫受測方法               | **只有一行**，只呼叫一次 |
+| Assert  | 驗證結果                   | 只驗**一個行為**         |
 
 `Assert.Equal` 的參數順序是 `(預期, 實際)`，寫反了不會錯但失敗訊息會反過來，會看得很混亂。
 
@@ -61,11 +61,11 @@ dotnet test
 
 三個**建完馬上要檢查**的地方，這三件事錯了後面寫再多測試都跑不起來：
 
-| 檢查項 | 為什麼 |
-|---|---|
-| 測試專案在 git repo 內 | CI 只 checkout repo，solution 若指向 repo 外的路徑，CI 一 build 就失敗 |
-| 測試專案的 `TargetFramework` 與主專案相容 | 測試專案的 TFM 不能比主專案舊 |
-| CI 安裝的 SDK 版本涵蓋測試專案的 TFM | CI 裝 8.0.x 卻有 net10.0 專案 → restore 直接死 |
+| 檢查項                                    | 為什麼                                                                 |
+| ----------------------------------------- | ---------------------------------------------------------------------- |
+| 測試專案在 git repo 內                    | CI 只 checkout repo，solution 若指向 repo 外的路徑，CI 一 build 就失敗 |
+| 測試專案的 `TargetFramework` 與主專案相容 | 測試專案的 TFM 不能比主專案舊                                          |
+| CI 安裝的 SDK 版本涵蓋測試專案的 TFM      | CI 裝 8.0.x 卻有 net10.0 專案 → restore 直接死                         |
 
 最後刪掉範本產生的 `UnitTest1.cs`，改成**一個受測類別對一個測試檔**：
 
@@ -142,20 +142,20 @@ dotnet test --logger "console;verbosity=detailed"        # 看每個測試的名
 
 這是本篇的核心。遇到狀況先查這張表，再看下面對應小節。
 
-| 你面對的狀況 | 用哪一招 | 關鍵 API |
-|---|---|---|
-| 固定輸入 → 固定輸出 | 單一案例 | `[Fact]` + `Assert.Equal` |
-| 同一段邏輯要試很多組資料 | 參數化 | `[Theory]` + `[InlineData]` |
-| 參數不是常數（物件、集合、enum 陣列） | 參數化（資料來源版） | `[Theory]` + `[MemberData]` + `TheoryData` |
-| 有一條規則「不管輸入什麼都成立」 | 不變式測試 | 用迴圈驗性質，不寫預期輸出 |
-| 壞輸入**不可以**讓程式爆炸 | 不爆炸測試 | `Record.Exception` + `Assert.Null` |
-| 壞輸入**應該**要丟例外 | 例外測試 | `Assert.Throws<T>` |
-| 回傳是集合 | 集合斷言 | `Assert.Single` / `Assert.Contains` / `Assert.Empty` |
-| 回傳是巢狀物件或樹狀結構 | 逐層剝型別 | `Assert.IsType<T>` |
-| 回傳是一大段文字（報表、序列化結果） | 基準比對（golden） | 原始字串常值 `"""` |
-| 受測對象會呼叫 DB / HTTP / 現在時間 | 把相依抽成介面或參數 | 手寫假物件 或 Moq |
-| 非同步方法 | async 測試 | `async Task` + `await` |
-| `private` 方法 | **不測**，透過 public 入口測 | — |
+| 你面對的狀況                          | 用哪一招                     | 關鍵 API                                             |
+| ------------------------------------- | ---------------------------- | ---------------------------------------------------- |
+| 固定輸入 → 固定輸出                   | 單一案例                     | `[Fact]` + `Assert.Equal`                            |
+| 同一段邏輯要試很多組資料              | 參數化                       | `[Theory]` + `[InlineData]`                          |
+| 參數不是常數（物件、集合、enum 陣列） | 參數化（資料來源版）         | `[Theory]` + `[MemberData]` + `TheoryData`           |
+| 有一條規則「不管輸入什麼都成立」      | 不變式測試                   | 用迴圈驗性質，不寫預期輸出                           |
+| 壞輸入**不可以**讓程式爆炸            | 不爆炸測試                   | `Record.Exception` + `Assert.Null`                   |
+| 壞輸入**應該**要丟例外                | 例外測試                     | `Assert.Throws<T>`                                   |
+| 回傳是集合                            | 集合斷言                     | `Assert.Single` / `Assert.Contains` / `Assert.Empty` |
+| 回傳是巢狀物件或樹狀結構              | 逐層剝型別                   | `Assert.IsType<T>`                                   |
+| 回傳是一大段文字（報表、序列化結果）  | 基準比對（golden）           | 原始字串常值 `"""`                                   |
+| 受測對象會呼叫 DB / HTTP / 現在時間   | 把相依抽成介面或參數         | 手寫假物件 或 Moq                                    |
+| 非同步方法                            | async 測試                   | `async Task` + `await`                               |
+| `private` 方法                        | **不測**，透過 public 入口測 | —                                                    |
 
 ### 情境 1：固定輸入 → 固定輸出
 
@@ -341,7 +341,7 @@ public decimal GetDiscount(IUserRepository repo, DateTime now, int userId)
 
 ```csharp
 // 做法 A：手寫（相依少的時候最清楚，不用學套件）
-private sealed class FakeUserRepository : IUserRepository
+privateclass FakeUserRepository : IUserRepository
 {
     public User? Find(int id) => new User(id, "測試使用者");
 }
@@ -380,19 +380,19 @@ private 方法的行為 100% 可以從 public 入口觀察到。判準：**把�
 
 ## 六、斷言速查
 
-| 想驗的事 | 寫法 |
-|---|---|
-| 相等 | `Assert.Equal(expected, actual)` |
-| 浮點數相等 | `Assert.Equal(expected, actual, precision: 2)` |
-| 是 null / 不是 null | `Assert.Null(x)` / `Assert.NotNull(x)` |
-| 布林 | `Assert.True(x)` / `Assert.False(x)` |
-| 字串包含 | `Assert.Contains("片段", text)` |
-| 字串開頭 | `Assert.StartsWith("前綴", text)` |
-| 集合為空 / 剛好一個 | `Assert.Empty(c)` / `Assert.Single(c)` |
-| 集合含符合條件的元素 | `Assert.Contains(c, x => x.Id == 1)` |
-| 型別是 T（並取得該物件） | `Assert.IsType<T>(obj)` |
-| 會丟例外 | `Assert.Throws<T>(() => ...)` |
-| 不會丟例外 | `Assert.Null(Record.Exception(() => ...))` |
+| 想驗的事                 | 寫法                                           |
+| ------------------------ | ---------------------------------------------- |
+| 相等                     | `Assert.Equal(expected, actual)`               |
+| 浮點數相等               | `Assert.Equal(expected, actual, precision: 2)` |
+| 是 null / 不是 null      | `Assert.Null(x)` / `Assert.NotNull(x)`         |
+| 布林                     | `Assert.True(x)` / `Assert.False(x)`           |
+| 字串包含                 | `Assert.Contains("片段", text)`                |
+| 字串開頭                 | `Assert.StartsWith("前綴", text)`              |
+| 集合為空 / 剛好一個      | `Assert.Empty(c)` / `Assert.Single(c)`         |
+| 集合含符合條件的元素     | `Assert.Contains(c, x => x.Id == 1)`           |
+| 型別是 T（並取得該物件） | `Assert.IsType<T>(obj)`                        |
+| 會丟例外                 | `Assert.Throws<T>(() => ...)`                  |
+| 不會丟例外               | `Assert.Null(Record.Exception(() => ...))`     |
 
 一條原則：**能用專用斷言就不要用 `Assert.True`**。
 

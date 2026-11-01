@@ -1263,3 +1263,18 @@
 - 依使用者提問（expression-bodied member 等價於什麼、語法糖定義）建立書本式 concept 頁 [[csharp-syntactic-sugar]]：定義與判斷標準、Roslyn lowering 流程、expression-bodied member、各類糖展開對照、重度糖、非糖功能、觀察工具、使用原則、九個排查項、速查表。
 - 刻意強調「糖最多只缺型別、非糖缺 runtime 能力」作為舊 target framework 能否用新語法的判準；`int?` 與 `string?` 本質不同列為獨立陷阱。
 - 雙向連結：[[csharp]]、[[languages-moc]] 加入本頁；index.md Tech / Concepts 新增一列。
+
+
+## [2026-10-31] synthesis | UIUX Design Cheat Book
+整理原圓角筆記與官方設計指引為 28 章、284 條情境規則，附元件選擇矩陣、6 種頁型配方、標準速查及來源登錄。
+區分標準、平台慣例與綜合建議，補圓角適用邊界及驗證時機差異；更新 index 與 Web Frontend MOC，保留 raw 原文。
+
+## [2026-10-31] synthesis | React + TypeScript 教材開篇（hub + 第 08 章試寫）
+
+- 依使用者要求把 `raw/Web Framework/React/` 的 17 份筆記重寫成一本書，放在 `wiki/tech/entities/react/`，比照 dotnet-web-api 與 python-fast-api 的 hub + 分章格式；raw 不動。
+- 大綱定案：35 章 + 6 附錄 + 9 章補充篇，用 Task Tracker（React + ASP.NET Core）貫穿；版本基準 React 19.3、TS 7、Vite 8、React Router 8，範例在沙盒實際編譯測試。
+- `react-08-state` 通過主編閱讀，書風定案。寫作順序核心機制優先，章號會跳著完成。
+
+## [2026-10-31] synthesis | UIUX visual examples
+
+為 UIUX Design Cheat Book 的 28 章加入原創介面對照圖、圖說與 UX 規則連結，方便讀者對照正反例；圖片存放於文章旁的 assets/，同步更新 index 入口。

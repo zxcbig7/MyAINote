@@ -27,17 +27,17 @@ HashiCorp Vault 是密碼管理工具，專門安全存放敏感資訊（密碼�
 
 ### 啟動流程
 ```
-Pod 啟動 → Sealed 狀態 → 執行 unseal（2 次）→ Unsealed → 可使用
+Pod 啟動 →狀態 → 執行 unseal（2 次）→ Unsealed → 可使用
 ```
 
 Vault 每次重啟後都是 **Sealed**，需要重新 unseal，已寫進 `start.bat` 自動處理。
 
 ### 狀態說明
-| 狀態 | 說明 |
-|------|------|
-| `Initialized: false` | 全新安裝，需要 init |
-| `Sealed: true` | 已初始化但鎖定，需要 unseal |
-| `Sealed: false` | 正常可使用 |
+| 狀態                 | 說明                        |
+| -------------------- | --------------------------- |
+| `Initialized: false` | 全新安裝，需要 init         |
+| `Sealed: true`       | 已初始化但鎖定，需要 unseal |
+| `Sealed: false`      | 正常可使用                  |
 
 ---
 
@@ -91,11 +91,11 @@ kubectl exec -n infra vault-0 -- vault secrets enable -path=kv-infra kv-v2
 ```
 
 ### v2 與 v1 差異
-| | KV v1 | KV v2 |
-|--|-------|-------|
-| 歷史版本 | ❌ | ✅ 保留多個版本 |
-| 刪除後還原 | ❌ | ✅ soft delete |
-| 元數據 | ❌ | ✅ 建立時間、版本號 |
+|            | KV v1 | KV v2              |
+| ---------- | ----- | ------------------ |
+| 歷史版本   | ❌     | ✅ 保留多個版本     |
+| 刪除後還原 | ❌     | ✅ soft delete      |
+| 元數據     | ❌     | ✅ 建立時間、版本號 |
 
 ### 存入 Secret
 ```bash
@@ -148,9 +148,9 @@ K8s Secret     ← 最終產出，Pod 直接讀這個
 
 ### 元件說明
 
-| 元件 | 用途 |
-|------|------|
-| `SecretStore` | 設定 ESO 如何連到 Vault（位置、認證方式） |
+| 元件             | 用途                                          |
+| ---------------- | --------------------------------------------- |
+| `SecretStore`    | 設定 ESO 如何連到 Vault（位置、認證方式）     |
 | `ExternalSecret` | 設定要同步哪個 Vault secret 到哪個 K8s Secret |
 
 ### SecretStore 範例
