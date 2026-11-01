@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, configuration, options-pattern, secrets, vault, configmap, feature-flags]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 17 章：設定與 Secret — 改了為什麼沒生效
@@ -431,6 +431,7 @@ git 歷史裡永遠留著。唯一有效的動作是立刻輪替該憑證。
 
 ## 連結
 
+- [[basics-09-configuration-and-environments]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[16-logging-and-observability]] — 上一章
 - [[18-resilience-and-performance]] — 下一章：逾時、重試、快取、限流

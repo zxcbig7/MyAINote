@@ -42,20 +42,20 @@ React 的入門體驗讓人以為自己會了。照著範例能做出畫面，�
 | | [[react-04-typescript-foundations]] | TypeScript 保護了什麼、沒保護什麼？ | |
 | | [[react-05-typescript-modeling]] | 怎麼用型別把不合法狀態排除掉？ | |
 | **第二篇 核心模型** | [[react-06-components-and-jsx]] | JSX 到底是什麼？ | ✅ |
-| | [[react-07-props]] | 資料怎麼在 component 之間流動？ | |
+| | [[react-07-props]] | 資料怎麼在 component 之間流動？ | ✅ |
 | | [[react-08-state]] | 為什麼 setter 之後讀到的還是舊值？ | ✅ |
 | | [[react-09-rendering]] | React 怎麼決定要更新什麼？ | ✅ |
-| | [[react-10-tic-tac-toe]] | 把前四章組起來長什麼樣？ | |
+| | [[react-10-tic-tac-toe]] | 把前四章組起來長什麼樣？ | ✅ |
 | **第三篇 Hooks** | [[react-11-effects]] | useEffect 什麼時候該用、什麼時候不該用？ | ✅ |
-| | [[react-12-refs]] | 什麼東西要記住但不該觸發 render？ | |
-| | [[react-13-reducer-and-context]] | 狀態邏輯變複雜、要穿透很多層時怎麼辦？ | |
-| | [[react-14-memoization]] | useMemo/useCallback/React.memo 該不該加？ | |
-| | [[react-15-custom-hooks]] | 邏輯怎麼重用？ | |
+| | [[react-12-refs]] | 什麼東西要記住但不該觸發 render？ | ✅ |
+| | [[react-13-reducer-and-context]] | 狀態邏輯變複雜、要穿透很多層時怎麼辦？ | ✅ |
+| | [[react-14-memoization]] | useMemo/useCallback/React.memo 該不該加？ | ✅ |
+| | [[react-15-custom-hooks]] | 邏輯怎麼重用？ | ✅ |
 | **第四篇 畫面** | [[react-16-tailwind]] | 為什麼要把 class 寫得這麼長？ | |
 | | [[react-17-forms]] | 表單為什麼是 React 裡最麻煩的東西？ | |
 | | [[react-18-component-libraries]] | 元件庫怎麼選、怎麼不被綁死？ | |
-| **第五篇 真實應用** | [[react-19-routing]] | 只有一個 HTML，網址怎麼會變？ | |
-| | [[react-20-api-layer]] | API 呼叫該寫在哪裡？ | |
+| **第五篇 真實應用** | [[react-19-routing]] | 只有一個 HTML，網址怎麼會變？ | ✅ |
+| | [[react-20-api-layer]] | API 呼叫該寫在哪裡？ | ✅ |
 | | [[react-21-server-state]] | 後端資料為什麼不該放 useState？ | |
 | | [[react-22-authentication]] | 前端的登入到底保護了什麼？ | |
 | | [[react-23-client-state]] | 什麼時候才需要 Zustand？ | |

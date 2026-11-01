@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, jwt, bearer, token, security, refresh-token, jwks]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 12 章：JWT 深入 — 為什麼登出沒有用
@@ -87,7 +87,7 @@ var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
 簡單，效能好。缺點是**簽發者和驗證者必須共用同一把祕密**。如果有五個微服務都要驗證 token，那把祕密就得散布到五個地方——任何一個洩漏，攻擊者就能簽發任意 token。
 
-**HS256 的金鑰長度至少要 256 位元（32 位元組）。** 太短會拋出 `IDX10653`。而且不能用「密碼」等級的字串——它必須是高熵的隨機值：
+**HS256 的金鑰長度至少要 256 位元（32 位元組）。** 太短會拋出 `ArgumentOutOfRangeException`，錯誤碼依長度而不同：1 到 15 位元組是 `IDX10653`（訊息寫「at least '128' bits」，容易讓人以為 128 位元就夠），16 到 31 位元組是 `IDX10720`（key size must be greater than 256 bits），剛好 32 位元組才成功。教學範例常見的 16 字元金鑰就屬於後者。而且不能用「密碼」等級的字串——它必須是高熵的隨機值：
 
 ```powershell
 # 產生一把足夠的金鑰
@@ -451,8 +451,8 @@ JWT 無狀態，簽發時的資訊是快照。停權不會讓已簽發的 token 
 **Q：token 明明過期了測試還能用。**
 `ClockSkew` 預設 5 分鐘。設成 `TimeSpan.FromSeconds(30)` 或 `TimeSpan.Zero`。
 
-**Q：`IDX10653` 金鑰太短是什麼意思？**
-HS256 要求金鑰至少 256 位元（32 位元組）。而且必須是高熵的隨機值，不能用人類可記憶的密碼。
+**Q：`IDX10653`／`IDX10720` 金鑰太短是什麼意思？**
+HS256 要求金鑰至少 256 位元（32 位元組）；不足 16 位元組報 `IDX10653`，16 到 31 位元組報 `IDX10720`。而且必須是高熵的隨機值，不能用人類可記憶的密碼。
 
 **Q：token 放 localStorage 還是 cookie？**
 主流折衷是 access token 放 JS 記憶體、refresh token 放 `HttpOnly` cookie。前者讓 XSS 難以竊取長期憑證，後者讓刷新頁面後還能續期。refresh 端點記得防 CSRF。
@@ -470,6 +470,7 @@ HS256 要求金鑰至少 256 位元（32 位元組）。而且必須是高熵的
 
 ## 連結
 
+- [[basics-12-jwt-login]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[11-authentication]] — 上一章：scheme 與 claims
 - [[13-oauth-oidc]] — 下一章：Google 登入與 OIDC

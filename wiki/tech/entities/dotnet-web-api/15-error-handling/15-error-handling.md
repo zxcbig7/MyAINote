@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, error-handling, problemdetails, exception, http-status, result-pattern]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 15 章：錯誤處理 — 什麼錯回什麼碼，以及誰負責接
@@ -226,7 +226,7 @@ Detail = exception.Message
 | 資源不存在 | **404** Not Found | |
 | HTTP 方法不支援 | **405** Method Not Allowed | 框架自動 |
 | 資源衝突（重複建立、並發修改） | **409** Conflict | 第 09 章 |
-| 格式正確但違反業務規則 | **422** Unprocessable Entity | 例如「庫存不足」 |
+| 格式正確但違反業務規則 | **422** Unprocessable Content（舊稱 Unprocessable Entity） | 例如「庫存不足」 |
 | 超過流量限制 | **429** Too Many Requests | 第 18 章 |
 | 伺服器內部錯誤 | **500** Internal Server Error | 未預期的例外 |
 | 下游服務失敗 | **502** Bad Gateway | 呼叫的外部服務掛了 |
@@ -428,6 +428,8 @@ public async ValueTask<bool> TryHandleAsync(
 
 ## 連結
 
+- [[basics-02-rest-api-design]] — 入門篇對應章：先學怎麼做，本章講為什麼
+- [[basics-08-middleware-and-exception-handling]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[14-authorization]] — 上一章：401/403 的產生
 - [[16-logging-and-observability]] — 下一章：log 與 traceId 的串接

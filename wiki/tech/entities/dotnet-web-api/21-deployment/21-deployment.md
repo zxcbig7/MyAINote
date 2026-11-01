@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, docker, kubernetes, deployment, api-versioning, gc, migration]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-15
-updated: 2026-08-15
+updated: 2026-11-01
 ---
 
 # 第 21 章：部署 — 從 `dotnet run` 到叢集裡的三個副本
@@ -396,6 +396,8 @@ schema 變更必須向前相容。刪欄位拆成兩次部署：先讓程式碼�
 
 ## 連結
 
+- [[basics-14-openapi-and-versioning]] — 入門篇對應章：先學怎麼做，本章講為什麼
+- [[basics-16-deployment-and-go-live]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[20-testing]] — 上一章
 - [[22-self-assessment]] — 下一章：自我檢測

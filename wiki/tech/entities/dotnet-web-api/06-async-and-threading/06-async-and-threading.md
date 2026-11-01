@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, csharp, async, await, threadpool, cancellation, valuetask, concurrency]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 06 章：async 與執行緒 — 它省的不是時間，是執行緒
@@ -425,6 +425,7 @@ ASP.NET Core 沒有 `SynchronizationContext`，continuation 在 ThreadPool 的�
 
 ## 連結
 
+- [[basics-10-efcore-and-oracle]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[05-filters-and-mvc-internals]] — 上一章：filter 的非同步版本
 - [[07-efcore-internals]] — 下一章：DbContext 為什麼不能並行

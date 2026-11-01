@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, efcore, linq, iqueryable, n-plus-one, pagination, sql, performance]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 08 章：查詢 — LINQ 怎麼變成 SQL，以及什麼時候變不了
@@ -486,6 +486,7 @@ var users = await _db.Users
 
 ## 連結
 
+- [[basics-10-efcore-and-oracle]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[07-efcore-internals]] — 上一章：change tracker 與投影不追蹤的原因
 - [[09-transactions-and-concurrency]] — 下一章：交易邊界與並發控制

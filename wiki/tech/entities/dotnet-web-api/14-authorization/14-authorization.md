@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, authorization, policy, requirement, rbac, multi-tenancy]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 14 章：授權 — 從 `[Authorize(Roles = "Admin")]` 到真正的權限模型
@@ -447,6 +447,8 @@ Attribute 做不到，因為授權 filter 跑在資料載入之前。用 resourc
 
 ## 連結
 
+- [[basics-12-jwt-login]] — 入門篇對應章：先學怎麼做，本章講為什麼
+- [[basics-13-permissions-with-frontend]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[13-oauth-oidc]] — 上一章：取得身分
 - [[15-error-handling]] — 下一章：401/403 之外的錯誤處理

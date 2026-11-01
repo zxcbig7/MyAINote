@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, efcore, oracle, provider, dapper, clob, sequence, migration]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 10 章：Oracle 特有問題 — EF Core 遇上大寫世界
@@ -492,6 +492,7 @@ EF Core 建的表名帶引號、是混合大小寫的 `Users`。要嘛查詢時�
 
 ## 連結
 
+- [[basics-10-efcore-and-oracle]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[09-transactions-and-concurrency]] — 上一章：Oracle 的隔離級別與並發 token
 - [[11-authentication]] — 下一章：認證的 scheme 模型

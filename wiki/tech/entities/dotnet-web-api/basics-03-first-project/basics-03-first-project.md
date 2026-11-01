@@ -367,7 +367,7 @@ public class PingController : ControllerBase
     public ActionResult<PingResponse> Get() => Ok(new PingResponse("pong", DateTimeOffset.UtcNow));
 }
 
-publicrecord PingResponse(string Message, DateTimeOffset Time);
+public sealed record PingResponse(string Message, DateTimeOffset Time);
 ```
 
 逐項看一下它的零件，細節留給下一章：

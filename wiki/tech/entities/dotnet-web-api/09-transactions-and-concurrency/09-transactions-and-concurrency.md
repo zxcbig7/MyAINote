@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, efcore, transaction, concurrency, isolation-level, optimistic-locking, outbox]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 09 章：交易與並發 — 兩個人同時按下按鈕的時候
@@ -526,6 +526,7 @@ foreach (var order in orders)
 
 ## 連結
 
+- [[basics-10-efcore-and-oracle]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[08-efcore-query]] — 上一章：`ExecuteUpdate` 與原生 SQL
 - [[10-oracle-specifics]] — 下一章：Oracle provider 的特殊行為

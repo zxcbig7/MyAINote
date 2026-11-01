@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, self-assessment, quiz, interview, review]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-15
-updated: 2026-08-15
+updated: 2026-11-01
 ---
 
 # 附錄 A：自我檢測 — 講得出來才算會
@@ -40,7 +40,7 @@ L3 答不出來不代表沒學會，但那正是「會用」與「問不倒」�
 
 <details><summary>答案</summary>
 
-服務清單被封裝成 `ServiceProvider` 並凍結。容器在建立時預先編譯了每個型別的建構表達式（把反射工作在啟動時做完），允許後期修改就得放棄這層最佳化，並引入執行緒安全問題。
+服務清單被封裝成 `ServiceProvider` 並凍結。容器依這份固定清單決定建構方式並快取解析結果，允許後期修改會讓快取與清單不一致，並引入執行緒安全問題。
 
 </details>
 
@@ -624,6 +624,7 @@ CPU limit 影響 `Environment.ProcessorCount`，進而決定 ThreadPool 的最�
 
 ## 連結
 
+- [[basics-17-attribute-reference]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[21-deployment]] — 上一章
 - [[23-cheatsheet]] — 附錄 B：速查表

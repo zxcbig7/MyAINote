@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, middleware, pipeline, requestdelegate, cors, http]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 01 章：Request Pipeline — 洋蔥不是比喻，是實作
@@ -302,7 +302,7 @@ app.UseMiddleware<ApiKeyMiddleware>();
 | `UseCors` | 選中的 Endpoint（才知道該 endpoint 的 CORS policy） | 加上 CORS header，preflight 短路 |
 | `UseAuthentication` | 無 | **填好 `HttpContext.User`** |
 | `UseAuthorization` | Endpoint（才知道有沒有 `[Authorize]`）+ `User` | 檢查失敗則短路 401/403 |
-| `MapControllers` | 前面全部 | 執行 endpoint |
+| `MapControllers` | 無 | 只登記 endpoint；真正執行它的是 pipeline 最後的 endpoint middleware |
 
 推導結果：
 
@@ -314,7 +314,7 @@ app.UseRouting();               // 必須在 CORS / Authorization 之前
 app.UseCors();                  // 必須在 Authorization 之前（否則 401 沒有 CORS header）
 app.UseAuthentication();        // 必須在 Authorization 之前（先有身分才能查權限）
 app.UseAuthorization();
-app.MapControllers();           // 終點
+app.MapControllers();           // 登記 endpoint；執行由最後的 endpoint middleware 負責
 ```
 
 現在回頭看開頭三段程式碼，答案是自明的：
@@ -325,7 +325,7 @@ app.MapControllers();           // 終點
 
 ### 5.1 `UseRouting` 為什麼是分水嶺
 
-`UseRouting` 做的事是：拿 `Request.Path` 去比對所有註冊的 endpoint，**選出**要執行的那一個，把它放進 `HttpContext.Features` 裡。注意它只是「選出」，並不執行。真正的執行在 `UseEndpoints`（現在被 `MapControllers` 隱含呼叫）那一層。
+`UseRouting` 做的事是：拿 `Request.Path` 去比對所有註冊的 endpoint，**選出**要執行的那一個，把它放進 `HttpContext.Features` 裡。注意它只是「選出」，並不執行。真正的執行在 pipeline 最後的 endpoint middleware 那一層。在 `WebApplication` 的寫法下，`MapControllers` 這類 `Map*` 只負責登記 endpoint，執行的 middleware 由框架自動放在最後，所以實測把其他 `Use*` 放在 `MapControllers` 前面或後面，行為相同；只有舊式 `app.UseEndpoints(...)` 明確出現時，排在它後面的 middleware 才會變成「只在沒命中 endpoint 時執行」。
 
 為什麼要把「選擇」和「執行」拆成兩段、中間留一大塊空間？**因為那塊空間裡的 middleware 需要知道『這個請求最終會跑到哪個 endpoint』才能決定行為。**
 
@@ -346,6 +346,8 @@ app.Use(async (ctx, next) =>
 放在 `UseRouting` 之前，`GetEndpoint()` 永遠回 null。這是很多「為什麼我的 middleware 拿不到 endpoint」問題的答案。
 
 .NET 6 之後，如果沒有明確呼叫 `UseRouting`，框架會在 pipeline 最前面自動插入一個。這個貼心設計有副作用：**你以為省了一行，實際上 `UseRouting` 被放到了最前面**——大多數情況沒差，但如果有 middleware 想在 routing 之前改寫 `Request.Path`（URL rewrite），就會發現改了沒用，因為路由早就選完了。需要精確控制時，明確寫出 `app.UseRouting()`。
+
+`UseAuthentication` 與 `UseAuthorization` 也有類似的自動補法（.NET 7 起，在 `WebApplication` 下，且服務必須已註冊）。陷阱在於「只寫了一個」：實測只呼叫 `UseAuthentication()` 時，框架補的授權 middleware 會排在它前面，結果已登入的請求也一律 401，而且沒有任何例外或 log，症狀和順序寫反完全相同。所以仍然建議兩個都明確寫出，順序固定為認證在前、授權在後。
 
 ---
 
@@ -507,6 +509,8 @@ Middleware 在 MVC 外層，涵蓋所有請求但看不到 action 資訊；Filte
 
 ## 連結
 
+- [[basics-03-first-project]] — 入門篇對應章：先學怎麼做，本章講為什麼
+- [[basics-08-middleware-and-exception-handling]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[00-hosting-and-startup]] — 上一章：pipeline 是在哪一刻被組裝的
 - [[02-dependency-injection]] — 下一章：scope 與 captive dependency

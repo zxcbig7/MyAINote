@@ -408,6 +408,7 @@ function TaskTitleInput(): ReactElement {
 
 ## 連結
 
+- [[basics-02-rest-api-design]] — 這個 Task Tracker 的後端規格；真實後端的 `GET /api/tasks` 回 `{ items, page, pageSize, totalCount }`，不是陣列
 - [[dom]]
 - [[typescript]]
 - [[react]]

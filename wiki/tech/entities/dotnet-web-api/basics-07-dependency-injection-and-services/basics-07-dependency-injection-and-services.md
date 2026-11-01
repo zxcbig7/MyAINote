@@ -93,7 +93,7 @@ using TaskTracker.Api.Extensions;
 namespace TaskTracker.Api.Services;
 
 // 資料放在執行個體裡，所以這個 Service 必須註冊成 Singleton；第十章換成 DbContext 後改為 Scoped
-publicclass TaskService : ITaskService
+public sealed class TaskService : ITaskService
 {
     private readonly object _gate = new();
     private readonly TimeProvider _timeProvider;
@@ -621,7 +621,7 @@ var controller = new TasksController(new FakeTaskService());
 var result = await controller.GetByIdAsync(Guid.NewGuid(), CancellationToken.None);
 Console.WriteLine(result.Result is NotFoundResult ? "NotFound" : result.Result?.GetType().Name);
 
-publicclass FakeTaskService : ITaskService
+public sealed class FakeTaskService : ITaskService
 {
     public Task<PagedResponse<TaskResponse>> ListAsync(TaskListQuery query, CancellationToken ct) => throw new NotImplementedException();
     public Task<TaskResponse?> GetByIdAsync(Guid id, CancellationToken ct) => Task.FromResult<TaskResponse?>(null);

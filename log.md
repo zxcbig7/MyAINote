@@ -1278,3 +1278,13 @@
 ## [2026-10-31] synthesis | UIUX visual examples
 
 為 UIUX Design Cheat Book 的 28 章加入原創介面對照圖、圖說與 UX 規則連結，方便讀者對照正反例；圖片存放於文章旁的 assets/，同步更新 index 入口。
+
+## [2026-11-01] synthesis | ASP.NET Core Web API 全書整併（入門篇）
+
+- 依使用者要求把 `raw/Web Framework/NET Web API/` 25 份筆記整理成一本書，並與既有 24 章深度教材合為《ASP.NET Core Web API：從入門到專家》：新寫入門篇 17 章（`basics-*`），既有章節成為深度篇，另規劃專家篇 9 章（`expert-*`）。總目錄 [[dotnet-web-api]] 改寫，附來源對照與舊筆記修正表。
+- 基準版本定為 .NET 10（.NET 8、9 於 2026-11-10 終止支援）。入門篇程式碼與輸出全部來自驗證用專案 TaskTracker（14 個階段建置成功、77 個測試通過，含 Testcontainers 真實 Oracle），並實測 15 項有疑慮的框架行為。
+
+## [2026-11-01] refactor | .NET Web API 深度篇校對
+
+- 依實測修正深度篇確實錯誤的地方：`[controller]` 大小寫、尾斜線、`= string.Empty` 不會觸發隱含必填、`MapControllers` 只登記不執行、HS256 金鑰的錯誤碼、422 名稱、標準 resilience handler 預設重試 POST、`Build()` 後唯讀的因果。僅版本差異的項目保留 .NET 8 說法，留待 [[expert-08-dotnet-8-to-10]]。
+- 24 個檔案補上指向入門篇的連結，`sources` 路徑改為現行位置。

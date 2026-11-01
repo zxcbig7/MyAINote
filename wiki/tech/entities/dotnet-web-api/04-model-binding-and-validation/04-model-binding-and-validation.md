@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, model-binding, validation, dataannotations, system-text-json, problemdetails]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 04 章：Model Binding 與驗證 — 參數是怎麼被填進去的
@@ -163,20 +163,22 @@ public CreateUserDto(string Name, string Email) { ... }
 ```csharp
 public class CreateUserDto
 {
-    public string Name { get; set; } = string.Empty;   // 不可為 null
-    public string? Nickname { get; set; }              // 可為 null
+    public string Name { get; set; }   // 不可為 null，沒有初始值
+    public string? Nickname { get; set; }   // 可為 null
 }
 ```
 
-`Name` 是不可為 null 的參考型別。ASP.NET Core 的驗證系統會**自動把它視為 `[Required]`**。於是前端送 `{"nickname": "x"}` 沒帶 `name`，得到的是 400 加上「The Name field is required.」——即使你從來沒寫過 `[Required]`。
+`Name` 是不可為 null 的參考型別。ASP.NET Core 的驗證系統會**自動把它視為 `[Required]`**。於是前端送 `{"nickname": "x"}` 沒帶 `name`，`Name` 維持預設值 `null`，得到的是 400 加上「The Name field is required.」——即使你從來沒寫過 `[Required]`。（編譯器會對這個沒有初始值的屬性發出 CS8618 警告，這也是不少人順手補上 `= string.Empty` 的原因。）
 
-這通常正是你要的行為（不可為 null 就是必填，語意一致）。問題出在它跟另一個場景衝突：**PATCH 式的部分更新**。
+這裡有個容易誤會的細節：隱含的必填檢查只在**值為 `null`** 時才觸發。如果寫成 `public string Name { get; set; } = string.Empty;`，沒帶 `name` 時屬性保有初始值 `""`，不是 `null`，驗證通過，action 會收到空字串而不是 400。實測也是如此，回應 body 是 `{"name":""}`。所以 `= string.Empty` 等於悄悄關掉了「缺欄位就 400」的保護，需要擋空值時要另外加 `[Required]`（它會連空字串一起擋）或 `[MinLength]`。
+
+隱含必填通常正是你要的行為（不可為 null 就是必填，語意一致）。問題出在它跟另一個場景衝突：**PATCH 式的部分更新**。
 
 ```csharp
 public class UpdateUserDto
 {
-    public string Name { get; set; } = string.Empty;   // 使用者只想改 email，沒送 name → 400
-    public string Email { get; set; } = string.Empty;
+    public string Name { get; set; }   // 使用者只想改 email，沒送 name → 400
+    public string Email { get; set; }
 }
 ```
 
@@ -535,6 +537,8 @@ ASP.NET Core 預設大小寫不敏感，`userName`、`UserName`、`username` 都
 
 ## 連結
 
+- [[basics-05-model-binding-and-validation]] — 入門篇對應章：先學怎麼做，本章講為什麼
+- [[basics-06-dto-design]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[03-routing-and-endpoints]] — 上一章：參數來源之一的路由值
 - [[05-filters-and-mvc-internals]] — 下一章：驗證的自動 400 是哪個 filter 做的

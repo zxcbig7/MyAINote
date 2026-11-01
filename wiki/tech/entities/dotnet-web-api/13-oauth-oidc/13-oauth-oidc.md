@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, oauth, oidc, google-login, pkce, id-token, forwarded-headers]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 13 章：OAuth 2.0 與 OIDC — 「用 Google 登入」按鈕背後
@@ -357,6 +357,7 @@ Google 預設只在首次授權時發放。需要重新取得的話要加 `promp
 
 ## 連結
 
+- [[basics-13-permissions-with-frontend]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[12-jwt-deep-dive]] — 上一章：簽發自家 JWT
 - [[14-authorization]] — 下一章：拿到身分之後的權限判斷

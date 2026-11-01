@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, efcore, dbcontext, change-tracker, orm, unit-of-work, tracking]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 07 章：EF Core 內部 — Change Tracker 到底在追蹤什麼
@@ -438,6 +438,7 @@ identity map 的效果——同一個 DbContext 內同一主鍵回傳同一個�
 
 ## 連結
 
+- [[basics-10-efcore-and-oracle]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[06-async-and-threading]] — 上一章：為什麼 DbContext 不能並行
 - [[08-efcore-query]] — 下一章：LINQ 怎麼變成 SQL

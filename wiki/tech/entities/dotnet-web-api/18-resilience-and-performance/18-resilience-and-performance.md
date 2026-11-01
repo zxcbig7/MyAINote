@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, httpclient, polly, resilience, cache, rate-limiting, circuit-breaker, performance]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 18 章：韌性與效能 — 別讓下游拖垮你
@@ -190,6 +190,7 @@ builder.Services.AddHttpClient<IPaymentClient, PaymentClient>(client =>
     options.Retry.MaxRetryAttempts = 3;
     options.Retry.BackoffType = DelayBackoffType.Exponential;
     options.Retry.UseJitter = true;
+    options.Retry.DisableForUnsafeHttpMethods();   // 預設連 POST 都會重試
 
     options.CircuitBreaker.FailureRatio = 0.5;
     options.CircuitBreaker.MinimumThroughput = 10;
@@ -201,6 +202,8 @@ builder.Services.AddHttpClient<IPaymentClient, PaymentClient>(client =>
 ```
 
 `Microsoft.Extensions.Http.Resilience`（.NET 8+，底層是 Polly v8）提供了一組經過調校的預設值。它組合了五個策略：總逾時 → 重試 → 斷路器 → 單次逾時 → 實際呼叫。
+
+回頭對照 3.1 的紀律有一個陷阱：標準 handler 的重試**預設對所有 HTTP 方法生效，連 POST 也會重試**，不會替你判斷冪等性。呼叫扣款這類非冪等端點時，要用 `options.Retry.DisableForUnsafeHttpMethods()` 把 POST、PUT、PATCH、DELETE 等排除（或用 `DisableFor(HttpMethod.Post)` 指定個別方法），或確定對方支援冪等鍵再放行。
 
 在 .NET 6/7 上用 Polly 直接寫也可以，但這個標準組合省去了「策略順序該怎麼排」的思考——那個順序是有講究的（重試必須包在斷路器外面，否則斷路器開啟時重試會白費）。
 
@@ -499,6 +502,7 @@ Cache stampede——快取同時過期，大量請求同時回源。加鎖（雙
 
 ## 連結
 
+- [[basics-01-http-and-web-api]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[17-configuration-and-secrets]] — 上一章
 - [[19-background-work]] — 下一章：背景工作與排程

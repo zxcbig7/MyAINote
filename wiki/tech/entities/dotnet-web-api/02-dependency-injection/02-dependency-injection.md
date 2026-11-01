@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, dependency-injection, di, lifetime, scope, idisposable]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 02 章：依賴注入 — Scope 是誰開的、誰負責關
@@ -90,7 +90,7 @@ public class UserService
 
 這個規則有一個副作用值得警惕：**忘記註冊某個依賴時，容器可能悄悄選了較短的建構子，而不是報錯**。於是服務跑起來了，只是某個功能靜靜地不作用。實務建議是**每個服務只留一個公開建構子**——這樣缺依賴時會直接拋出明確的 `Unable to resolve service for type 'X'`，錯誤在啟動或第一次解析時就顯性化。
 
-也是因為這條規則，第 00 章建議的 `ValidateOnBuild = true` 特別有價值：它在啟動時就把所有註冊試著解析一遍，把「缺依賴」從執行期問題變成啟動期問題。
+也是因為這條規則，第 00 章建議的 `ValidateOnBuild = true` 特別有價值：它在啟動時就把所有註冊試著解析一遍，把「缺依賴」從執行期問題變成啟動期問題。要注意它檢查的是「能不能解析」，不是生命週期是否匹配：實測只開 `ValidateOnBuild`、關掉 `ValidateScopes` 時，Singleton 持有 Scoped 服務（captive dependency）偵測不到，兩次請求拿到同一個 Scoped 實例。要抓這類錯誤得靠 `ValidateScopes`。
 
 ---
 
@@ -400,7 +400,7 @@ Singleton 只省下建立成本，通常微不足道。它帶來的是執行緒�
 它會製造更多配置，而且若實作 `IDisposable`，實例會被 scope 追蹤到 scope 結束為止。從 root provider 解析 Transient + `IDisposable` 是標準的記憶體洩漏配方。
 
 **「框架會擋住所有生命週期錯誤。」**
-scope validation 只檢查 Singleton 消費 Scoped，且**預設只在 Development 開啟**。Transient 被俘虜、自己用 `new` 繞過容器、透過 Service Locator 動態解析，全都檢查不到。
+scope validation 只檢查 Singleton 消費 Scoped，且**預設只在 Development 開啟**。Transient 被俘虜、自己用 `new` 繞過容器，都檢查不到；透過 Service Locator 動態解析的也躲得過啟動期的檢查（`Build()` 不會失敗），只有在 scope validation 開啟時，那一行真正執行的當下才會丟 `Cannot resolve scoped service ... from root provider`，Production 預設關閉時則一樣靜默通過。
 
 **「注入 `IServiceProvider` 比較彈性。」**
 那是 Service Locator，會讓依賴關係從型別簽章上消失，測試與啟動驗證都失效。需要動態選擇實作時用工廠介面或 keyed services。
@@ -431,6 +431,7 @@ scope validation 只檢查 Singleton 消費 Scoped，且**預設只在 Developme
 
 ## 連結
 
+- [[basics-07-dependency-injection-and-services]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[01-request-pipeline]] — 上一章：middleware 的 DI 特例
 - [[03-routing-and-endpoints]] — 下一章：endpoint 的選擇與執行

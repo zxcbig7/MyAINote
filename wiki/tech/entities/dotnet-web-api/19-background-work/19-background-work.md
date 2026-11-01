@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, background-service, hangfire, hosted-service, channel, outbox, leader-election]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 19 章：背景工作 — 三個副本，同一封信寄了三次
@@ -475,6 +475,7 @@ protected override async Task ExecuteAsync(CancellationToken stoppingToken)
 
 ## 連結
 
+- [[basics-07-dependency-injection-and-services]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[18-resilience-and-performance]] — 上一章
 - [[20-testing]] — 下一章：測試策略

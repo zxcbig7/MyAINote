@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, testing, xunit, webapplicationfactory, testcontainers, mock, timeprovider]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-15
-updated: 2026-08-15
+updated: 2026-11-01
 ---
 
 # 第 20 章：測試 — 測了很多，但沒有信心
@@ -449,6 +449,7 @@ Minimal hosting model 的 `Program` 是隱含的 internal 類別。在 `Program.
 
 ## 連結
 
+- [[basics-15-testing]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[19-background-work]] — 上一章
 - [[21-deployment]] — 下一章：部署與交付

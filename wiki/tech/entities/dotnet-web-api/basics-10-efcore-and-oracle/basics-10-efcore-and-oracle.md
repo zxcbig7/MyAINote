@@ -5,14 +5,14 @@ tags: [dotnet, aspnet, web-api, efcore, oracle, migration, dbcontext, docker-com
 sources:
   - raw/Web Framework/NET Web API/Chapter 7：EF Core 與資料存取設計.md
 created: 2026-10-31
-updated: 2026-10-31
+updated: 2026-11-01
 ---
 
 # 入門第 10 章：EF Core 與 Oracle — 資料怎麼真的存進資料庫
 
 ## 重啟一次，三筆任務全沒了
 
-前九章的 TaskTracker 有一個沒拿出來講的缺點：任務清單住在 `TaskService` 的一個集合裡，那個集合在行程的記憶體中。用 `curl.exe` 建立三筆任務，`GET` 看得到；按 `Ctrl+C` 再 `dotnet run`，再 `GET` 一次，`items` 是空的。前面的章節刻意不碰資料庫，專心學 Controller、DI、Middleware 與設定。但是資料撐不過一次重啟的 API，只是示範程式，沒有人敢把它當系統。
+前九章的 TaskTracker 有一個沒拿出來講的缺點：任務清單住在 `TaskService` 的一個集合裡，那個集合在程序的記憶體中。用 `curl.exe` 建立三筆任務，`GET` 看得到；按 `Ctrl+C` 再 `dotnet run`，再 `GET` 一次，`items` 是空的。前面的章節刻意不碰資料庫，專心學 Controller、DI、Middleware 與設定。但是資料撐不過一次重啟的 API，只是示範程式，沒有人敢把它當系統。
 
 本章把它補成真的：`TaskService` 不再持有集合，改為透過 EF Core 讀寫 Oracle，API 對外的網址、DTO、狀態碼完全不變。順序是先用 Docker Compose 在本機跑一個 Oracle，再裝套件、寫 `DbContext` 與 entity 設定、用 migration 建表，然後把 `TaskService` 換成資料庫版，接著看兩種出錯情境（標題重複與資料庫連不上），最後談交易，以及兩種幾乎每個初學者都會寫的低效寫法。
 
@@ -59,7 +59,7 @@ error while interpolating services.oracle.environment.APP_USER_PASSWORD: require
 
 第二，`ORACLE_PASSWORD` 是資料庫管理者（SYS、SYSTEM）的密碼，`APP_USER` 與 `APP_USER_PASSWORD` 則讓映像在第一次啟動時額外建立一個應用程式專用的使用者。API 應該用後者連線，不用管理者帳號。在 Oracle，schema 就是使用者，`tasktracker` 擁有的資料表就在 `TASKTRACKER` schema（見 [[10-oracle-specifics]]）。
 
-第三，`healthcheck` 讓 Compose 知道容器何時「真的可以連」：行程啟動不代表資料庫已接受連線。`start_period: 30s` 表示前 30 秒的失敗不計入重試次數，搭配 `docker compose up -d --wait`，指令會等到健康檢查通過才返回。
+第三，`healthcheck` 讓 Compose 知道容器何時「真的可以連」：程序啟動不代表資料庫已接受連線。`start_period: 30s` 表示前 30 秒的失敗不計入重試次數，搭配 `docker compose up -d --wait`，指令會等到健康檢查通過才返回。
 
 在 PowerShell 裡設定兩個密碼（換成自己的值，這兩個值不進版本控制）並啟動：
 
@@ -154,12 +154,12 @@ public class AppDbContext : DbContext
 }
 ```
 
-建構函式接收 `DbContextOptions<AppDbContext>`，裡面裝著「用哪個 provider、連線字串是什麼」，由 DI 在註冊時填好，`DbContext` 不必知道連線字串從哪來。`DbSet<TaskItem>` 代表資料表，對它做 LINQ 查詢就是查表，對它呼叫 `Add` 就是準備新增一列。
+建構子接收 `DbContextOptions<AppDbContext>`，裡面裝著「用哪個 provider、連線字串是什麼」，由 DI 在註冊時填好，`DbContext` 不必知道連線字串從哪來。`DbSet<TaskItem>` 代表資料表，對它做 LINQ 查詢就是查表，對它呼叫 `Add` 就是準備新增一列。
 
 `OnModelCreating` 只有一行，是刻意的。對應設定可以全寫在這個方法裡，但 entity 一多就會膨脹成幾百行。`IEntityTypeConfiguration<T>` 讓每個 entity 有自己的設定類別，`ApplyConfigurationsFromAssembly` 自動找出並套用。以後新增 entity 只需新增一個設定檔，`AppDbContext` 不必動：
 
 ```csharp
-publicclass TaskItemConfiguration : IEntityTypeConfiguration<TaskItem>
+public sealed class TaskItemConfiguration : IEntityTypeConfiguration<TaskItem>
 {
     public void Configure(EntityTypeBuilder<TaskItem> builder)
     {
@@ -208,7 +208,7 @@ select title from lab_task_items => 成功
 `UseOracle(...)` 需要連線字串，而它包含密碼。規則只有一條：不寫在程式碼裡，也不放進進版控的 `appsettings.json`。[[basics-09-configuration-and-environments]] 已鋪好路：用 Options 類別接設定，開發時放 User Secrets，部署時放環境變數或 Secret。
 
 ```csharp
-publicclass ConnectionStringOptions
+public sealed class ConnectionStringOptions
 {
     public const string SectionName = "ConnectionStrings";
 
@@ -334,7 +334,7 @@ public static async Task InitializeDatabaseAsync(this WebApplication app)
 自動 migrate 由 `Database:MigrateOnStartup` 這個旗標控制。它對應一個簡單的 Options 類別，註冊方式和 `ConnectionStringOptions` 相同（不需要驗證，預設值 `false` 就是安全的選擇）：
 
 ```csharp
-publicclass DatabaseOptions
+public sealed class DatabaseOptions
 {
     public const string SectionName = "Database";
 
@@ -375,7 +375,7 @@ INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion") VALUES (N'
 
 ### 7.1 Singleton 改 Scoped
 
-記憶體版的 `ITaskService` 是 Singleton，因為它要持有那個集合，整個應用程式只能有一份。換成資料庫版之後，`TaskService` 的建構函式會注入 `AppDbContext`，而 `AddDbContext` 預設把 `DbContext` 註冊成 Scoped：每個 HTTP 請求一個實例，請求結束就釋放。
+記憶體版的 `ITaskService` 是 Singleton，因為它要持有那個集合，整個應用程式只能有一份。換成資料庫版之後，`TaskService` 的建構子會注入 `AppDbContext`，而 `AddDbContext` 預設把 `DbContext` 註冊成 Scoped：每個 HTTP 請求一個實例，請求結束就釋放。
 
 ```csharp
 public static IServiceCollection AddTaskTrackerServices(this IServiceCollection services)
@@ -534,7 +534,7 @@ Location: http://localhost:5080/api/tasks/a8f845e2-dbc6-41ca-a47c-d3e6bb1e0848
 {"id":"a8f845e2-dbc6-41ca-a47c-d3e6bb1e0848","title":"Write chapter 10","status":"todo","createdAt":"2026-10-30T14:36:26.6763444+00:00"}
 ```
 
-回應與記憶體版的格式完全相同。再建兩筆之後，用 `curl.exe "http://localhost:5080/api/tasks?page=2&pageSize=2"` 查第 2 頁、每頁 2 筆：回應的 `items` 只有一筆，`page` 是 2，`totalCount` 是 3：三筆資料、每頁兩筆，第二頁剩一筆。到這一步，重啟 API 之後資料還在，因為它們在 Oracle 裡，不在行程裡。
+回應與記憶體版的格式完全相同。再建兩筆之後，用 `curl.exe "http://localhost:5080/api/tasks?page=2&pageSize=2"` 查第 2 頁、每頁 2 筆：回應的 `items` 只有一筆，`page` 是 2，`totalCount` 是 3：三筆資料、每頁兩筆，第二頁剩一筆。到這一步，重啟 API 之後資料還在，因為它們在 Oracle 裡，不在程序裡。
 
 ## 八、標題重複：ORA-00001 如何變成 409
 
@@ -659,7 +659,7 @@ fail: Microsoft.EntityFrameworkCore.Database.Connection[20004]
 
 改以 Production 環境重做同樣的測試，回應一樣是通用的 500，只有 `traceId` 不同。
 
-503 Service Unavailable 更貼近「依賴的後端暫時不可用」，但要做到需要區分暫時性連線錯誤與程式 bug，還要設計重試與熔斷，那是 [[18-resilience-and-performance]] 的主題。入門的底線是不吞例外、不把驅動的錯誤訊息回給使用者、確保有 log 可查；服務是否還活著，交給健康檢查端點（[[basics-16-deployment-and-go-live]]）。
+503 Service Unavailable 更貼近「依賴的後端暫時不可用」，但要做到需要區分暫時性連線錯誤與程式 bug，還要設計重試與熔斷，那是 [[18-resilience-and-performance]] 的主題。入門的底線是不吞例外、不把驅動的錯誤訊息回給使用者、確保有 log 可查；服務是否還活著，交給健康檢查端點，[[basics-16-deployment-and-go-live]] 也會在那裡把「資料庫暫時連不上」這一類錯誤改回 503。
 
 ## 十、交易：EF Core 預設已經做了什麼
 

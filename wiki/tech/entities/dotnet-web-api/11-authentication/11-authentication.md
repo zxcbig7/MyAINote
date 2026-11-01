@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, authentication, scheme, claims, cookie, bearer, identity]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 11 章：認證 — Scheme、Claims，以及 401 與 403 的分界
@@ -387,6 +387,7 @@ builder.Services.AddAuthentication()
 
 ## 連結
 
+- [[basics-11-auth-concepts-and-pipeline]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[10-oracle-specifics]] — 上一章
 - [[12-jwt-deep-dive]] — 下一章：JWT 驗證的每個參數

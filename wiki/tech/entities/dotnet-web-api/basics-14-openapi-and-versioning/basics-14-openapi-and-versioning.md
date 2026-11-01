@@ -166,7 +166,7 @@ internal sealed class SecurityRequirementOperationTransformer : IOpenApiOperatio
 
 注意 `OpenApiSecuritySchemeReference("Bearer", context.Document)` 這種寫法。內建產生器在 .NET 9 到 10 之間換了底層的 `Microsoft.OpenApi` 函式庫（2.x 版），命名空間從 `Microsoft.OpenApi.Models` 改為 `Microsoft.OpenApi`，引用 scheme 的方式也從過去的 `new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }` 變成 `OpenApiSecuritySchemeReference`。網路上大量的 Swashbuckle 範例與 `AddSecurityDefinition` 寫法，在內建產生器上都不能用。連官方文件裡也有一頁的範例仍停留在舊寫法，和同一頁上方的新寫法不一致；遇到舊式 `OpenApiReference`，以本節的寫法為準。
 
-這兩個 transformer 的註冊在第七節，和版本管理的設定放在一起。
+這兩個 transformer 的註冊在第八節，和版本管理的設定放在一起。
 
 ---
 

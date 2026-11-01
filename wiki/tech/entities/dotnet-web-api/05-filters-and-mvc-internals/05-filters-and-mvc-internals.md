@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, filters, mvc, actionresult, content-negotiation, endpoint-filter]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 05 章：Filter 與 MVC 內部 — 橫切關注點該放哪一層
@@ -523,6 +523,7 @@ app.MapPost("/users", CreateUser).AddEndpointFilter<ValidationFilter<CreateUserD
 
 ## 連結
 
+- [[basics-08-middleware-and-exception-handling]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[04-model-binding-and-validation]] — 上一章：filter 前後的綁定與驗證
 - [[06-async-and-threading]] — 下一章：async 在這些管線裡的真實行為

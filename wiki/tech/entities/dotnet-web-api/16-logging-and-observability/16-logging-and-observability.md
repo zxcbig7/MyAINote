@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, logging, serilog, opentelemetry, prometheus, elk, health-check, tracing]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 16 章：Logging 與可觀測性 — 出事的時候才發現記錯了東西
@@ -410,6 +410,7 @@ liveness 失敗會重啟 Pod。如果它檢查資料庫，資料庫一抖動就�
 
 ## 連結
 
+- [[basics-16-deployment-and-go-live]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[15-error-handling]] — 上一章：traceId 放進錯誤回應
 - [[17-configuration-and-secrets]] — 下一章：設定與 Secret

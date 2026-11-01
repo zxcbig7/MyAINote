@@ -3,7 +3,7 @@ type: moc
 domain: tech
 tags: [web-backend, dotnet, csharp, python, fastapi, api]
 created: 2026-05-10
-updated: 2026-08-16
+updated: 2026-11-01
 ---
 
 # Web Backend MOC
@@ -12,7 +12,7 @@ updated: 2026-08-16
 
 ## 核心 Entities
 
-- [[dotnet-web-api]] — ASP.NET Core Web API、Controller、DI、Middleware、JWT（含 22 章 + 2 附錄教材）
+- [[dotnet-web-api]] — 全書目錄《ASP.NET Core Web API：從入門到專家》：入門篇 17 章（[[basics-01-http-and-web-api]] 起）、深度篇 22 章 + 2 附錄（[[00-hosting-and-startup]] 起）、專家篇 9 章（[[expert-01-advanced-api-design]] 起）
 - [[python-fast-api]] — FastAPI：ASGI、型別驅動驗證、`Depends`、Pydantic v2（含 12 章 + 3 附錄教材）
 - [[csharp]] — C# 語法、OOP、LINQ、async/await
 - [[python]] — Python 語言基礎

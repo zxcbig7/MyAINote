@@ -256,7 +256,7 @@ tasks:read
 ```csharp
 namespace TaskTracker.Api.Dtos;
 
-publicrecord MeResponse(Guid Id, string Email, string Role, IReadOnlyList<string> Permissions);
+public sealed record MeResponse(Guid Id, string Email, string Role, IReadOnlyList<string> Permissions);
 ```
 
 新增 `Extensions/ClaimsPrincipalExtensions.cs`，把 `ClaimsPrincipal` 轉成 DTO。`MapInboundClaims = false`（[[basics-12-jwt-login]] 已設定）讓 claim 保持 token 裡的名字，所以這裡讀 `sub`、`email`、`role` 就是原名：

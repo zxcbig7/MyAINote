@@ -415,7 +415,7 @@ Mapperly 的路線不同：mapping 方法的實作在編譯期產生成普通 C#
 
 判準可以訂得具體一點：DTO 少於十來個，手動。多於這個數量，且 mapping 規則單純（欄位同名同型別），選用 source generator 類工具。需要大量條件式、跨多層物件的對映設定，才輪到執行期工具，而且先確認授權與維護狀況。無論選哪一個，有一條不變：mapping 工具只負責欄位搬運，不要把商業邏輯寫進 mapping 設定，否則除錯時行為藏在設定檔裡。
 
-另一個常見的誤用是在 `Select` 之前先把整個 entity 載入再 mapping。使用 EF Core 時，可以在查詢階段就只選出需要的欄位（projection），讓資料庫少傳資料；這個技巧在 [[basics-10-efcore-and-oracle]] 與深度篇 EF Core 查詢章節會再談。目前 TaskTracker 還是記憶體清單，先不處理。
+另一個常見的誤用是在 `Select` 之前先把整個 entity 載入再 mapping。使用 EF Core 時，可以在查詢階段就只選出需要的欄位（projection），讓資料庫少傳資料；這個技巧留給深度篇 [[08-efcore-query]]。目前 TaskTracker 還是記憶體清單，先不處理。
 
 ---
 

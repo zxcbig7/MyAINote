@@ -256,7 +256,7 @@ Unhandled exception. System.AggregateException: Some services are not able to be
 
 同樣的程式在 Production 啟動不會檢查，不報錯（DI 的 scope 檢查預設只在 Development 開，機制見 [[02-dependency-injection]]）。所以這類問題要靠在開發機上跑過才會被攔住。Singleton 需要看到新值就用 `IOptionsMonitor<T>`；一般 Web API 的 Service、Controller 讀「啟動後固定」的設定，用 `IOptions<T>` 就夠了。
 
-第二個考量是「新值」從哪裡來。三個介面能讀到新值的前提，是設定來源本身會變。`appsettings.json` 的 JSON provider 預設會監看檔案，檔案改了就重載；環境變數在行程啟動之後不會再變。所以在 K8s 上改了 ConfigMap 注入的環境變數，重點不是用哪個 Options 介面，而是 Pod 得重啟。想靠「不重新部署就關掉某個功能」的功能開關，也必須先確認設定來源真的會被重新載入。熱重載的實作細節在 [[17-configuration-and-secrets]]。
+第二個考量是「新值」從哪裡來。三個介面能讀到新值的前提，是設定來源本身會變。`appsettings.json` 的 JSON provider 預設會監看檔案，檔案改了就重載；環境變數在程序啟動之後不會再變。所以在 K8s 上改了 ConfigMap 注入的環境變數，重點不是用哪個 Options 介面，而是 Pod 得重啟。想靠「不重新部署就關掉某個功能」的功能開關，也必須先確認設定來源真的會被重新載入。熱重載的實作細節在 [[17-configuration-and-secrets]]。
 
 ---
 
@@ -710,7 +710,7 @@ Origins:0 = HTTP://LOCALHOST:5173       -> Access-Control-Allow-Origin: http://l
 
 **Q：設定在 appsettings.json 改了，已經跑著的服務會變嗎？**
 
-看用的介面與來源。JSON 檔預設會被監看，改了會重新載入；但 `IOptions<T>` 在第一次使用之後值就固定了，要用 `IOptionsSnapshot<T>`（每個請求重讀）或 `IOptionsMonitor<T>`。環境變數在行程啟動之後不會改變，所以在 K8s 改了 ConfigMap，通常要重啟 Pod 才生效。
+看用的介面與來源。JSON 檔預設會被監看，改了會重新載入；但 `IOptions<T>` 在第一次使用之後值就固定了，要用 `IOptionsSnapshot<T>`（每個請求重讀）或 `IOptionsMonitor<T>`。環境變數在程序啟動之後不會改變，所以在 K8s 改了 ConfigMap，通常要重啟 Pod 才生效。
 
 **Q：為什麼啟動一失敗，整個服務都起不來？不能退回預設值嗎？**
 

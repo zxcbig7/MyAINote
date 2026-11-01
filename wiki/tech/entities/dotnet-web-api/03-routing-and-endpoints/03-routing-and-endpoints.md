@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, routing, endpoint, minimal-api, controller, url-matching]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 03 章：Routing 與 Endpoint — 路徑怎麼變成一段程式碼
@@ -190,11 +190,11 @@ Web API 幾乎都用 attribute routing（把路由寫在 action 上），而不�
 ### 5.1 Token 替換
 
 ```csharp
-[Route("api/[controller]")]        // → api/users
+[Route("api/[controller]")]        // → api/Users
 [Route("api/v1/[controller]/[action]")]
 ```
 
-`[controller]` 會替換成 controller 類別名去掉 `Controller` 後綴的部分（`UsersController` → `users`）。這帶來一個常被忽略的耦合：**改類別名字會改變 API 網址**。重新命名一個 controller 是純內部重構，但它會靜默地破壞所有呼叫端。
+`[controller]` 會替換成 controller 類別名去掉 `Controller` 後綴的部分（`UsersController` → `Users`），大小寫照類別名稱原樣保留，不會自動轉小寫。路由比對不分大小寫，所以 `/api/users` 照樣打得通；大小寫只會出現在產生出來的 URL（例如 `CreatedAtAction` 的 `Location`）與 OpenAPI 的 path 上，要統一成小寫得靠第八節的 `LowercaseUrls`。這帶來一個常被忽略的耦合：**改類別名字會改變 API 網址**。重新命名一個 controller 是純內部重構，但它會靜默地破壞所有呼叫端。
 
 在對外 API 上，建議把路徑寫死：
 
@@ -356,7 +356,7 @@ builder.Services.AddRouting(options =>
 });
 ```
 
-**尾斜線預設不等價。** `/api/users` 和 `/api/users/` 是兩個不同的路徑（後者通常匹配不到而回 404）。`options.AppendTrailingSlash` 只影響產生的 URL，不影響比對。要讓兩者等價，需要在 middleware 層做 URL 正規化，或交給反向代理處理。
+**尾斜線在比對時會被忽略。** `/api/users` 和 `/api/users/` 命中的是同一個 endpoint（實測兩者都回 200），不會因為多一個斜線而 404。`options.AppendTrailingSlash` 只影響產生的 URL，不影響比對。如果希望對外只留一種寫法（為了快取或 SEO），需要在 middleware 層做 URL 正規化或 redirect，或交給反向代理處理。
 
 **Query string 完全不參與路由比對。** `?page=2` 對選哪個 endpoint 沒有任何影響，它是 model binding 階段的事。想用 query 參數區分不同 endpoint（例如 `?format=xml` 走另一個 action），路由層做不到，要靠自訂的 `IActionConstraint` 或在 action 內部分支。
 
@@ -389,8 +389,8 @@ Constraint 不匹配時的結果是「這個 endpoint 不適用」，最終通�
 **Q：為什麼傳錯格式的 id 回 404 而不是 400？**
 因為 `{id:int}` 是路由 constraint。不匹配代表「這個 endpoint 不適用」，路由繼續找別的，都找不到就 404。要回 400 就把型別檢查從路由移到參數驗證層。
 
-**Q：`/api/users` 和 `/api/users/` 為什麼一個通一個不通？**
-尾斜線在路由比對上不等價，預設不會自動正規化。要讓兩者等價需要在 middleware 或反向代理層重寫路徑。
+**Q：`/api/users` 和 `/api/users/` 是同一個路徑嗎？**
+是。路由比對會忽略尾斜線，兩者命中同一個 endpoint。如果要對外只保留一種寫法，才需要在 middleware 或反向代理層做 redirect。
 
 **Q：我在 middleware 裡想知道這個請求會打到哪個 action，怎麼拿？**
 `ctx.GetEndpoint()`，但這個 middleware 必須排在 `UseRouting` 之後，否則永遠是 null。拿到 endpoint 後可以從 `endpoint.Metadata` 取出 `[Authorize]`、`ControllerActionDescriptor` 等資訊。
@@ -408,6 +408,7 @@ Constraint 不匹配時的結果是「這個 endpoint 不適用」，最終通�
 
 ## 連結
 
+- [[basics-04-controllers-and-routing]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[02-dependency-injection]] — 上一章：服務解析
 - [[04-model-binding-and-validation]] — 下一章：參數怎麼被填進去、驗證怎麼回 400

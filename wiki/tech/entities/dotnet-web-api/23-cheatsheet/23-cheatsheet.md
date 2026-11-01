@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, cheatsheet, reference, troubleshooting, snippets]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-15
-updated: 2026-08-15
+updated: 2026-11-01
 ---
 
 # 附錄 B：速查表
@@ -379,6 +379,7 @@ dotnet test --collect:"XPlat Code Coverage"
 
 ## 連結
 
+- [[basics-17-attribute-reference]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄
 - [[22-self-assessment]] — 附錄 A：自我檢測題庫
 - [[k8s-mastery]] — K8s 端的速查與教材

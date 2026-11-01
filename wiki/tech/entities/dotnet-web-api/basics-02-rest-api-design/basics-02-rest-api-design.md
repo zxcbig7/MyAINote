@@ -6,7 +6,7 @@ sources:
   - raw/Web Framework/NET Web API/Chapter 1：HTTP 與 Web API 的核心概念.md
   - raw/Web Framework/NET Web API/HTTP 協議.md
 created: 2026-10-31
-updated: 2026-10-31
+updated: 2026-11-01
 ---
 
 # 入門第 02 章：REST API 設計 — URL 與狀態碼怎麼決定，才不會每個人寫得不一樣
@@ -307,7 +307,7 @@ Transfer-Encoding: chunked
 {"type":"https://tools.ietf.org/html/rfc9110#section-15.6.1","title":"An error occurred while processing your request.","status":500,"traceId":"00-e9853b619de5e2cc01478754341545de-3b9ce19ff6df6293-00"}
 ```
 
-`503 Service Unavailable` 則是「我知道自己現在無法服務，晚點再來」，例如維護中或過載保護，可以搭配 `Retry-After` 告訴對方等多久。它與 500 的差異在於：503 是伺服器有意識地說「暫時不行」，呼叫端與重試元件可以據此安排重試。TaskTracker 的規格沒有區分暫時與永久的資料庫故障，所以一律走 500；需要這種區分的系統才會自行設計 503，健康檢查端點的做法見 [[basics-16-deployment-and-go-live]]。閘道回的 `502`／`504`、流量限制的 `429` 通常不由應用程式自己決定，見 [[basics-01-http-and-web-api]] 第 3.1 節與 [[15-error-handling]]。
+`503 Service Unavailable` 則是「我知道自己現在無法服務，晚點再來」，例如維護中或過載保護，可以搭配 `Retry-After` 告訴對方等多久。它與 500 的差異在於：503 是伺服器有意識地說「暫時不行」，呼叫端與重試元件可以據此安排重試。TaskTracker 在 [[basics-10-efcore-and-oracle]] 為止，資料庫連不上一律走 500；到了 [[basics-16-deployment-and-go-live]] 有健康檢查之後，才把「確認是資料庫暫時連不上」的錯誤改成 503，其他沒預期的例外仍是 500。閘道回的 `502`／`504`、流量限制的 `429` 通常不由應用程式自己決定，見 [[basics-01-http-and-web-api]] 第 3.1 節與 [[15-error-handling]]。
 
 ---
 

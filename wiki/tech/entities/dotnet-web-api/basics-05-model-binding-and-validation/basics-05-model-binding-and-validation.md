@@ -615,7 +615,7 @@ Content-Type: application/problem+json; charset=utf-8
 {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"Name":["The Name field is required."]},"traceId":"00-ce300e248babe3834b587e908d4d375f-e8ecb402914e620b-00"}
 ```
 
-第二列才是這一節的重點。`WithInit` 的 `Name` 同樣是不可為 null 的 `string`，缺欄位時卻通過了，因為隱含的 `[Required]` 只檢查「值是不是 `null`」。JSON 沒送 `name`，反序列化器根本沒動這個屬性，它保持物件建構時的初始值 `""`，不是 `null`，驗證沒有抱怨。反過來，`NoInit` 沒有初始值，缺欄位時是 `null`，於是被擋下；`Pos` 是 positional record，缺少的建構函式參數同樣是 `null`，也被擋下。連 `{"name":null}` 這樣明確送 null 的 JSON，送給 `WithInit` 也會得到 400（null 是 null，不管初始值是什麼）。
+第二列才是這一節的重點。`WithInit` 的 `Name` 同樣是不可為 null 的 `string`，缺欄位時卻通過了，因為隱含的 `[Required]` 只檢查「值是不是 `null`」。JSON 沒送 `name`，反序列化器根本沒動這個屬性，它保持物件建構時的初始值 `""`，不是 `null`，驗證沒有抱怨。反過來，`NoInit` 沒有初始值，缺欄位時是 `null`，於是被擋下；`Pos` 是 positional record，缺少的建構子參數同樣是 `null`，也被擋下。連 `{"name":null}` 這樣明確送 null 的 JSON，送給 `WithInit` 也會得到 400（null 是 null，不管初始值是什麼）。
 
 這個坑有兩個面向。第一，**同一個意圖，兩種寫法行為相反**。常見的 `= string.Empty` 寫法是為了消除 CS8618 警告，副作用卻是讓「缺欄位」變得驗證不出來；開頭那個 `PUT` 少帶 `status` 沒被擋住，同樣是因為缺少的欄位悄悄吃到了型別預設值。第二，**隱含必填不是你寫下的規格**。三個月後有人把 `string Name` 改成 `string? Name`，API 的行為就從「必填」變成「選填」，沒有任何地方會提醒，因為規格從來沒有明文寫下。
 

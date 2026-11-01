@@ -42,7 +42,7 @@ Location: http://localhost:5080/api/tasks/58cff5b7-1d57-4a24-b54a-b142e66f620a
 
 登入的第一個前提是資料庫裡有使用者，而最危險的欄位是密碼。最直覺的做法是原樣存進資料表、登入時比字串。問題在於資料庫一旦被讀走（備份檔外流、SQL injection、離職同事帶走一份 dump），攻擊者拿到的是每個人在其他網站可能重複使用的密碼，傷害超出你的系統。
 
-比較好的做法是只存「從密碼算出來、無法反推」的雜湊值，登入時把輸入的密碼用同樣方式算一次再比對。有兩個細節常被忽略。雜湊不是加密：加密有金鑰可以還原，雜湊沒有還原的路，所以「忘記密碼」只能重設，不能寄回原密碼。其次，只做一次 SHA-256 之類的快速雜湊仍然太弱，攻擊者用顯卡每秒能試數十億個猜測；密碼雜湊要刻意設計得慢（重複計算十萬次以上），並混入每人不同的隨機 salt，讓同一組密碼得到不同結果，預先算好的對照表因此失效。
+比較好的做法是只存「從密碼算出來、無法反推」的雜湊值，登入時把輸入的密碼用同樣方式算一次再比對。有兩個細節常被忽略。雜湊不是加密：加密有金鑰可以還原，雜湊沒有還原的路，所以「忘記密碼」只能重設，不能寄回原密碼。其次，只做一次 SHA-256 之類的快速雜湊仍然太弱，攻擊者用顯卡每秒能試數十億個猜測；密碼雜湊要刻意設計得慢（重複計算十萬次以上），並混入每人不同的隨機 salt，讓同一組密碼得到不同結果，預先算好的對照表因此失效。迭代次數沒有一勞永逸的數字：.NET 的預設是 10 萬次，OWASP 對 PBKDF2-HMAC-SHA512 的建議是至少 21 萬次，硬體越強，門檻只會越高。
 
 這些不需要自己實作。ASP.NET Core 內建的 `PasswordHasher<TUser>` 已經做好，不需要整個 Identity 的資料表與流程，專案不用額外安裝套件，`IPasswordHasher<User>` 直接可用。
 
@@ -126,7 +126,7 @@ CREATE UNIQUE INDEX "UX_USERS_EMAIL" ON "USERS" ("EMAIL")
 /
 ```
 
-`PASSWORD_HASH` 預留 512 個字元，遠大於 1.3 節實際的 84 個字元，因為雜湊格式會隨 .NET 版本演進，留餘裕比之後改欄位便宜。
+（完整輸出的最後還有一筆寫入 `__EFMigrationsHistory` 的 INSERT，這裡省略。）`PASSWORD_HASH` 預留 512 個字元，遠大於 1.3 節實際的 84 個字元，因為雜湊格式會隨 .NET 版本演進，留餘裕比之後改欄位便宜。
 
 ### 1.2 建立示範帳號，密碼不進原始碼
 
@@ -246,7 +246,7 @@ PRF：2（KeyDerivationPrf：0 是 HMACSHA1，1 是 HMACSHA256，2 是 HMACSHA51
 salt 長度：16 bytes
 ```
 
-這串 84 個字元解開是 61 個 byte：1 byte 格式標記、4 byte 演算法代號、4 byte 迭代次數、4 byte salt 長度，然後是 16 byte 的 salt 與 32 byte 的雜湊結果。演算法、迭代次數與 salt 都存在字串自己身上，所以未來 .NET 調高迭代次數時，舊雜湊仍然讀得出參數、驗得過；兩個人用同一組密碼，因為 salt 隨機，存的字串也不同。
+這串 84 個字元解開是 61 個 byte：1 byte 格式標記、4 byte 演算法代號、4 byte 迭代次數、4 byte salt 長度，然後是 16 byte 的 salt 與 32 byte 的雜湊結果。演算法、迭代次數與 salt 都存在字串自己身上，所以未來 .NET 調高預設的迭代次數，或你自己用 `PasswordHasherOptions.IterationCount` 調高時，舊雜湊仍然讀得出參數、驗得過；兩個人用同一組密碼，因為 salt 隨機，存的字串也不同。
 
 `VerifyHashedPassword` 的回傳值除了 `Success` 與 `Failed`，還有 `SuccessRehashNeeded`：密碼正確，但雜湊用的是舊參數。下一節的登入流程會在這種情況用同一個密碼重算並存回去，使用者無感升級。
 
@@ -539,7 +539,7 @@ public sealed class TokenService : ITokenService
 
 這段有幾個設計選擇。`JsonWebTokenHandler` 是 .NET 8 之後 JwtBearer 預設用來驗證的 handler，簽發用同一個；較舊的 `JwtSecurityTokenHandler` 仍然存在，新程式碼不需要。過期時間來自 `JwtOptions.AccessTokenMinutes`，不是寫死的 `AddMinutes(60)`：設定檔宣告了過期時間卻沒被程式使用，改設定看似生效，實際沒有任何改變。時間來自注入的 `TimeProvider`，測試才能控制「現在幾點」（[[basics-15-testing]] 會用到）。類別登記為 singleton，因為 `SigningCredentials` 建立一次就能重複使用。
 
-Claim 的原則是只放識別身分與授權判斷需要的最少資料，不放敏感資料，因為每個 claim 都會跟著每個請求走。TaskTracker 只放 `sub`、`email`、`jti` 與 `role`。`role` 用字面字串 `"role"` 當名稱，而不是長 URI 的 `ClaimTypes.Role`，讓 token 裡的名稱和程式讀到的一致（第六節）。角色來自 `user.Role`（資料庫）；示範程式碼常把角色寫死成 `"Admin"`，複製貼上之後所有人都變成 Admin。
+Claim 的原則是只放識別身分與授權判斷需要的最少資料，不放敏感資料，因為每個 claim 都會跟著每個請求走。一句話概括：JWT 用來表達「你是誰」，不用來保存「系統現在的狀態」，狀態會變，而簽出去的 token 改不了。TaskTracker 只放 `sub`、`email`、`jti` 與 `role`。`role` 用字面字串 `"role"` 當名稱，而不是長 URI 的 `ClaimTypes.Role`，讓 token 裡的名稱和程式讀到的一致（第六節）。角色來自 `user.Role`（資料庫）；示範程式碼常把角色寫死成 `"Admin"`，複製貼上之後所有人都變成 Admin。
 
 ### 4.1 金鑰：32 bytes 的門檻與誤導性的錯誤訊息
 
@@ -586,7 +586,7 @@ $signature = ConvertTo-Base64Url ($hmac.ComputeHash([Text.Encoding]::UTF8.GetByt
 $minted = "$header.$payload.$signature"
 ```
 
-`$jwtKey` 是那把金鑰的原文。這 5 行不需要任何 ASP.NET Core 程式碼，也不碰資料庫：`sub` 是隨便編的 GUID，資料庫裡根本沒有這個使用者，伺服器只驗簽章，簽章對就認定是 Admin。金鑰外洩的處置只有一個：視為全面淪陷，換新金鑰，所有已簽發的 token 隨之失效。
+`$jwtKey` 是 `Jwt:SigningKey` 的原文（在自己的機器上用 `dotnet user-secrets list --project src/TaskTracker.Api` 查）。這幾行不需要任何 ASP.NET Core 程式碼，也不碰資料庫：`sub` 是隨便編的 GUID，資料庫裡根本沒有這個使用者，伺服器只驗簽章，簽章對就認定是 Admin。金鑰外洩的處置只有一個：視為全面淪陷，換新金鑰，所有已簽發的 token 隨之失效。
 
 ---
 
@@ -625,7 +625,7 @@ services.AddOptions<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme)
 | `ValidateLifetime` | `exp` 與 `nbf` | token 永遠有效，外洩後無法自然失效 |
 | `ClockSkew` | 容許簽發端與驗證端的時鐘差 | 見下文 |
 
-簽章那一列在第三節看過了。`ValidateIssuer` 與 `ValidateAudience` 的價值要在多系統情境才看得出來：兩支 API 共用同一把金鑰時，系統 A 簽的 token 本身合法，只是不是給系統 B 的。有些教學的表格註明「單一服務可選擇不驗受眾」，字面成立，風險確實低；但開著不花成本，而金鑰共用範圍擴大時，關掉的開關很少有人記得重開，所以本書預設全開。實測 audience 不符，用正確金鑰簽一個 `aud` 是 `another-app` 的 token：
+簽章那一列在第三節看過了。`ValidateIssuer` 與 `ValidateAudience` 的價值要在多系統情境才看得出來：兩支 API 共用同一把金鑰時，系統 A 簽的 token 本身合法，只是不是給系統 B 的。有些教學的表格註明「單一服務可選擇不驗受眾」，字面成立，風險確實低；但開著不花成本，而金鑰共用範圍擴大時，關掉的開關很少有人記得重開，所以本書預設全開。實測 audience 不符：沿用 4.1 節末的簽法（`$jwtKey` 與同樣的 header），把 payload 的 `aud` 改成 `another-app`，簽出 `$wrongAudience`：
 
 ```powershell
 curl.exe -s -i http://localhost:5080/api/tasks -H "Authorization: Bearer $wrongAudience"
@@ -638,7 +638,7 @@ WWW-Authenticate: Bearer error="invalid_token", error_description="The audience 
 
 401。訊息裡的 audience 顯示 `(null)`，與 token 內實際的 `another-app` 不一致，所以遇到 audience 錯誤時別只讀訊息，把 payload 解開（第三節的函式）對照 `aud` 與 `ValidAudience`。
 
-過期的 token 則有清楚的訊息：用正確的金鑰簽一個 `exp` 是 2000 年 1 月 1 日的 token，回 401 與 `error_description="The token expired at '01/01/2000 00:00:00'"`。
+過期的 token 則有清楚的訊息：同樣的簽法，把 `exp` 改成 `946684800`（2000 年 1 月 1 日）簽出 `$expired`，回 401 與 `error_description="The token expired at '01/01/2000 00:00:00'"`。
 
 三種失敗（簽章、audience、過期）都是 401，且都附 `WWW-Authenticate`，讓呼叫端知道是「token 有問題」；完全沒帶 token 時標頭只有單純的 `Bearer`。
 

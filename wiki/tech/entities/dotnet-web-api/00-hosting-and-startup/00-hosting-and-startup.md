@@ -3,9 +3,9 @@ type: concept
 domain: tech
 tags: [dotnet, aspnet, hosting, kestrel, generic-host, startup, graceful-shutdown]
 sources:
-  - raw/tech/web-dev/NET Web API.md
+  - raw/Web Framework/NET Web API/NET Web API.md
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-11-01
 ---
 
 # 第 00 章：Host 與啟動 — `CreateBuilder` 到 `Run()` 之間發生了什麼
@@ -205,9 +205,9 @@ var app = builder.Build();
 
 ### 4.1 IServiceCollection 被封裝成 IServiceProvider
 
-服務清單被拿去建出一個 `ServiceProvider`——真正能「解析」型別的容器。**從這一刻起，`builder.Services` 不能再改**。試著在 `Build()` 之後呼叫 `builder.Services.AddXxx()`，會得到 `InvalidOperationException: Cannot modify ServiceCollection after application is built`。
+服務清單被拿去建出一個 `ServiceProvider`——真正能「解析」型別的容器。**從這一刻起，`builder.Services` 不能再改**。試著在 `Build()` 之後呼叫 `builder.Services.AddXxx()`，會得到 `InvalidOperationException`（在 .NET 10 實測，訊息是 `The service collection cannot be modified because it is read-only.`；較舊版本的訊息文字可能是 `Cannot modify ServiceCollection after application is built`，例外型別相同）。
 
-這個限制常讓人不解——為什麼不能動態註冊？答案是效能。容器在建立時會為每個型別預先編譯出「建構表達式」（甚至生成 IL），把「找建構子、找參數、遞迴解析」這些反射工作在啟動時做完一次，之後每個 request 走的是編好的快速路徑。允許後期修改就得放棄這層最佳化，並且引入執行緒安全的難題。
+這個限制常讓人不解——為什麼不能動態註冊？答案是容器要的是一份固定的服務清單。容器會依這份清單決定每個型別怎麼建構（找建構子、找參數、遞迴解析），並把解析結果快取起來，之後每個 request 走的是快取好的路徑（這些建構表達式是在首次解析時才逐步編出來的，不是在 `Build()` 時一次編完）。允許後期修改，快取與清單就可能不一致，並且引入執行緒安全的難題。
 
 ### 4.2 產生 root provider，以及 scope 的起點
 
@@ -539,6 +539,8 @@ Kestrel 綁定了 loopback 而非所有介面。檢查 `ASPNETCORE_URLS`，要�
 
 ## 連結
 
+- [[basics-03-first-project]] — 入門篇對應章：先學怎麼做，本章講為什麼
+- [[basics-16-deployment-and-go-live]] — 入門篇對應章：先學怎麼做，本章講為什麼
 - [[dotnet-web-api]] — 教材總目錄與速查
 - [[01-request-pipeline]] — 下一章：pipeline 的組裝與順序
 - [[02-dependency-injection]] — scope 的建立與釋放、captive dependency

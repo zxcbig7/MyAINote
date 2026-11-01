@@ -25,7 +25,7 @@
 - [[raw/devops/Vault]] — HashiCorp Secret 管理，K8s 整合、Unseal 流程
 - [[raw/Web Framework/TypeScript]] — 型別系統、Interface vs Type、泛型、Utility Types
 - [[wiki/tech/entities/react]] — React Hooks 完整說明（useState/useEffect/useCallback/useRef/useContext）+ Zustand
-- [[dotnet-web-api]] — ASP.NET Core Web API 架構、Controller、DI、Middleware、JWT
+- [[dotnet-web-api]] — 全書目錄《ASP.NET Core Web API：從入門到專家》：入門篇 17 章、深度篇 22 章＋2 附錄、專家篇 9 章，附速查與舊筆記修正表
 - [[aspnetcore-webapi-complete]] — ASP.NET Core Minimal API 完整教學：路由、參數綁定、Middleware、DI、Health Check、快取等 18 章
 - [[csharp]] — C# 語法重點、OOP、LINQ、async/await
 - [[msbuild]] — MSBuild 與 .csproj：兩大積木（PropertyGroup/ItemGroup）、三動詞、CopyToOutputDirectory、Target、Directory.Build.props
@@ -59,9 +59,31 @@
 - [[16-background-work]] — 補充篇：三副本讓對帳跑三次、四種做法邊界表、**`create_task` 的例外會靜默吞掉**、Redis 鎖的 TTL 與 Lua 比對釋放、arq vs Celery、**冪等鍵才是唯一防線**（佇列是 at-least-once）、outbox 保證 DB 與訊息原子、「排程沒跑」要靠時間戳告警
 - [[17-resilience]] — 補充篇：**下游變慢比掛掉危險**（40 條 threadpool ÷ 2 秒 = 20 req/s）、httpx 四維度逾時會疊加、重試三紀律（冪等／暫時性／抖動）與重試預算、斷路器要包在重試外面、快取雪崩三解法、限流優先放 Ingress、**訊號量隔艙是最便宜的解**、量測優先於猜測
 
-### .NET Web API 教材（詳見 [[dotnet-web-api]]）
+### ASP.NET Core Web API：從入門到專家（詳見 [[dotnet-web-api]]）
 
-從框架內部機制寫到生產維運的 22 章 + 2 附錄教材，回答「為什麼」而非「怎麼寫」。假設部署環境為 K8s + Oracle + JWT/Google OAuth。**全數完成**。
+一本書三篇，假設部署環境為 K8s + Oracle + JWT/Google OAuth。入門篇以 .NET 10 用 TaskTracker 從零做到上線，程式碼與輸出全部實跑過（14 個階段建置成功、77 個測試通過）；深度篇以 .NET 8 為基準，回答「為什麼」；專家篇處理設計取捨、安全、效能與分散式。
+
+#### 入門篇
+
+- [[basics-01-http-and-web-api]] — 連結預覽和爬蟲會替你按 GET，所以 `GET /delete` 真的會刪資料；冪等性決定重試元件敢不敢重送；實測 `Content-Type`、無狀態、HTTP/1.1 到 3 的差別
+- [[basics-02-rest-api-design]] — 整支 API 只用 POST 回 200，`res.ok` 永遠是 `true`、監控看不到錯誤率；用一串問題三題內選出狀態碼，並交出 TaskTracker 的 API 規格表
+- [[basics-03-first-project]] — 清掉一行 `Program.cs` 換來空 body 的 404 且 console 沒有任何錯誤；兩階段（先註冊、後排 middleware）、.NET 10 範本不附 Swagger UI、`launchSettings` 部署後不生效
+- [[basics-04-controllers-and-routing]] — 兩個 404 長得不一樣（路由沒命中與資源不存在）；改成 `GetByIdAsync` 會讓 `CreatedAtAction` 找不到 action；記憶體 `static List` 不是 thread-safe
+- [[basics-05-model-binding-and-validation]] — 漏帶 `status` 的 `PUT` 會把已完成任務默默改回 `todo`；沒標 `[ApiController]` 就沒有自動 400；nullable 造成隱含必填，並實測 415
+- [[basics-06-dto-design]] — 回傳 entity 與直接收 entity 各在不同時間點出事（洩漏欄位、over-posting）；Request 與 Response 要分開，手動 mapping 先於 AutoMapper，DTO 讓版本能演進
+- [[basics-07-dependency-injection-and-services]] — 自己 `new` 的三個痛點；`TaskService` 先是 Singleton 因為它持有集合，換 DbContext 後必須改 Scoped；`ValidateOnBuild` 只在 Development 預設開，Production 會靜默出事
+- [[basics-08-middleware-and-exception-handling]] — 順序就是行為：請求記錄放最外層才看得到 404 與 409；.NET 10 起被處理的例外預設不再留 log；Response 已開始後丟例外，狀態碼改不回來
+- [[basics-09-configuration-and-environments]] — 伺服器回 200 而瀏覽器說被擋，是 CORS 在瀏覽器端判定；設定來源後者蓋前者；`ValidateOnStart` 讓壞設定起不來；CORS 白名單多打一個斜線就失效
+- [[basics-10-efcore-and-oracle]] — 表名 `TASK_ITEMS` 來自 Oracle 的引號規則；空字串等於 NULL，空白標題變成難懂的 500；唯一性只有資料庫能保證，ORA-00001 轉成 409；更新路徑不能加 `AsNoTracking`
+- [[basics-11-auth-concepts-and-pipeline]] — 沒帶任何身分的 `DELETE` 竟回 204；`[Authorize]` 是掛在 endpoint 上的 metadata 而非 Controller 裡的 if；省略 `UseAuthentication` 的症狀、401 與 403 的分界
+- [[basics-12-jwt-login]] — 16 bytes 的金鑰啟動不出錯，到第一次簽 token 才丟誤導性的 IDX10720；Base64 不是加密；`MapInboundClaims` 讓 Role 檢查悄悄失效；Viewer、Editor、Admin 的後端落地
+- [[basics-13-permissions-with-frontend]] — 藏起來的按鈕擋不住一行 `curl`，403 才是門鎖；permission claim 是簽發當下的快照；三種角色打整張權限矩陣的實測，以及 token 放 localStorage 還是 cookie
+- [[basics-14-openapi-and-versioning]] — 實測 `MapOpenApi` 是 endpoint，放在 pipeline 哪裡都不影響；`ProducesResponseType` 不寫 200 的陷阱；悄悄改名就是破壞性變更；第二個版本出現時 DTO 要分版本
+- [[basics-15-testing]] — 30 個單元測試全過，Editor 卻能刪除任務：屬性只有在 pipeline 裡才被讀；20 個矩陣案例中只有 1 個變紅；沒有 Docker 時整合測試整批跳過卻仍是綠燈
+- [[basics-16-deployment-and-go-live]] — 純 http 端點只有 HTTP/1.1，強制 HTTP/2 會得到 `HTTP_1_1_REQUIRED`；live 與 ready 是兩個問題；資料庫暫時連不上改回 503；非 root 映像與上線清單
+- [[basics-17-attribute-reference]] — 附錄：Attribute 本身什麼都不做，是路由、Binding、驗證、授權四種讀者在讀它；從加了 `[Authorize]` 卻放行的 action 出發，查表並對照常見誤解
+
+#### 深度篇
 
 - [[00-hosting-and-startup]] — Generic Host 四職責、`CreateBuilder` 載入什麼、`Build()` 凍結什麼、Kestrel 與反向代理分工、graceful shutdown 與 K8s 502 真相
 - [[01-request-pipeline]] — `RequestDelegate` 型別簽章決定洋蔥、由後往前組裝、短路、三種寫法的 DI 陷阱、順序的完整推導、`OnStarting` 與 `HasStarted`
@@ -93,9 +115,17 @@
 把 `raw/Web Framework/React/` 的 17 份筆記重寫成一本書，以 React 19.3、TS 7、Vite 8 為基準，用 Task Tracker 專案貫穿，範例都實際編譯測試過。**撰寫中**，完整目錄與進度見 hub 頁。
 
 - [[react-06-components-and-jsx]] — JSX 是函式呼叫不是模板：`class`、`if`、大小寫規則都能從編譯結果推出來、React element 只是便條、`&&` 為什麼會畫出一個 0、與 Razor 的方向差異、Task Tracker 第一個靜態畫面
-- [[react-09-rendering]] — render、commit、paint 分別做什麼、子 component 為何連帶 render、state 綁在樹的位置上、`key` 的真正角色與 index 當 key 的 bug、StrictMode 雙重 render 的目的、component 為什麼必須是 pure
-- [[react-11-effects]] — Effect 是同步不是生命週期、四條判斷規則、依賴陣列與 exhaustive-deps、cleanup、競態與 AbortController、你可能不需要 Effect 的情境、`useEffectEvent`、`useLayoutEffect`、StrictMode 下的雙跑
+- [[react-07-props]] — 單向資料流與 props 唯讀的理由、children 與 slot、Layout Component、用 ComponentProps 與 extends 接 HTML 屬性、事件型別、`React.FC` 為何退場
 - [[react-08-state]] — setter 之後為什麼讀到舊值：state 是這次 render 的 `const` 快照（`await` 也救不了）、updater 與 queue 手算、batching 的真正邊界、stale closure 造成的資料蓋回、`Object.is` 是不可變更新的根本理由、受控 input 的迴圈、哪些東西不該是 state
+- [[react-09-rendering]] — render、commit、paint 分別做什麼、子 component 為何連帶 render、state 綁在樹的位置上、`key` 的真正角色與 index 當 key 的 bug、StrictMode 雙重 render 的目的、component 為什麼必須是 pure
+- [[react-10-tic-tac-toe]] — state 放最近共同父層，勝負與輪次一律推導；存 winner 晚一步、留 isXNext 回放錯方、原地改盤面毀掉歷史、key={currentMove} 掉焦點
+- [[react-11-effects]] — Effect 是同步不是生命週期、四條判斷規則、依賴陣列與 exhaustive-deps、cleanup、競態與 AbortController、你可能不需要 Effect 的情境、`useEffectEvent`、`useLayoutEffect`、StrictMode 下的雙跑
+- [[react-12-refs]] — ref 是不觸發 render 的記憶、render 中讀寫 ref 為何違規、DOM ref、React 19 的 ref prop 取代 forwardRef、useImperativeHandle 只開放必要操作、ref callback 與 cleanup
+- [[react-13-reducer-and-context]] — reducer 把更新規則收在一處、action 描述事件、discriminated union 型別；Context 解 prop drilling、null 預設加拋錯的 hook、重 render 成本與拆分、Context 不是狀態管理
+- [[react-14-memoization]] — 參考相等是一切的根源、三者分工、useCallback 只在接收方會比較時才有用、React Compiler 改變了什麼、何時不要加 memo
+- [[react-15-custom-hooks]] — 邏輯重用不是 state 共享、何時值得抽 hook、tuple 與 object 回傳的取捨、useDebounce、用 useSyncExternalStore 寫對 useIsMobile、useId、useDebugValue、use API 預告
+- [[react-19-routing]] — SPA fallback 讓所有路徑回 200，少 /api 守門則打錯 API 拿到 HTML；同路由換參數 state 殘留要 key；篩選進 URL，setSearchParams 物件覆蓋、連呼叫不累積；Data lazy 留舊頁。
+- [[react-20-api-layer]] — fetch 只對網路失敗 reject，請求有六種結局；axios 泛型不驗證，Zod 才是查核；ProblemDetails 轉 ApiError；VITE_ 全公開且字串 false 為真；CORS 是瀏覽器規則，能同源就同源。
 
 ## Tech / Concepts
 
@@ -338,7 +368,7 @@
 - `raw/tech/web-dev/TypeScript/TypeScript.md` ✓ → [[raw/Web Framework/TypeScript]]
 - `raw/tech/web-dev/React/React.md` ✓ → [[wiki/tech/entities/react]]
 - `raw/tech/web-dev/React/React + TypeScript 開發手冊.md` ✓ → [[wiki/tech/entities/react]], [[raw/Web Framework/TypeScript]]
-- `raw/tech/web-dev/NET Web API/NET Web API.md` ✓ → [[dotnet-web-api]]
+- `raw/Web Framework/NET Web API/`（25 份筆記，含 Chapter 1～10 與補充篇）✓ → [[dotnet-web-api]]
 - `raw/tech/web-dev/HTML/HTML.md`
 - `raw/tech/web-dev/CSS/CSS.md`
 - `raw/tech/web-dev/react-hooks-gotchas/react-hooks-gotchas.md`
